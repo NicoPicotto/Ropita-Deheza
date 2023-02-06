@@ -78,7 +78,7 @@ const LoginComponent = () => {
 				<Button type='submit' color='segundo'>
 					Iniciá sesión
 				</Button>
-				<Link as={ReachLink} to='/register'>
+				<Link as={ReachLink} to='/register' _hover={{}}>
 					<Button color='segundo' variant='outline'>
 						¿No tenés cuenta? Registrate
 					</Button>

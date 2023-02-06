@@ -84,7 +84,7 @@ const RegisterComponent = () => {
 				<Button type='submit' color='segundo'>
 					Registrate
 				</Button>
-				<Link as={ReachLink} to='/login'>
+				<Link as={ReachLink} to='/login' _hover={{}}>
 					<Button color='segundo' variant='outline'>
 						¿Ya tenés cuenta? Iniciá sesión
 					</Button>

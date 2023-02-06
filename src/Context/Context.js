@@ -4,7 +4,8 @@ import {
 	signInWithEmailAndPassword,
 	signOut,
 	sendPasswordResetEmail,
-	onAuthStateChanged
+	onAuthStateChanged,
+	updateProfile,
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -28,7 +29,9 @@ export const ContextProvider = ({ children }) => {
 		return signInWithEmailAndPassword(auth, email, password);
 	};
 
-	const logout = () => signOut(auth);
+	const logout = () => {
+		signOut(auth);
+	};
 
 	const resetPassword = async (email) => sendPasswordResetEmail(auth, email);
 
@@ -42,7 +45,14 @@ export const ContextProvider = ({ children }) => {
 
 	return (
 		<RopitaContext.Provider
-			value={{ registrarse, login, logout, resetPassword, loading, user }}
+			value={{
+				registrarse,
+				login,
+				logout,
+				resetPassword,
+				loading,
+				user,
+			}}
 		>
 			{children}
 		</RopitaContext.Provider>

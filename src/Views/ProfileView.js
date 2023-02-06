@@ -1,16 +1,11 @@
-import React, { useContext } from 'react';
-import { Stack, Heading } from '@chakra-ui/react';
-import { RopitaContext } from '../Context/Context';
+import React from 'react';
+import { Stack } from '@chakra-ui/react';
+import Profile from '../Components/Profile/Profile';
 
 const ProfileView = () => {
-
-    const [usuario] = useContext(RopitaContext);
-
 	return (
-		<Stack bgColor='fondo' h='100vh'>
-			<Heading color='primero' p={5}>
-				Profile
-			</Heading>
+		<Stack bgColor='fondo' h='100vh' align='center'>
+			<Profile />
 		</Stack>
 	);
 };

@@ -8,12 +8,23 @@ import {
 	Link,
 } from '@chakra-ui/react';
 import { useAuth } from '../../Context/Context';
+import { useNavigate } from 'react-router-dom';
 import { BsPersonFill } from 'react-icons/bs';
 import { Search2Icon } from '@chakra-ui/icons';
 import { Link as ReachLink } from 'react-router-dom';
 
 const Navbar = () => {
-	const {user, search, setSearch, logout} = useAuth()
+	const { user, search, setSearch, logout } = useAuth();
+	const navigate = useNavigate();
+
+	const handleLogout = async () => {
+		try {
+			await logout();
+			navigate('/');
+		} catch (e) {
+			console.log('Logout');
+		}
+	};
 
 	return (
 		<Stack
@@ -62,7 +73,7 @@ const Navbar = () => {
 							<Button
 								variant='outline'
 								colorScheme='whiteAlpha'
-								onClick={() => logout()}
+								onClick={handleLogout}
 							>
 								Cerrar sesión
 							</Button>
