@@ -1,11 +1,11 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
 import { Heading, Stack, Input, Button, Text, Link } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 const LoginComponent = () => {
-	const { login } = useAuth();
+	const { login, resetPassword } = useAuth();
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -20,6 +20,18 @@ const LoginComponent = () => {
 			await login(user.email, user.password);
 			navigate('/');
 		} catch (error) {
+			setError('El mail o contraseña son incorrectas');
+		}
+	};
+
+	const handleResetPassword = async (e) => {
+		e.preventDefault();
+		if (!user.email)
+			return setError('Escribí un mail para recuperar tu contraseña');
+		try {
+			await resetPassword(user.email);
+			setError('Te enviamos un correo para resetear tu password');
+		} catch (error) {
 			setError(error.message);
 		}
 	};
@@ -29,7 +41,7 @@ const LoginComponent = () => {
 			justify='space-between'
 			align='center'
 			w='600px'
-			h='300px'
+			h='350px'
 			marginTop='100px'
 			bgColor='white'
 			borderRadius={5}
@@ -57,7 +69,11 @@ const LoginComponent = () => {
 				type='password'
 				focusBorderColor='cuarto'
 			/>
-
+			{error && (
+				<Text color='red' fontSize='sm'>
+					{error}
+				</Text>
+			)}
 			<Stack direction='row'>
 				<Button type='submit' color='segundo'>
 					Iniciá sesión
@@ -68,6 +84,9 @@ const LoginComponent = () => {
 					</Button>
 				</Link>
 			</Stack>
+			<Button color='segundo' variant='link' onClick={handleResetPassword}>
+				¿Olvidaste tu contraseña?
+			</Button>
 		</Stack>
 	);
 };

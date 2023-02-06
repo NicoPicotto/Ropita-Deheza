@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import {
 	Stack,
 	Image,
@@ -11,11 +11,9 @@ import { useAuth } from '../../Context/Context';
 import { BsPersonFill } from 'react-icons/bs';
 import { Search2Icon } from '@chakra-ui/icons';
 import { Link as ReachLink } from 'react-router-dom';
-import {  signOut } from 'firebase/auth';
-import { auth } from '../../firebase';
 
 const Navbar = () => {
-	const {user, search, setSearch} = useAuth()
+	const {user, search, setSearch, logout} = useAuth()
 
 	return (
 		<Stack
@@ -64,7 +62,7 @@ const Navbar = () => {
 							<Button
 								variant='outline'
 								colorScheme='whiteAlpha'
-								onClick={() => signOut(auth)}
+								onClick={() => logout()}
 							>
 								Cerrar sesión
 							</Button>

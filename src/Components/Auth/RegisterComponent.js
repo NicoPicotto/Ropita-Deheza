@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
 import { Heading, Stack, Input, Button, Text, Link } from '@chakra-ui/react';
@@ -82,7 +82,7 @@ const RegisterComponent = () => {
 			)}
 			<Stack direction='row'>
 				<Button type='submit' color='segundo'>
-					'Registrate'
+					Registrate
 				</Button>
 				<Link as={ReachLink} to='/login'>
 					<Button color='segundo' variant='outline'>
