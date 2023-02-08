@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Input, Stack, Text, Button } from '@chakra-ui/react';
+import { Input, Stack, Button } from '@chakra-ui/react';
 
-const InputsContainer = ({ nombre, apellido, telefono, email, id, handleUpdate }) => {
+const InputsContainer = ({ nombre, apellido, telefono, email, handleUpdate }) => {
 	const [nuevoNombre, setNuevoNombre] = useState(nombre);
 	const [nuevoApellido, setNuevoApellido] = useState(apellido);
 	const [nuevoTelefono, setNuevoTelefono] = useState(telefono);
@@ -32,8 +32,8 @@ const InputsContainer = ({ nombre, apellido, telefono, email, id, handleUpdate }
 				type='phone'
 				focusBorderColor='cuarto'
 			/>
-			<Input value={id} variant='flushed' isDisabled />
-			<Button color='segundo' onClick={() => handleUpdate(nuevoNombre, nuevoApellido, nuevoTelefono, id)}>
+			<Input value={email} variant='flushed' isDisabled />
+			<Button color='segundo' onClick={() => handleUpdate(nuevoNombre, nuevoApellido, nuevoTelefono)}>
 				Actualizar Datos
 			</Button>
 		</Stack>

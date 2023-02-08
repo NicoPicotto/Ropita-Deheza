@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collection, query, onSnapshot } from 'firebase/firestore';
-import { Stack, Spinner, Text } from '@chakra-ui/react';
+import { Stack, Spinner } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
 
@@ -24,9 +24,10 @@ const HomeView = () => {
 	}, []);
 
 	return (
-		<Stack bgColor='fondo' h='900px' align="center" p={5}>
+		<Stack bgColor='fondo' h='900px' align='center' p={5}>
 			{productos.map((prod) => (
 				<Producto
+					key={prod.id}
 					titulo={prod.titulo}
 					descripcion={prod.descripcion}
 					precio={prod.precio}

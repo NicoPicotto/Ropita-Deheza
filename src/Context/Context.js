@@ -5,7 +5,6 @@ import {
 	signOut,
 	sendPasswordResetEmail,
 	onAuthStateChanged,
-	updateProfile,
 } from 'firebase/auth';
 import { auth } from '../firebase';
 
@@ -20,6 +19,7 @@ export const ContextProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [search, setSearch] = useState('');
 	const [loading, setLoading] = useState(true);
+
 
 	const registrarse = (email, password) => {
 		createUserWithEmailAndPassword(auth, email, password);

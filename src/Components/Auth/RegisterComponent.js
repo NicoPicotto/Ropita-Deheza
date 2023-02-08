@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
+import { setDoc, doc } from 'firebase/firestore';
+import { firestore } from '../../firebase';
 import { Heading, Stack, Input, Button, Text, Link } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
@@ -20,6 +22,12 @@ const RegisterComponent = () => {
 
 		if (user.password === passwordConfirm) {
 			try {
+				await setDoc(doc(firestore, 'usuarios', user.email), {
+					nombre: '',
+					apellido: '',
+					telefono: '',
+					email: user.email,
+				});
 				await registrarse(user.email, user.password);
 				navigate('/');
 			} catch (error) {
