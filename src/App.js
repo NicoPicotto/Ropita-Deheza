@@ -8,8 +8,10 @@ import LoginView from './Views/LoginView';
 import Navbar from './Components/Navbar/Navbar';
 import ProfileView from './Views/ProfileView';
 import RegisterView from './Views/RegisterView';
+import { useAuth } from './Context/Context';
 
 const App = () => {
+
 	return (
 		<ChakraProvider theme={theme}>
 			<ContextProvider>

@@ -20,12 +20,13 @@ const Profile = () => {
 				setDatosPersonales(docSnap.data());
 				setIsLoading(false);
 			} else {
-				// doc.data() will be undefined in this case
-				console.log('No such document!');
+				console.log('Error al traer los datos del usuario');
 			}
 		};
 		getEntrada();
 	}, [paramsID]);
+
+	console.log("Params: ", paramsID.id)
 
 	//Función para actualizar los datos
 	const handleUpdate = async (nuevoNombre, nuevoApellido, nuevoTelefono) => {

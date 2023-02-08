@@ -15,7 +15,7 @@ import { Link as ReachLink } from 'react-router-dom';
 
 const Navbar = () => {
 	const { search, setSearch, logout, user } = useAuth();
-	const [id, setId] = useState('');
+
 	const navigate = useNavigate();
 
 	const handleLogout = async () => {
@@ -26,14 +26,6 @@ const Navbar = () => {
 			console.log('Logout');
 		}
 	};
-
-	useEffect(() => {
-		const getID = async () => {
-			const idCapturado = await user.email;
-			setId(idCapturado);
-		};
-		getID();
-	}, []);
 
 	return (
 		<Stack
