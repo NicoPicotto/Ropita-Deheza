@@ -24,7 +24,7 @@ const HomeView = () => {
 	}, []);
 
 	return (
-		<Stack bgColor='fondo' h='900px' align='center' p={5}>
+		<Stack bgColor='fondo' h='100vh' align='center' p={5}>
 			{productos.map((prod) => (
 				<Producto
 					key={prod.id}
@@ -34,7 +34,7 @@ const HomeView = () => {
 					imagen={prod.imagen}
 				/>
 			))}
-			{loading && <Spinner margin={5} color='color.primario' />}
+			{loading && <Spinner size="lg" margin={5} color='cuarto' />}
 		</Stack>
 	);
 };
