@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
 	Stack,
 	Image,
@@ -7,14 +7,20 @@ import {
 	StackDivider,
 	Link,
 } from '@chakra-ui/react';
+import {
+	onAuthStateChanged,
+} from 'firebase/auth';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
 import { BsPersonFill } from 'react-icons/bs';
 import { Search2Icon } from '@chakra-ui/icons';
 import { Link as ReachLink } from 'react-router-dom';
+import { auth } from '../../firebase';
 
 const Navbar = () => {
-	const { user, search, setSearch, logout } = useAuth();
+	const { search, setSearch, logout } = useAuth();
+	const [user, setUser] = useState(null);
+	const [id, setId] = useState("")
 	const navigate = useNavigate();
 
 	const handleLogout = async () => {
@@ -25,6 +31,14 @@ const Navbar = () => {
 			console.log('Logout');
 		}
 	};
+
+	useEffect(() => {
+		const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
+			setUser(currentUser);
+			setId(currentUser.email)
+		});
+		return () => unsubuscribe();
+	}, []);
 
 	return (
 		<Stack
@@ -65,7 +79,7 @@ const Navbar = () => {
 				<Stack direction='row'>
 					{user ? (
 						<Stack direction='row'>
-							<Link as={ReachLink} to={'/perfil'} _hover={{}}>
+							<Link as={ReachLink} to={`/${id}`} _hover={{}}>
 								<Button leftIcon={<BsPersonFill />} colorScheme='whiteAlpha'>
 									Perfil
 								</Button>
