@@ -37,56 +37,57 @@ const LoginComponent = () => {
 	};
 
 	return (
-		<Stack
-			justify='space-between'
-			align='center'
-			w='600px'
-			h='350px'
-			marginTop='100px'
-			bgColor='white'
-			borderRadius={5}
-			p={5}
-			shadow='md'
-			as='form'
-			onSubmit={submitHandler}
-		>
-			<Heading size='lg' color='segundo'>
-				Iniciá sesión
-			</Heading>
-			<Input
-				w='80%'
-				onChange={(e) => setUser({ ...user, email: e.target.value })}
-				variant='flushed'
-				placeholder='Correo electrónico'
-				type='email'
-				focusBorderColor='cuarto'
-			/>
-			<Input
-				w='80%'
-				onChange={(e) => setUser({ ...user, password: e.target.value })}
-				variant='flushed'
-				placeholder='Contraseña'
-				type='password'
-				focusBorderColor='cuarto'
-			/>
-			{error && (
-				<Text color='red' fontSize='sm'>
-					{error}
-				</Text>
-			)}
-			<Stack direction='row'>
-				<Button type='submit' color='segundo'>
+		<Stack h='900px' justify='center'>
+			<Stack
+				justify='space-between'
+				align='center'
+				w='600px'
+				h='400px'
+				bgColor='white'
+				borderRadius={5}
+				p={5}
+				shadow='md'
+				as='form'
+				onSubmit={submitHandler}
+			>
+				<Heading size='lg' color='segundo'>
 					Iniciá sesión
-				</Button>
-				<Link as={ReachLink} to='/register' _hover={{}}>
-					<Button color='segundo' variant='outline'>
-						¿No tenés cuenta? Registrate
+				</Heading>
+				<Input
+					w='80%'
+					onChange={(e) => setUser({ ...user, email: e.target.value })}
+					variant='flushed'
+					placeholder='Correo electrónico'
+					type='email'
+					focusBorderColor='cuarto'
+				/>
+				<Input
+					w='80%'
+					onChange={(e) => setUser({ ...user, password: e.target.value })}
+					variant='flushed'
+					placeholder='Contraseña'
+					type='password'
+					focusBorderColor='cuarto'
+				/>
+				{error && (
+					<Text color='red' fontSize='sm'>
+						{error}
+					</Text>
+				)}
+				<Stack direction='row'>
+					<Button type='submit' color='segundo'>
+						Iniciá sesión
 					</Button>
-				</Link>
+					<Link as={ReachLink} to='/register' _hover={{}}>
+						<Button color='segundo' variant='outline'>
+							¿No tenés cuenta? Registrate
+						</Button>
+					</Link>
+				</Stack>
+				<Button color='segundo' variant='link' onClick={handleResetPassword}>
+					¿Olvidaste tu contraseña?
+				</Button>
 			</Stack>
-			<Button color='segundo' variant='link' onClick={handleResetPassword}>
-				¿Olvidaste tu contraseña?
-			</Button>
 		</Stack>
 	);
 };

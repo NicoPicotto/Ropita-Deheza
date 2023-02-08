@@ -41,62 +41,63 @@ const RegisterComponent = () => {
 	};
 
 	return (
-		<Stack
-			justify='space-between'
-			align='center'
-			w='600px'
-			h='400px'
-			marginTop='100px'
-			bgColor='white'
-			borderRadius={5}
-			p={5}
-			shadow='md'
-			as='form'
-			onSubmit={submitHandler}
-		>
-			<Heading size='lg' color='segundo'>
-				Registrate
-			</Heading>
-			<Input
-				w='80%'
-				onChange={(e) => setUser({ ...user, email: e.target.value })}
-				variant='flushed'
-				placeholder='Correo electrónico'
-				type='email'
-				focusBorderColor='cuarto'
-			/>
-			<Input
-				w='80%'
-				onChange={(e) => setUser({ ...user, password: e.target.value })}
-				variant='flushed'
-				placeholder='Contraseña'
-				type='password'
-				focusBorderColor='cuarto'
-			/>
-
-			<Input
-				w='80%'
-				id='passwordConfirmField'
-				variant='flushed'
-				placeholder='Repetir contraseña'
-				type='password'
-				focusBorderColor='cuarto'
-			/>
-
-			{error && (
-				<Text color='red' fontSize='sm'>
-					Las contraseñas no coinciden
-				</Text>
-			)}
-			<Stack direction='row'>
-				<Button type='submit' color='segundo'>
+		<Stack h='900px' justify='center'>
+			<Stack
+				justify='space-between'
+				align='center'
+				w='600px'
+				h='400px'
+				bgColor='white'
+				borderRadius={5}
+				p={5}
+				shadow='md'
+				as='form'
+				onSubmit={submitHandler}
+			>
+				<Heading size='lg' color='segundo'>
 					Registrate
-				</Button>
-				<Link as={ReachLink} to='/login' _hover={{}}>
-					<Button color='segundo' variant='outline'>
-						¿Ya tenés cuenta? Iniciá sesión
+				</Heading>
+				<Input
+					w='80%'
+					onChange={(e) => setUser({ ...user, email: e.target.value })}
+					variant='flushed'
+					placeholder='Correo electrónico'
+					type='email'
+					focusBorderColor='cuarto'
+				/>
+				<Input
+					w='80%'
+					onChange={(e) => setUser({ ...user, password: e.target.value })}
+					variant='flushed'
+					placeholder='Contraseña'
+					type='password'
+					focusBorderColor='cuarto'
+				/>
+
+				<Input
+					w='80%'
+					id='passwordConfirmField'
+					variant='flushed'
+					placeholder='Repetir contraseña'
+					type='password'
+					focusBorderColor='cuarto'
+				/>
+
+				{error && (
+					<Text color='red' fontSize='sm'>
+						Las contraseñas no coinciden
+					</Text>
+				)}
+				<Stack direction='row'>
+					<Button type='submit' color='segundo'>
+						Registrate
 					</Button>
-				</Link>
+					<Link as={ReachLink} to='/login' _hover={{}}>
+						<Button color='segundo' variant='outline'>
+							¿Ya tenés cuenta? Iniciá sesión
+						</Button>
+					</Link>
+				</Stack>
 			</Stack>
 		</Stack>
 	);

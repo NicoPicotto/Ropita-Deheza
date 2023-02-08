@@ -1,3 +1,21 @@
+::-webkit-scrollbar {
+	width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #025E73;
+	border-radius: 100vw;
+}
+
+::-webkit-scrollbar-track {
+	background: #F5F5F5;
+}
+
 * {
 	font-family: 'Montserrat', sans-serif !important;
+	overflow-x: hidden;
+}
+
+html {
+	background-color: #F5F5F5;
 }

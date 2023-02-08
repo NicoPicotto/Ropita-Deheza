@@ -26,7 +26,7 @@ const Profile = () => {
 		getEntrada();
 	}, [paramsID]);
 
-	console.log("Params: ", paramsID.id)
+	console.log('Params: ', paramsID.id);
 
 	//Función para actualizar los datos
 	const handleUpdate = async (nuevoNombre, nuevoApellido, nuevoTelefono) => {
@@ -46,33 +46,34 @@ const Profile = () => {
 	};
 
 	return (
-		<Stack
-			justify='space-between'
-			w='600px'
-			marginTop='50px'
-			bgColor='white'
-			borderRadius={5}
-			p={5}
-			shadow='md'
-			as='form'
-		>
-			<Heading color='segundo'>Tus datos</Heading>
-			<Divider borderColor='cuarto' />
-			{!isLoading ? (
-				<Stack spacing={5} p={3}>
-					<InputsContainer
-						nombre={datosPersonales.nombre}
-						apellido={datosPersonales.apellido}
-						email={datosPersonales.email}
-						telefono={datosPersonales.telefono}
-						handleUpdate={handleUpdate}
-					/>
-				</Stack>
-			) : (
-				<Stack align='center' color='cuarto'>
-					<Spinner />
-				</Stack>
-			)}
+		<Stack h='900px' justify='center'>
+			<Stack
+				justify='space-between'
+				w='600px'
+				bgColor='white'
+				borderRadius={5}
+				p={5}
+				shadow='md'
+				as='form'
+			>
+				<Heading color='segundo'>Tus datos</Heading>
+				<Divider borderColor='cuarto' />
+				{!isLoading ? (
+					<Stack spacing={5} p={3}>
+						<InputsContainer
+							nombre={datosPersonales.nombre}
+							apellido={datosPersonales.apellido}
+							email={datosPersonales.email}
+							telefono={datosPersonales.telefono}
+							handleUpdate={handleUpdate}
+						/>
+					</Stack>
+				) : (
+					<Stack align='center' color='cuarto'>
+						<Spinner />
+					</Stack>
+				)}
+			</Stack>
 		</Stack>
 	);
 };

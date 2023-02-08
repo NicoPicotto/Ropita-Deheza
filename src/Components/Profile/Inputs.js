@@ -33,7 +33,7 @@ const InputsContainer = ({ nombre, apellido, telefono, email, handleUpdate }) =>
 				focusBorderColor='cuarto'
 			/>
 			<Input value={email} variant='flushed' isDisabled />
-			<Button color='segundo' onClick={() => handleUpdate(nuevoNombre, nuevoApellido, nuevoTelefono)}>
+			<Button color='white' bgColor="segundo" _hover={{bgColor: "cuarto"}} onClick={() => handleUpdate(nuevoNombre, nuevoApellido, nuevoTelefono)}>
 				Actualizar Datos
 			</Button>
 		</Stack>

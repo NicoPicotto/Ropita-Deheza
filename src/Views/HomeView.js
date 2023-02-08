@@ -3,6 +3,7 @@ import { collection, query, onSnapshot } from 'firebase/firestore';
 import { Stack, Spinner } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
+import HomeLanding from '../Components/HomeLanding/HomeLanding';
 
 const HomeView = () => {
 	const [productos, setProductos] = useState([]);
@@ -24,17 +25,21 @@ const HomeView = () => {
 	}, []);
 
 	return (
-		<Stack bgColor='fondo' h='100vh' align='center' p={5}>
-			{productos.map((prod) => (
-				<Producto
-					key={prod.id}
-					titulo={prod.titulo}
-					descripcion={prod.descripcion}
-					precio={prod.precio}
-					imagen={prod.imagen}
-				/>
-			))}
-			{loading && <Spinner size="lg" margin={5} color='cuarto' />}
+		<Stack bgColor='fondo' align='center' p={5} w='100vw'>
+			<HomeLanding />
+
+			<Stack>
+				{productos.map((prod) => (
+					<Producto
+						key={prod.id}
+						titulo={prod.titulo}
+						descripcion={prod.descripcion}
+						precio={prod.precio}
+						imagen={prod.imagen}
+					/>
+				))}
+			</Stack>
+			{loading && <Spinner size='lg' margin={5} color='cuarto' />}
 		</Stack>
 	);
 };
