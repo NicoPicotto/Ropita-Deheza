@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
 	Heading,
 	Stack,
@@ -9,11 +9,84 @@ import {
 	Textarea,
 	Tooltip,
 	Divider,
+	useToast,
 } from '@chakra-ui/react';
+import {
+	collection,
+	addDoc,
+	serverTimestamp,
+	doc,
+	getDoc,
+} from 'firebase/firestore';
+import { useAuth } from '../../Context/Context';
+import { firestore } from '../../firebase';
 
 const NuevoProducto = () => {
+	const { email } = useAuth();
+	const [datosPersonales, setDatosPersonales] = useState(null);
+	const [titulo, setTitulo] = useState('');
+	const [descripcion, setDescripcion] = useState('');
+	const [talle, setTalle] = useState('');
+	const [precio, setPrecio] = useState('');
+	const [imagen, setImagen] = useState('');
+	const [activo, setActivo] = useState(true);
+	const toast = useToast();
+
+	//Traer los datos del usuario logeado para pasarlos
+
+	useEffect(() => {
+		const getEntrada = async () => {
+			const docRef = doc(firestore, 'usuarios', email);
+			const docSnap = await getDoc(docRef);
+
+			if (docSnap.exists()) {
+				setDatosPersonales(docSnap.data());
+			} else {
+				console.log('Error al traer los datos del usuario');
+			}
+		};
+		getEntrada();
+	}, []);
+
+	//Función para publicar el producto
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		if (titulo && descripcion && talle !== '') {
+			await addDoc(collection(firestore, 'productos'), {
+				titulo,
+				descripcion,
+				talle,
+				precio,
+				nombre: datosPersonales.nombre,
+				telefono: datosPersonales.telefono,
+				fecha: serverTimestamp(),
+			});
+			setTitulo('');
+			setDescripcion('');
+			setTalle('');
+			setPrecio('');
+
+			toast({
+				title: '¡Producto publicado! 😎',
+				status: 'success',
+				duration: 7000,
+				isClosable: true,
+				variant: 'top-accent',
+			});
+		} else {
+			toast({
+				title: '¡Ocurrió un error, reisá los campos!',
+				status: 'error',
+				duration: 7000,
+				isClosable: true,
+				variant: 'top-accent',
+			});
+		}
+	};
+
 	return (
 		<Stack
+			onSubmit={handleSubmit}
 			align='center'
 			w='900px'
 			marginTop={10}
@@ -25,11 +98,11 @@ const NuevoProducto = () => {
 			as='form'
 		>
 			<Stack w='100%' align='center' marginBottom={3}>
-					<Heading size='lg' color='segundo'>
-						Agregar producto
-					</Heading>
-					<Divider borderColor='cuarto' />
-				</Stack>
+				<Heading size='lg' color='segundo'>
+					Agregar producto
+				</Heading>
+				<Divider borderColor='cuarto' />
+			</Stack>
 			<Stack spacing={5} align='center' direction='row' h='350px'>
 				<Stack bgColor='fondo' p={5} h='100%' borderRadius={10}>
 					<Image
@@ -42,13 +115,17 @@ const NuevoProducto = () => {
 					<Stack>
 						<Input
 							variant='outline'
+							value={titulo}
+							onChange={(e) => setTitulo(e.target.value)}
 							placeholder='Título del producto. Ej: Remera lisa.'
 							focusBorderColor='cuarto'
 						/>
 					</Stack>
 					<Stack flex={1}>
 						<Textarea
-							h="100%"
+							h='100%'
+							value={descripcion}
+							onChange={(e) => setDescripcion(e.target.value)}
 							variant='outline'
 							placeholder='Descripción del producto. Ej: Color, tamaño, estado, detalles, etc.'
 							focusBorderColor='cuarto'
@@ -63,6 +140,8 @@ const NuevoProducto = () => {
 						>
 							<Select
 								variant='outline'
+								value={talle}
+								onChange={(e) => setTalle(e.target.value)}
 								w='50%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
@@ -85,6 +164,8 @@ const NuevoProducto = () => {
 							<Input
 								variant='outline'
 								placeholder='$0'
+								value={precio}
+								onChange={(e) => setPrecio(e.target.value)}
 								w='50%'
 								focusBorderColor='cuarto'
 								type='number'
@@ -99,6 +180,7 @@ const NuevoProducto = () => {
 						>
 							<Button
 								bgColor='segundo'
+								type='submit'
 								color='white'
 								_hover={{ bgColor: 'cuarto' }}
 							>

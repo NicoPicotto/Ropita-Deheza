@@ -18,6 +18,7 @@ export const useAuth = () => {
 export const ContextProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [search, setSearch] = useState('');
+	const [email, setEmail] = useState("")
 	const [loading, setLoading] = useState(true);
 
 
@@ -38,6 +39,7 @@ export const ContextProvider = ({ children }) => {
 	useEffect(() => {
 		const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
+			setEmail(currentUser.email)
 			setLoading(false);
 		});
 		return () => unsubuscribe();
@@ -52,6 +54,7 @@ export const ContextProvider = ({ children }) => {
 				resetPassword,
 				loading,
 				user,
+				email
 			}}
 		>
 			{children}

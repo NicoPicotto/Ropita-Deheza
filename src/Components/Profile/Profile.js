@@ -26,7 +26,6 @@ const Profile = () => {
 		getEntrada();
 	}, [paramsID]);
 
-	console.log('Params: ', paramsID.id);
 
 	//Función para actualizar los datos
 	const handleUpdate = async (nuevoNombre, nuevoApellido, nuevoTelefono) => {
