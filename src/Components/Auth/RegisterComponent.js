@@ -3,7 +3,7 @@ import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
 import { setDoc, doc } from 'firebase/firestore';
 import { firestore } from '../../firebase';
-import { Heading, Stack, Input, Button, Text, Link } from '@chakra-ui/react';
+import { Heading, Stack, Input, Button, Text, Link, Divider } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 const RegisterComponent = () => {
@@ -54,9 +54,12 @@ const RegisterComponent = () => {
 				as='form'
 				onSubmit={submitHandler}
 			>
-				<Heading size='lg' color='segundo'>
-					Registrate
-				</Heading>
+				<Stack w='80%' align='center'>
+					<Heading size='lg' color='segundo'>
+						Registrate
+					</Heading>
+					<Divider borderColor='cuarto' />
+				</Stack>
 				<Input
 					w='80%'
 					onChange={(e) => setUser({ ...user, email: e.target.value })}

@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
-import { Heading, Stack, Input, Button, Text, Link } from '@chakra-ui/react';
+import {
+	Heading,
+	Stack,
+	Input,
+	Button,
+	Divider,
+	Text,
+	Link,
+} from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 const LoginComponent = () => {
@@ -50,9 +58,12 @@ const LoginComponent = () => {
 				as='form'
 				onSubmit={submitHandler}
 			>
-				<Heading size='lg' color='segundo'>
-					Iniciá sesión
-				</Heading>
+				<Stack w='80%' align='center'>
+					<Heading size='lg' color='segundo'>
+						Iniciá sesión
+					</Heading>
+					<Divider borderColor='cuarto' />
+				</Stack>
 				<Input
 					w='80%'
 					onChange={(e) => setUser({ ...user, email: e.target.value })}

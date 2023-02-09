@@ -8,14 +8,15 @@ import {
 	Select,
 	Textarea,
 	Tooltip,
-	Text,
+	Divider,
 } from '@chakra-ui/react';
 
 const NuevoProducto = () => {
 	return (
 		<Stack
 			align='center'
-			w='1000px'
+			w='900px'
+			marginTop={10}
 			bgColor='white'
 			borderRadius={5}
 			p={5}
@@ -23,11 +24,14 @@ const NuevoProducto = () => {
 			justify='space-between'
 			as='form'
 		>
-			<Heading size='lg' color='segundo'>
-				Agregar producto
-			</Heading>
+			<Stack w='100%' align='center' marginBottom={3}>
+					<Heading size='lg' color='segundo'>
+						Agregar producto
+					</Heading>
+					<Divider borderColor='cuarto' />
+				</Stack>
 			<Stack spacing={5} align='center' direction='row' h='350px'>
-				<Stack bgColor='fondo' p={5} h='100%'>
+				<Stack bgColor='fondo' p={5} h='100%' borderRadius={10}>
 					<Image
 						src='https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image.png'
 						alt='Imagen del producto'
@@ -52,7 +56,7 @@ const NuevoProducto = () => {
 					</Stack>
 					<Stack direction='row'>
 						<Tooltip
-							label='Si lo que estás publicando no tiene talle podés dejarlo vacío. Ej: Una gorra.'
+							label='Si lo que estás publicando no tiene talle, colocale "Talle único". Ej: Una gorra.'
 							bgColor='cuarto'
 							color='white'
 							placement='left'
@@ -89,7 +93,7 @@ const NuevoProducto = () => {
 					</Stack>
 					<Stack>
 						<Tooltip
-							label='¡Atención! Estás a punto de publicar un producto, esto implica que, al entrar al producto, las personas podrán ver tu nombre y número telefónico.'
+							label='¡Atención! Estás a punto de publicar un producto. Esto implica que, al entrar al producto, las personas podrán ver tu nombre y número telefónico para contactarte.'
 							bgColor='segundo'
 							placement='right'
 						>

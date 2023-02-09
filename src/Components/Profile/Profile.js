@@ -56,7 +56,7 @@ const Profile = () => {
 				shadow='md'
 				as='form'
 			>
-				<Heading color='segundo'>Tus datos</Heading>
+				<Heading color='segundo' textAlign="center">Tus datos</Heading>
 				<Divider borderColor='cuarto' />
 				{!isLoading ? (
 					<Stack spacing={5} p={3}>
