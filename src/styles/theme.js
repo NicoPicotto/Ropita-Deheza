@@ -5,7 +5,7 @@ const colors = {
 	segundo: '#025E73',
 	tercero: '#A5A692',
     cuarto: "#F2A71B",
-    fondo: "#F5F5F5"
+    fondo: "#F0F0F0"
 };
 
 const theme = extendTheme({ colors });

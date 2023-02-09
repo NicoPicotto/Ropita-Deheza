@@ -16,7 +16,7 @@ const HomeLanding = () => {
 	const { View } = useLottie(options);
 
 	return (
-		<Stack w='1000px' h='700px' direction='row'>
+		<Stack w='1000px' h='600px' direction='row'>
 			<Stack w='50%' h='100%' justify='center'>
 				<Heading
 					color='segundo'

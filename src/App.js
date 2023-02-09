@@ -8,7 +8,7 @@ import LoginView from './Views/LoginView';
 import Navbar from './Components/Navbar/Navbar';
 import ProfileView from './Views/ProfileView';
 import RegisterView from './Views/RegisterView';
-import { useAuth } from './Context/Context';
+import AgregarProductoView from './Views/AgregarProductoView';
 
 const App = () => {
 
@@ -22,6 +22,7 @@ const App = () => {
 						<Route path='/login' element={<LoginView />} />
 						<Route path='/register' element={<RegisterView />} />
 						<Route path='/:id' element={<ProfileView />} />
+						<Route path="/nuevo" element={<AgregarProductoView />}/>
 					</Routes>
 				</Router>
 			</ContextProvider>

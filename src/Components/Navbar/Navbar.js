@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Stack, Image, Button, Link } from '@chakra-ui/react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonFill } from 'react-icons/bs';
+import { BsPersonFill, BsFillPlusSquareFill, BsFillBackspaceReverseFill } from 'react-icons/bs';
 import { Link as ReachLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -54,11 +54,21 @@ const Navbar = () => {
 				<Stack direction='row'>
 					{user ? (
 						<Stack direction='row'>
+							<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
+								<Button
+									leftIcon={<BsFillPlusSquareFill />}
+									size='sm'
+									bgColor='segundo'
+									color='white'
+									_hover={{ bgColor: 'cuarto' }}
+								>
+									Agregar
+								</Button>
+							</Link>
 							<Link as={ReachLink} to={`/${user.email}`} _hover={{}}>
 								<Button
 									leftIcon={<BsPersonFill />}
-									variant='filled'
-									size={colorChange ? 'sm' : 'md'}
+									size='sm'
 									bgColor='segundo'
 									color='white'
 									_hover={{ bgColor: 'cuarto' }}
@@ -66,9 +76,11 @@ const Navbar = () => {
 									Perfil
 								</Button>
 							</Link>
+
 							<Button
+							leftIcon={<BsFillBackspaceReverseFill />}
 								variant={colorChange ? 'filled' : 'outline'}
-								size={colorChange ? 'sm' : 'md'}
+								size='sm'
 								color={colorChange ? 'white' : 'segundo'}
 								borderColor='segundo'
 								_hover={{
@@ -86,7 +98,7 @@ const Navbar = () => {
 							<Button
 								bgColor='segundo'
 								variant={colorChange ? 'outline' : 'filled'}
-								size={colorChange ? 'sm' : 'md'}
+								size='sm'
 								color='white'
 								_hover={{ bgColor: 'cuarto' }}
 							>
