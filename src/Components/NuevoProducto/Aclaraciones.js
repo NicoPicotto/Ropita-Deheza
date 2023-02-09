@@ -6,24 +6,23 @@ import {
 	Button,
 	Text,
 	Tooltip,
-    StackDivider,
+	StackDivider,
 	Icon,
 } from '@chakra-ui/react';
 import { IoLogoWhatsapp } from 'react-icons/io';
+import { IoSyncCircleSharp } from 'react-icons/io5';
 import { MdLabelOff } from 'react-icons/md';
 
 const Aclaraciones = () => {
 	return (
-		<Stack h='900px' justify='center' divider={<StackDivider borderColor="cuarto"/>}>
-			<Stack
-				align='center'
-				justify='center'
-				direction='row'
-				w='500px'
-				h='120px'
-				borderRadius={5}
-				p={5}
-			>
+		<Stack
+			w='1000px'
+			divider={<StackDivider borderColor='cuarto' />}
+			justify='center'
+			direction='row'
+			align='center'
+		>
+			<Stack justify='center' direction='row' borderRadius={5} p={2}>
 				<Icon as={MdLabelOff} fontSize='6xl' color='segundo' />
 				<Text fontSize='sm'>
 					Los productos deben ser si o si de segunda mano. La plataforma no debe
@@ -34,25 +33,21 @@ const Aclaraciones = () => {
 				align='center'
 				justify='center'
 				direction='row'
-				w='500px'
-				h='120px'
 				borderRadius={5}
-				p={5}
+				p={2}
 			>
-				<Icon as={MdLabelOff} fontSize='6xl' color='segundo' />
+				<Icon as={IoSyncCircleSharp} fontSize='6xl' color='segundo' />
 				<Text fontSize='sm' color='primero'>
-					Los productos deben ser si o si de segunda mano. La plataforma no debe
-					utilizarse para comercializar productos nuevos.
+					El objetivo es promover la moda circular. Podés vender tu prenda o
+					también regarlar poniéndole precio $0.
 				</Text>
 			</Stack>
 			<Stack
 				align='center'
 				justify='center'
 				direction='row'
-				w='500px'
-				h='120px'
 				borderRadius={5}
-				p={5}
+				p={2}
 			>
 				<Icon as={IoLogoWhatsapp} fontSize='6xl' color='segundo' />
 				<Text fontSize='sm' color='primero'>

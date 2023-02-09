@@ -5,7 +5,7 @@ import Aclaraciones from '../Components/NuevoProducto/Aclaraciones';
 
 const AgregarProductoView = () => {
   return (
-    <Stack bgColor='fondo' justify="center" align='center' p={5} w='100vw' direction="row" spacing={5}>
+    <Stack bgColor='fondo' justify="center" p={5} w='100vw' h="100vh" spacing={5} align="center">
         <NuevoProducto />
         <Aclaraciones />
     </Stack>
