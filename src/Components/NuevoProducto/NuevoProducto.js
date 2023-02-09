@@ -59,6 +59,7 @@ const NuevoProducto = () => {
 				precio,
 				nombre: datosPersonales.nombre,
 				telefono: datosPersonales.telefono,
+				activo,
 				fecha: serverTimestamp(),
 			});
 			setTitulo('');
