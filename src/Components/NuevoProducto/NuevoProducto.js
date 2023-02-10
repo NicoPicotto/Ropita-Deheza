@@ -80,6 +80,7 @@ const NuevoProducto = () => {
 				imagen: imageList,
 				talle,
 				precio,
+				email: datosPersonales.email,
 				nombre: datosPersonales.nombre,
 				apellido: datosPersonales.apellido,
 				telefono: datosPersonales.telefono,
@@ -93,7 +94,7 @@ const NuevoProducto = () => {
 				duration: 7000,
 				isClosable: true,
 				variant: 'top-accent',
-				position: "top"
+				position: 'top',
 			});
 			navigate('/');
 		} else {
@@ -103,7 +104,7 @@ const NuevoProducto = () => {
 				duration: 7000,
 				isClosable: true,
 				variant: 'top-accent',
-				position: "top"
+				position: 'top',
 			});
 		}
 	};

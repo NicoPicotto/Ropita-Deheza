@@ -32,21 +32,23 @@ const Producto = ({
 	const fechaFormateada = fecha.toDate().toLocaleDateString('es-ES');
 
 	return (
-		<Card w='sm'>
+		<Card w='xs'>
 			<CardBody>
 				<Image
 					src={imagen}
 					alt='Green double couch with wooden legs'
 					borderRadius='lg'
 					objectFit='cover'
-					h="sm"
-					w="100%"
+					h='xs'
+					w='100%'
 				/>
 				<Stack mt='6' spacing='3'>
 					<Heading size='md' color='segundo'>
 						{titulo}
 					</Heading>
-					<Text noOfLines={2} textOverflow='ellipsis'>{descripcion}</Text>
+					<Text noOfLines={2} textOverflow='ellipsis'>
+						{descripcion}
+					</Text>
 					<Stack
 						direction='row'
 						align='center'
@@ -61,31 +63,25 @@ const Producto = ({
 						</Text>
 					</Stack>
 				</Stack>
+				<Text fontSize='sm' as='i' color='tercero'>
+					{' '}
+					Publicado el {fechaFormateada}
+				</Text>
 			</CardBody>
 			<Divider borderColor='cuarto' w='90%' alignSelf='center' />
 			<CardFooter>
-				<ButtonGroup
-					spacing='2'
-					alignItems='center'
-					w='100%'
-					justifyContent='space-between'
-				>
-					<Link as={ReachLink} to={`/producto/${id}`} _hover={{}}>
-						<Button
-							variant='solid'
-							bgColor='segundo'
-							color='white'
-							leftIcon={<BsCheckCircleFill />}
-							_hover={{ bgColor: 'cuarto' }}
-						>
-							Lo quiero
-						</Button>
-					</Link>
-					<Text fontSize='sm' as='i'>
-						{' '}
-						Publicado el {fechaFormateada}
-					</Text>
-				</ButtonGroup>
+				<Link as={ReachLink} to={`/producto/${id}`} _hover={{}} w='100%'>
+					<Button
+						variant='solid'
+						w='100%'
+						bgColor='segundo'
+						color='white'
+						leftIcon={<BsCheckCircleFill />}
+						_hover={{ bgColor: 'cuarto' }}
+					>
+						Lo quiero
+					</Button>
+				</Link>
 			</CardFooter>
 		</Card>
 	);

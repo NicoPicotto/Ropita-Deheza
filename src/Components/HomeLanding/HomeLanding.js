@@ -2,6 +2,7 @@ import React from 'react';
 import { Stack, Heading, Highlight, Button } from '@chakra-ui/react';
 import { useLottie } from 'lottie-react';
 import manShopping from '../../Lotties/manShopping.json';
+import { Link } from 'react-scroll';
 import { FaSyncAlt } from 'react-icons/fa';
 
 const options = {
@@ -24,15 +25,17 @@ const HomeLanding = () => {
 						No dejes juntando tierra en tu placard lo que podés vender hoy.
 					</Highlight>
 				</Heading>
-				<Button
-					w='fit-content'
-					leftIcon={<FaSyncAlt />}
-					bgColor='segundo'
-					color='white'
-					_hover={{ bgColor: 'cuarto' }}
-				>
-					Sumate a la moda circular
-				</Button>
+				<Link to='vistaProductos' smooth={true}>
+					<Button
+						w='fit-content'
+						leftIcon={<FaSyncAlt />}
+						bgColor='segundo'
+						color='white'
+						_hover={{ bgColor: 'cuarto' }}
+					>
+						Sumate a la moda circular
+					</Button>
+				</Link>
 			</Stack>
 			<Stack w='50%' h='100%' justify='center'>
 				{View}

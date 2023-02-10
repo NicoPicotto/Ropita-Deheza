@@ -26,7 +26,6 @@ const Profile = () => {
 		getEntrada();
 	}, [paramsID]);
 
-
 	//Función para actualizar los datos
 	const handleUpdate = async (nuevoNombre, nuevoApellido, nuevoTelefono) => {
 		const entradaRef = doc(firestore, 'usuarios', paramsID.id);
@@ -41,22 +40,16 @@ const Profile = () => {
 			duration: 7000,
 			isClosable: true,
 			variant: 'top-accent',
-			position: "top"
+			position: 'top',
 		});
 	};
 
 	return (
-		<Stack h='900px' justify='center'>
-			<Stack
-				justify='space-between'
-				w='600px'
-				bgColor='white'
-				borderRadius={5}
-				p={5}
-				shadow='md'
-				as='form'
-			>
-				<Heading color='segundo' textAlign="center">Tus datos</Heading>
+		<Stack w='50%' h='100%'>
+			<Stack justify='space-between' borderRadius={5} p={5} as='form'>
+				<Heading color='segundo' textAlign='center'>
+					Tus datos
+				</Heading>
 				<Divider borderColor='cuarto' />
 				{!isLoading ? (
 					<Stack spacing={5} p={3}>

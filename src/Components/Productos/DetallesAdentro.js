@@ -59,10 +59,10 @@ const DetallesAdentro = ({
 						<Text>{descripcion}</Text>
 					</Stack>
 					<Stack divider={<StackDivider />} direction='row' align='center'>
-						<Heading color='cuarto' size='lg'>
+						<Heading color='segundo' size='lg'>
 							$ {precio}
 						</Heading>
-						<Heading color='segundo' size='md'>
+						<Heading color='cuarto' size='md'>
 							Talle {talle}
 						</Heading>
 					</Stack>

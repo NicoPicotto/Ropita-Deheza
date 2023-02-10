@@ -28,10 +28,11 @@ const HomeView = () => {
 		<Stack bgColor='fondo' align='center' p={5} w='100vw'>
 			<HomeLanding />
 
-			<Stack maxW="1200px" direction="row" flexWrap="wrap" spacing={5}>
+			<Stack maxW="1000px" direction="row" flexWrap="wrap" spacing={5} id="vistaProductos">
 				{productos.map((prod) => (
 					<Producto
 						key={prod.id}
+						email={prod.email}
 						id={prod.id}
 						titulo={prod.titulo}
 						descripcion={prod.descripcion}
