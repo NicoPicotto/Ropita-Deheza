@@ -41,6 +41,7 @@ const Profile = () => {
 			duration: 7000,
 			isClosable: true,
 			variant: 'top-accent',
+			position: "top"
 		});
 	};
 

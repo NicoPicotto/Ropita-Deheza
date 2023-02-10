@@ -28,15 +28,17 @@ const HomeView = () => {
 		<Stack bgColor='fondo' align='center' p={5} w='100vw'>
 			<HomeLanding />
 
-			<Stack>
+			<Stack maxW="1200px" direction="row" flexWrap="wrap" spacing={5}>
 				{productos.map((prod) => (
 					<Producto
 						key={prod.id}
+						id={prod.id}
 						titulo={prod.titulo}
 						descripcion={prod.descripcion}
 						fecha={prod.fecha}
 						imagen={prod.imagen}
 						telefono={prod.telefono}
+						apellido={prod.apellido}
 						talle={prod.talle}
 						precio={prod.precio}
 						nombre={prod.nombre}

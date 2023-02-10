@@ -10,7 +10,7 @@ import {
 	Tooltip,
 	Divider,
 	useToast,
-	Spinner
+	Spinner,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -24,19 +24,20 @@ import { useAuth } from '../../Context/Context';
 import { firestore } from '../../firebase';
 import { storage } from '../../firebase';
 import { v4 } from 'uuid';
+import { useNavigate } from 'react-router-dom';
 
 const NuevoProducto = () => {
 	const { email } = useAuth();
+	const navigate = useNavigate();
 	const [datosPersonales, setDatosPersonales] = useState(null);
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false);
 	const [titulo, setTitulo] = useState('');
 	const [descripcion, setDescripcion] = useState('');
 	const [talle, setTalle] = useState('');
 	const [precio, setPrecio] = useState('');
 	const [imageUpload, setImageUpload] = useState(null);
 	const [imageList, setImageList] = useState([]);
-	const [imagenCargada, setImagenCargada] = useState(false)
-	const [imagen, setImagen] = useState('');
+	const [imagenCargada, setImagenCargada] = useState(false);
 	const [activo, setActivo] = useState(true);
 	const toast = useToast();
 
@@ -57,17 +58,16 @@ const NuevoProducto = () => {
 
 	//Función para subir una imagen al storage
 	const uploadImage = () => {
-		setIsLoading(true)
+		setIsLoading(true);
 		if (imageUpload == null) return;
 		const imageRef = ref(storage, `productos/${imageUpload.name + v4()}`);
 		uploadBytes(imageRef, imageUpload).then((snapshot) => {
 			getDownloadURL(snapshot.ref).then((url) => {
 				setImageList((prev) => [...prev, url]);
-				setImagenCargada(true)
-				setIsLoading(false)
+				setImagenCargada(true);
+				setIsLoading(false);
 			});
 		});
-		
 	};
 
 	//Función para publicar el producto
@@ -81,6 +81,7 @@ const NuevoProducto = () => {
 				talle,
 				precio,
 				nombre: datosPersonales.nombre,
+				apellido: datosPersonales.apellido,
 				telefono: datosPersonales.telefono,
 				activo,
 				fecha: serverTimestamp(),
@@ -92,7 +93,9 @@ const NuevoProducto = () => {
 				duration: 7000,
 				isClosable: true,
 				variant: 'top-accent',
+				position: "top"
 			});
+			navigate('/');
 		} else {
 			toast({
 				title: '¡Ocurrió un error, reisá los campos!',
@@ -100,6 +103,7 @@ const NuevoProducto = () => {
 				duration: 7000,
 				isClosable: true,
 				variant: 'top-accent',
+				position: "top"
 			});
 		}
 	};
@@ -124,15 +128,23 @@ const NuevoProducto = () => {
 				<Divider borderColor='cuarto' />
 			</Stack>
 			<Stack spacing={5} align='center' direction='row' h='350px' w='100%'>
-				<Stack bgColor='fondo' p={5} h='100%' borderRadius={10} w='50%' align="center" justify="center">
-					{isLoading && <Spinner color="cuarto"/>}
+				<Stack
+					bgColor='fondo'
+					p={5}
+					h='100%'
+					borderRadius={10}
+					w='50%'
+					align='center'
+					justify='center'
+				>
+					{isLoading && <Spinner color='cuarto' />}
 					{imagenCargada ? (
 						<Image
-						h="100%"
-						w="100%"
+							h='100%'
+							w='100%'
 							src={imageList}
 							alt='Imagen del producto'
-							objectFit="cover"
+							objectFit='cover'
 						/>
 					) : (
 						<Stack w='100%' h='100%' align='center' justify='center'>

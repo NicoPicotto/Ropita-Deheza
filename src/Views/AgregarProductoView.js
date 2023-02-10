@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Heading } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import NuevoProducto from '../Components/NuevoProducto/NuevoProducto';
 import Aclaraciones from '../Components/NuevoProducto/Aclaraciones';
 

@@ -10,7 +10,10 @@ import {
 	Divider,
 	CardFooter,
 	ButtonGroup,
+	StackDivider,
+	Link,
 } from '@chakra-ui/react';
+import { Link as ReachLink } from 'react-router-dom';
 import { BsCheckCircleFill } from 'react-icons/bs';
 
 const Producto = ({
@@ -23,29 +26,40 @@ const Producto = ({
 	telefono,
 	activo,
 	fecha,
+	id,
 }) => {
-
+	//Formatear fecha recibida para que aparezca en las cards
 	const fechaFormateada = fecha.toDate().toLocaleDateString('es-ES');
 
 	return (
-		<Card maxW='sm'>
+		<Card w='sm'>
 			<CardBody>
 				<Image
 					src={imagen}
 					alt='Green double couch with wooden legs'
 					borderRadius='lg'
+					objectFit='cover'
+					h="sm"
+					w="100%"
 				/>
 				<Stack mt='6' spacing='3'>
 					<Heading size='md' color='segundo'>
 						{titulo}
 					</Heading>
-					<Text>{descripcion}</Text>
-					<Text bgColor='cuarto' p={1} w='fit-content'>
-						Talle: {talle}
-					</Text>
-					<Text color='segundo' as='b' fontSize='2xl'>
-						$ {precio}
-					</Text>
+					<Text noOfLines={2} textOverflow='ellipsis'>{descripcion}</Text>
+					<Stack
+						direction='row'
+						align='center'
+						spacing={2}
+						divider={<StackDivider />}
+					>
+						<Text color='segundo' as='b' fontSize='2xl'>
+							$ {precio}
+						</Text>
+						<Text color='cuarto' as='b'>
+							Talle: {talle}
+						</Text>
+					</Stack>
 				</Stack>
 			</CardBody>
 			<Divider borderColor='cuarto' w='90%' alignSelf='center' />
@@ -56,15 +70,17 @@ const Producto = ({
 					w='100%'
 					justifyContent='space-between'
 				>
-					<Button
-						variant='solid'
-						bgColor='segundo'
-						color='white'
-						leftIcon={<BsCheckCircleFill />}
-						_hover={{ bgColor: 'cuarto' }}
-					>
-						Lo quiero
-					</Button>
+					<Link as={ReachLink} to={`/producto/${id}`} _hover={{}}>
+						<Button
+							variant='solid'
+							bgColor='segundo'
+							color='white'
+							leftIcon={<BsCheckCircleFill />}
+							_hover={{ bgColor: 'cuarto' }}
+						>
+							Lo quiero
+						</Button>
+					</Link>
 					<Text fontSize='sm' as='i'>
 						{' '}
 						Publicado el {fechaFormateada}
