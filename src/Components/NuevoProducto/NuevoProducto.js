@@ -55,6 +55,7 @@ const NuevoProducto = () => {
 			await addDoc(collection(firestore, 'productos'), {
 				titulo,
 				descripcion,
+				imagen,
 				talle,
 				precio,
 				nombre: datosPersonales.nombre,
@@ -62,10 +63,6 @@ const NuevoProducto = () => {
 				activo,
 				fecha: serverTimestamp(),
 			});
-			setTitulo('');
-			setDescripcion('');
-			setTalle('');
-			setPrecio('');
 
 			toast({
 				title: '¡Producto publicado! 😎',
@@ -148,12 +145,12 @@ const NuevoProducto = () => {
 								placeholder='Talle'
 							>
 								<option value='XS'>XS</option>
-								<option value='XS'>S</option>
-								<option value='XS'>M</option>
-								<option value='XS'>L</option>
-								<option value='XS'>XL</option>
-								<option value='XS'>XXL</option>
-								<option value='XS'>Talle único</option>
+								<option value='S'>S</option>
+								<option value='M'>M</option>
+								<option value='L'>L</option>
+								<option value='XL'>XL</option>
+								<option value='XXL'>XXL</option>
+								<option value='Talle único'>Talle único</option>
 							</Select>
 						</Tooltip>
 						<Tooltip

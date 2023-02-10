@@ -34,8 +34,12 @@ const HomeView = () => {
 						key={prod.id}
 						titulo={prod.titulo}
 						descripcion={prod.descripcion}
-						precio={prod.precio}
+						fecha={prod.fecha}
 						imagen={prod.imagen}
+						telefono={prod.telefono}
+						talle={prod.talle}
+						precio={prod.precio}
+						nombre={prod.nombre}
 					/>
 				))}
 			</Stack>
