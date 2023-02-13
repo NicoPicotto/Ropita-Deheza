@@ -5,7 +5,6 @@ import {
 	Input,
 	Image,
 	Button,
-	Select,
 	Textarea,
 	Tooltip,
 	Divider,
@@ -38,7 +37,6 @@ const NuevoProducto = () => {
 	const [imageUpload, setImageUpload] = useState(null);
 	const [imageList, setImageList] = useState([]);
 	const [imagenCargada, setImagenCargada] = useState(false);
-	const [activo, setActivo] = useState(true);
 	const toast = useToast();
 
 	//Traer los datos del usuario logeado para pasarlos
@@ -84,7 +82,6 @@ const NuevoProducto = () => {
 				nombre: datosPersonales.nombre,
 				apellido: datosPersonales.apellido,
 				telefono: datosPersonales.telefono,
-				activo,
 				fecha: serverTimestamp(),
 			});
 
@@ -113,8 +110,7 @@ const NuevoProducto = () => {
 		<Stack
 			onSubmit={handleSubmit}
 			align='center'
-			w='900px'
-			marginTop={10}
+			w='4xl'
 			bgColor='white'
 			borderRadius={5}
 			p={5}
@@ -122,13 +118,13 @@ const NuevoProducto = () => {
 			justify='space-between'
 			as='form'
 		>
-			<Stack w='100%' align='center' marginBottom={3}>
+			<Stack w='100%' align='center'>
 				<Heading size='lg' color='segundo'>
 					Agregar producto
 				</Heading>
 				<Divider borderColor='cuarto' />
 			</Stack>
-			<Stack spacing={5} align='center' direction='row' h='350px' w='100%'>
+			<Stack spacing={5} align='center' direction='row' h='xs' w='100%'>
 				<Stack
 					bgColor='fondo'
 					p={5}
@@ -202,8 +198,7 @@ const NuevoProducto = () => {
 								w='50%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
-							>
-							</Input>
+							></Input>
 						</Tooltip>
 						<Tooltip
 							label='Recordá que si tu intención es regalarlo, podés ponerle $0'

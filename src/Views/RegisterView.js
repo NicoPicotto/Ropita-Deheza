@@ -4,7 +4,7 @@ import RegisterComponent from '../Components/Auth/RegisterComponent';
 
 const RegisterView = () => {
 	return (
-		<Stack bgColor='fondo' h='100vh' align='center'>
+		<Stack bgColor='fondo' h='100vh' align='center' justify="center">
 			<RegisterComponent />
 		</Stack>
 	);

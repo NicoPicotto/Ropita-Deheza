@@ -45,28 +45,29 @@ const Profile = () => {
 	};
 
 	return (
-		<Stack w='50%' h='100%'>
-			<Stack justify='space-between' borderRadius={5} p={5} as='form'>
+		<Stack borderRadius={5} as='form' w='50%' h="100%">
+			<Stack>
 				<Heading color='segundo' textAlign='center'>
 					Tus datos
 				</Heading>
 				<Divider borderColor='cuarto' />
-				{!isLoading ? (
-					<Stack spacing={5} p={3}>
-						<InputsContainer
-							nombre={datosPersonales.nombre}
-							apellido={datosPersonales.apellido}
-							email={datosPersonales.email}
-							telefono={datosPersonales.telefono}
-							handleUpdate={handleUpdate}
-						/>
-					</Stack>
-				) : (
-					<Stack align='center' color='cuarto'>
-						<Spinner />
-					</Stack>
-				)}
 			</Stack>
+
+			{!isLoading ? (
+			
+					<InputsContainer
+						nombre={datosPersonales.nombre}
+						apellido={datosPersonales.apellido}
+						email={datosPersonales.email}
+						telefono={datosPersonales.telefono}
+						handleUpdate={handleUpdate}
+					/>
+				
+			) : (
+				<Stack align='center' color='cuarto'>
+					<Spinner />
+				</Stack>
+			)}
 		</Stack>
 	);
 };

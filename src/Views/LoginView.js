@@ -4,7 +4,7 @@ import LoginComponent from '../Components/Auth/LoginComponent';
 
 const LoginView = () => {
   return (
-    <Stack bgColor='fondo' h='100vh' align='center'>
+    <Stack bgColor='fondo' h='100vh' align='center' justify="center">
         <LoginComponent />
     </Stack>
   )

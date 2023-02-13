@@ -38,7 +38,7 @@ const Detalle = () => {
 		<Stack
 			onSubmit={handleSubmit}
 			align='center'
-			w='900px'
+			w="4xl"
 			marginTop={10}
 			bgColor='white'
 			borderRadius={5}

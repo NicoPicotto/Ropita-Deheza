@@ -51,7 +51,9 @@ const DetallesAdentro = ({
 				</Stack>
 				<Stack h='100%' w='50%' justify='space-between'>
 					<Stack>
-						<Heading color='segundo' size='lg'>
+						<Heading color='segundo' size='md' 						textOverflow="ellipsis"
+						overflow="hidden"
+						noOfLines={2}>
 							{titulo}
 						</Heading>
 					</Stack>

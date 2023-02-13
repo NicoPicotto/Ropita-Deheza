@@ -29,7 +29,7 @@ const RegisterComponent = () => {
 					email: user.email,
 				});
 				await registrarse(user.email, user.password);
-				navigate('/');
+				navigate('/profile');
 			} catch (error) {
 				setError(error.message);
 			}
@@ -41,12 +41,10 @@ const RegisterComponent = () => {
 	};
 
 	return (
-		<Stack h='900px' justify='center'>
 			<Stack
 				justify='space-between'
 				align='center'
-				w='600px'
-				h='400px'
+				boxSize="md"
 				bgColor='white'
 				borderRadius={5}
 				p={5}
@@ -102,7 +100,6 @@ const RegisterComponent = () => {
 					</Link>
 				</Stack>
 			</Stack>
-		</Stack>
 	);
 };
 

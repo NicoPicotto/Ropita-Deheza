@@ -45,12 +45,11 @@ const LoginComponent = () => {
 	};
 
 	return (
-		<Stack h='900px' justify='center'>
+		
 			<Stack
 				justify='space-between'
 				align='center'
-				w='600px'
-				h='400px'
+				boxSize="md"
 				bgColor='white'
 				borderRadius={5}
 				p={5}
@@ -99,7 +98,7 @@ const LoginComponent = () => {
 					¿Olvidaste tu contraseña?
 				</Button>
 			</Stack>
-		</Stack>
+	
 	);
 };
 

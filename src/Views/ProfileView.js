@@ -8,10 +8,12 @@ const ProfileView = () => {
 		<Stack bgColor='fondo' h='100vh' align='center' justify='center'>
 			<Stack
 				bgColor='white'
-				h='400px'
-				w='60vw'
+				w="4xl"
 				divider={<StackDivider />}
 				direction='row'
+				borderRadius={5}
+				p={5}
+				shadow='md'
 			>
 				<Profile />
 				<ProductosPropios />

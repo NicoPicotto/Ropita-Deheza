@@ -50,30 +50,31 @@ const ProductosPropios = () => {
 	};
 
 	return (
-		<Stack w='50%' h='100%'>
-			<Stack justify='space-between' borderRadius={5} p={5} as='form'>
+		<Stack borderRadius={5}as='form' w='50%'>
+			<Stack>
 				<Heading color='segundo' textAlign='center'>
 					Tus productos
 				</Heading>
 				<Divider borderColor='cuarto' />
-				{productosPersonales !== [] ? (
-					productosPersonales.map((prod) => (
-						<ItemsProductosPersonales
-							key={prod.id}
-							titulo={prod.titulo}
-							precio={prod.precio}
-							id={prod.id}
-							handleDelete={handleDelete}
-						/>
-					))
-				) : (
-					<Stack w='100%' align='center' justify='center'>
-						<Heading size='md' textAlign='center' color='cuarto'>
-							Aún no tenés productos agregados.
-						</Heading>
-					</Stack>
-				)}
 			</Stack>
+
+			{productosPersonales !== [] ? (
+				productosPersonales.map((prod) => (
+					<ItemsProductosPersonales
+						key={prod.id}
+						titulo={prod.titulo}
+						precio={prod.precio}
+						id={prod.id}
+						handleDelete={handleDelete}
+					/>
+				))
+			) : (
+				<Stack w='100%' align='center' justify='center'>
+					<Heading size='md' textAlign='center' color='cuarto'>
+						Aún no tenés productos agregados.
+					</Heading>
+				</Stack>
+			)}
 		</Stack>
 	);
 };

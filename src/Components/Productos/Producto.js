@@ -32,23 +32,26 @@ const Producto = ({
 	const fechaFormateada = fecha.toDate().toLocaleDateString('es-ES');
 
 	return (
-		<Card w='xs'>
-			<CardBody>
+		<Card w='xs' p={3} h='md' justify='space-between'>
+			<Stack>
 				<Image
 					src={imagen}
 					alt='Green double couch with wooden legs'
 					borderRadius='lg'
 					objectFit='cover'
-					h='xs'
+					h='2xs'
 					w='100%'
 				/>
-				<Stack mt='6' spacing='3'>
-					<Heading size='md' color='segundo'>
+				<Stack>
+					<Heading
+						size='md'
+						color='segundo'
+						textOverflow='ellipsis'
+						overflow='hidden'
+						noOfLines={1}
+					>
 						{titulo}
 					</Heading>
-					<Text noOfLines={2} textOverflow='ellipsis'>
-						{descripcion}
-					</Text>
 					<Stack
 						direction='row'
 						align='center'
@@ -63,13 +66,13 @@ const Producto = ({
 						</Text>
 					</Stack>
 				</Stack>
-				<Text fontSize='sm' as='i' color='tercero'>
-					{' '}
-					Publicado el {fechaFormateada}
-				</Text>
-			</CardBody>
-			<Divider borderColor='cuarto' w='90%' alignSelf='center' />
-			<CardFooter>
+			</Stack>
+			<Text fontSize='sm' as='i' color='tercero'>
+				{' '}
+				Publicado el {fechaFormateada}
+			</Text>
+			<Stack>
+				<Divider borderColor='cuarto' alignSelf='center' />
 				<Link as={ReachLink} to={`/producto/${id}`} _hover={{}} w='100%'>
 					<Button
 						variant='solid'
@@ -82,7 +85,7 @@ const Producto = ({
 						Lo quiero
 					</Button>
 				</Link>
-			</CardFooter>
+			</Stack>
 		</Card>
 	);
 };

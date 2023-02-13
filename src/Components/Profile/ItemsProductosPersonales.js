@@ -11,18 +11,17 @@ const ItemsProductosPersonales = ({ titulo, handleDelete, precio, id }) => {
 			paddingX={3}
 			borderRadius={5}
 			align='center'
-			justify='space-between'
 			shadow='sm'
 		>
-			<Stack direction='row' divider={<StackDivider borderColor='cuarto' />}>
-				<Text fontSize='sm' color='segundo' as='b'>
+			<Stack w="75%" direction='row' divider={<StackDivider borderColor='cuarto' />}>
+				<Text fontSize='sm' color='segundo' as='b' noOfLines={1} textOverflow="ellipsis" overflow="hidden">
 					{titulo}
 				</Text>
 				<Text fontSize='sm' color='segundo'>
 					$ {precio}
 				</Text>
 			</Stack>
-			<Stack>
+			<Stack w="25%">
 				<Button
 					size='sm'
 					colorScheme='red'
