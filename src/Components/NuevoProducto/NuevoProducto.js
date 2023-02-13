@@ -73,7 +73,7 @@ const NuevoProducto = () => {
 	//Función para publicar el producto
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		if (titulo && descripcion && talle !== '') {
+		if (titulo && imagenCargada && descripcion && talle && precio !== '') {
 			await addDoc(collection(firestore, 'productos'), {
 				titulo,
 				descripcion,
@@ -99,7 +99,7 @@ const NuevoProducto = () => {
 			navigate('/');
 		} else {
 			toast({
-				title: '¡Ocurrió un error, reisá los campos!',
+				title: 'Tenés campos sin completar.',
 				status: 'error',
 				duration: 7000,
 				isClosable: true,
@@ -152,6 +152,7 @@ const NuevoProducto = () => {
 							<Input
 								type='file'
 								variant='unstyled'
+								multiple
 								onChange={(e) => {
 									setImageUpload(e.target.files[0]);
 								}}
@@ -194,7 +195,7 @@ const NuevoProducto = () => {
 							color='white'
 							placement='left'
 						>
-							<Select
+							<Input
 								variant='outline'
 								value={talle}
 								onChange={(e) => setTalle(e.target.value)}
@@ -202,14 +203,7 @@ const NuevoProducto = () => {
 								focusBorderColor='cuarto'
 								placeholder='Talle'
 							>
-								<option value='XS'>XS</option>
-								<option value='S'>S</option>
-								<option value='M'>M</option>
-								<option value='L'>L</option>
-								<option value='XL'>XL</option>
-								<option value='XXL'>XXL</option>
-								<option value='Talle único'>Talle único</option>
-							</Select>
+							</Input>
 						</Tooltip>
 						<Tooltip
 							label='Recordá que si tu intención es regalarlo, podés ponerle $0'
