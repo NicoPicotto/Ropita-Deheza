@@ -10,6 +10,8 @@ import ProfileView from './Views/ProfileView';
 import RegisterView from './Views/RegisterView';
 import AgregarProductoView from './Views/AgregarProductoView';
 import ProductoView from './Views/ProductoView';
+import HelpView from './Views/HelpView';
+import Footer from './Components/Footer/Footer';
 
 const App = () => {
 	return (
@@ -24,7 +26,9 @@ const App = () => {
 						<Route path='/:id' element={<ProfileView />} />
 						<Route path='/nuevo' element={<AgregarProductoView />} />
 						<Route path='/producto/:id' element={<ProductoView />} />
+						<Route path="/ayuda" element={<HelpView />}/>
 					</Routes>
+					<Footer />
 				</Router>
 			</ContextProvider>
 		</ChakraProvider>

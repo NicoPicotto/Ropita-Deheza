@@ -52,7 +52,7 @@ const NuevoProducto = () => {
 			}
 		};
 		getEntrada();
-	}, []);
+	}, [email]);
 
 	//Función para subir una imagen al storage
 	const uploadImage = () => {
@@ -172,6 +172,7 @@ const NuevoProducto = () => {
 							onChange={(e) => setTitulo(e.target.value)}
 							placeholder='Título del producto. Ej: Remera lisa.'
 							focusBorderColor='cuarto'
+							isRequired
 						/>
 					</Stack>
 					<Stack flex={1}>
@@ -182,6 +183,7 @@ const NuevoProducto = () => {
 							variant='outline'
 							placeholder='Descripción del producto. Ej: Color, tamaño, estado, detalles, etc.'
 							focusBorderColor='cuarto'
+							isRequired
 						/>
 					</Stack>
 					<Stack direction='row'>
@@ -198,6 +200,7 @@ const NuevoProducto = () => {
 								w='50%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
+								isRequired
 							></Input>
 						</Tooltip>
 						<Tooltip
@@ -214,6 +217,7 @@ const NuevoProducto = () => {
 								w='50%'
 								focusBorderColor='cuarto'
 								type='number'
+								isRequired
 							/>
 						</Tooltip>
 					</Stack>

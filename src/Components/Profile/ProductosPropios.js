@@ -50,7 +50,7 @@ const ProductosPropios = () => {
 	};
 
 	return (
-		<Stack borderRadius={5}as='form' w='50%'>
+		<Stack borderRadius={5} as='form' w='50%'>
 			<Stack>
 				<Heading color='segundo' textAlign='center'>
 					Tus productos
@@ -58,7 +58,7 @@ const ProductosPropios = () => {
 				<Divider borderColor='cuarto' />
 			</Stack>
 
-			{productosPersonales !== [] ? (
+			{productosPersonales.length !== 0 ? (
 				productosPersonales.map((prod) => (
 					<ItemsProductosPersonales
 						key={prod.id}
@@ -70,7 +70,7 @@ const ProductosPropios = () => {
 				))
 			) : (
 				<Stack w='100%' align='center' justify='center'>
-					<Heading size='md' textAlign='center' color='cuarto'>
+					<Heading size='xs' textAlign='center' color='cuarto'>
 						Aún no tenés productos agregados.
 					</Heading>
 				</Stack>

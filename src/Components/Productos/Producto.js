@@ -6,10 +6,7 @@ import {
 	Text,
 	Button,
 	Card,
-	CardBody,
 	Divider,
-	CardFooter,
-	ButtonGroup,
 	StackDivider,
 	Link,
 } from '@chakra-ui/react';
@@ -18,13 +15,9 @@ import { BsCheckCircleFill } from 'react-icons/bs';
 
 const Producto = ({
 	titulo,
-	descripcion,
 	imagen,
 	talle,
 	precio,
-	nombre,
-	telefono,
-	activo,
 	fecha,
 	id,
 }) => {
@@ -32,7 +25,15 @@ const Producto = ({
 	const fechaFormateada = fecha.toDate().toLocaleDateString('es-ES');
 
 	return (
-		<Card w='xs' p={3} h='md' justify='space-between'>
+		<Card
+			w='xs'
+			p={3}
+			h='md'
+			justify='space-between'
+			shadow='md'
+			transition="0.2s"
+			_hover={{ shadow: 'lg' }}
+		>
 			<Stack>
 				<Image
 					src={imagen}

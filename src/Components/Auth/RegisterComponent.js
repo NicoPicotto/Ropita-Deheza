@@ -11,6 +11,7 @@ import {
 	Text,
 	Link,
 	Divider,
+	useToast
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
@@ -26,10 +27,9 @@ const RegisterComponent = () => {
 	const [nombre, setNombre] = useState('');
 	const [apellido, setApellido] = useState('');
 	const [telefono, setTelefono] = useState('');
-
-
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
+	const toast = useToast()
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -44,6 +44,14 @@ const RegisterComponent = () => {
 					email: user.email,
 				});
 				await registrarse(user.email, user.password);
+				toast({
+					title: '¡Cuenta creada con éxito! 😎',
+					status: 'success',
+					duration: 7000,
+					isClosable: true,
+					variant: 'top-accent',
+					position: 'top',
+				});
 				navigate('/');
 			} catch (error) {
 				setError(error.message);

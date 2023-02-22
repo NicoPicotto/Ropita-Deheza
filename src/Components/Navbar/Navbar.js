@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Stack, Image, Button, Link } from '@chakra-ui/react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
-import { BsPersonFill, BsFillPlusSquareFill, BsFillBackspaceReverseFill } from 'react-icons/bs';
+import {
+	BsPersonFill,
+	BsFillPlusSquareFill,
+	BsFillBackspaceReverseFill,
+} from 'react-icons/bs';
 import { Link as ReachLink } from 'react-router-dom';
 
 const Navbar = () => {
@@ -76,9 +80,8 @@ const Navbar = () => {
 									Perfil
 								</Button>
 							</Link>
-
 							<Button
-							leftIcon={<BsFillBackspaceReverseFill />}
+								leftIcon={<BsFillBackspaceReverseFill />}
 								variant={colorChange ? 'filled' : 'outline'}
 								size='sm'
 								color={colorChange ? 'white' : 'segundo'}

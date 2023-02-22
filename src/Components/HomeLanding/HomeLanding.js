@@ -20,9 +20,9 @@ const HomeLanding = () => {
 	return (
 		<Stack w='1000px' h='600px' direction='row'>
 			<Stack w='50%' h='100%' justify='center' spacing={3}>
-				<Heading color='segundo' size='2xl' lineHeight='normal'>
-					<Highlight query={['vender hoy']} styles={{ color: 'cuarto' }}>
-						No dejes juntando tierra en tu placard lo que podés vender hoy.
+				<Heading color='segundo' size='xl' lineHeight='normal'>
+					<Highlight query={['vender', "regalar"]} styles={{ color: 'cuarto' }}>
+						No dejes juntando tierra en tu placard lo que podés vender o regalar hoy mismo.
 					</Highlight>
 				</Heading>
 				<Link to='vistaProductos' smooth={true}>
