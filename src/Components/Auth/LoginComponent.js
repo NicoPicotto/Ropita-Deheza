@@ -45,60 +45,60 @@ const LoginComponent = () => {
 	};
 
 	return (
-		
-			<Stack
-				justify='space-between'
-				align='center'
-				boxSize="md"
-				bgColor='white'
-				borderRadius={5}
-				p={5}
-				shadow='md'
-				as='form'
-				onSubmit={submitHandler}
-			>
-				<Stack w='80%' align='center'>
-					<Heading size='lg' color='segundo'>
-						Iniciá sesión
-					</Heading>
-					<Divider borderColor='cuarto' />
-				</Stack>
+		<Stack
+			spacing={5}
+			align='center'
+			bgColor='white'
+			borderRadius={5}
+			w='xl'
+			p={5}
+			shadow='md'
+			as='form'
+			onSubmit={submitHandler}
+		>
+			<Stack w='100%' align='center'>
+				<Heading size='lg' color='segundo'>
+					Iniciá sesión
+				</Heading>
+				<Divider borderColor='cuarto' />
+			</Stack>
+			<Stack align='center' w='100%' spacing={5}>
 				<Input
-					w='80%'
 					onChange={(e) => setUser({ ...user, email: e.target.value })}
-					variant='flushed'
+					variant='outline'
 					placeholder='Correo electrónico'
 					type='email'
 					focusBorderColor='cuarto'
+					isRequired
 				/>
 				<Input
-					w='80%'
 					onChange={(e) => setUser({ ...user, password: e.target.value })}
-					variant='flushed'
+					variant='outline'
 					placeholder='Contraseña'
 					type='password'
 					focusBorderColor='cuarto'
+					isRequired
 				/>
 				{error && (
 					<Text color='red' fontSize='sm'>
 						{error}
 					</Text>
 				)}
-				<Stack direction='row'>
-					<Button type='submit' color='segundo'>
-						Iniciá sesión
-					</Button>
-					<Link as={ReachLink} to='/register' _hover={{}}>
-						<Button color='segundo' variant='outline'>
-							¿No tenés cuenta? Registrate
-						</Button>
-					</Link>
-				</Stack>
-				<Button color='segundo' variant='link' onClick={handleResetPassword}>
-					¿Olvidaste tu contraseña?
-				</Button>
 			</Stack>
-	
+			<Stack direction='row'>
+				<Button type='submit' color='segundo'>
+					Iniciá sesión
+				</Button>
+				<Link as={ReachLink} to='/register' _hover={{}}>
+					<Button color='segundo' variant='outline'>
+						¿No tenés cuenta? Registrate
+					</Button>
+				</Link>
+			</Stack>
+			<Button color='segundo' variant='link' onClick={handleResetPassword}>
+				¿Olvidaste tu contraseña?
+			</Button>
+		</Stack>
 	);
 };
 
