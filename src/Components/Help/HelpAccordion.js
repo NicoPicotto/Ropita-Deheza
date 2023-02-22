@@ -72,6 +72,17 @@ const HelpAccordion = () => {
 				<AccordionItem>
 					<AccordionButton _expanded={{ bg: 'cuarto', color: 'white' }}>
 						<Box as='span' flex='1' textAlign='left'>
+							Quiero agregar varias fotos del producto.
+						</Box>
+						<AccordionIcon />
+					</AccordionButton>
+					<AccordionPanel pb={4}>
+						Lamentablemente, por el momento, únicamente es posible subir 1 (una) imagen por producto. Estamos trabajando para mejorar esta funcionalidad.
+					</AccordionPanel>
+				</AccordionItem>
+				<AccordionItem>
+					<AccordionButton _expanded={{ bg: 'cuarto', color: 'white' }}>
+						<Box as='span' flex='1' textAlign='left'>
 							Ya entregué mi producto ¿Ahora qué?
 						</Box>
 						<AccordionIcon />
@@ -82,7 +93,7 @@ const HelpAccordion = () => {
 						disponible.
 					</AccordionPanel>
 				</AccordionItem>
-                <AccordionItem>
+				<AccordionItem>
 					<AccordionButton _expanded={{ bg: 'cuarto', color: 'white' }}>
 						<Box as='span' flex='1' textAlign='left'>
 							Quiero regalar una prenda, no venderla ¿Cómo hago?
@@ -90,7 +101,8 @@ const HelpAccordion = () => {
 						<AccordionIcon />
 					</AccordionButton>
 					<AccordionPanel pb={4}>
-						Publicás el producto con normalidad desde la sección "Agregar", pero a la hora de indicar el precio colocás "0" (cero).
+						Publicás el producto con normalidad desde la sección "Agregar", pero
+						a la hora de indicar el precio colocás "0" (cero).
 					</AccordionPanel>
 				</AccordionItem>
 			</Accordion>

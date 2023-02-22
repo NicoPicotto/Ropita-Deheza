@@ -57,6 +57,7 @@ const DetallesAdentro = ({
 							textOverflow='ellipsis'
 							overflow='hidden'
 							noOfLines={2}
+							textTransform="capitalize"
 						>
 							{titulo}
 						</Heading>
@@ -68,7 +69,7 @@ const DetallesAdentro = ({
 						<Heading color='segundo' size='lg'>
 							$ {precio}
 						</Heading>
-						<Heading color='cuarto' size='md'>
+						<Heading color='cuarto' size='md' textTransform="uppercase">
 							Talle {talle}
 						</Heading>
 					</Stack>

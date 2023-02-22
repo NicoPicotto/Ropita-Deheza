@@ -1,6 +1,7 @@
 import React from 'react';
 import { Stack, Text, Button, Link } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
+import {IoMdHelpCircle} from "react-icons/io"
 
 const Footer = () => {
 	return (
@@ -11,6 +12,7 @@ const Footer = () => {
 			align='center'
 			p={5}
 			direction='row'
+			bottom={0}
 		>
 			<Stack>
 				<Text fontSize='sm' color='white'>
@@ -20,24 +22,9 @@ const Footer = () => {
 				</Text>
 			</Stack>
 			<Stack direction='row' spacing={5}>
-				<Link as={ReachLink} to='/nuevo'>
-					<Button size='sm' variant='link'>
-						Agregar un producto
-					</Button>
-				</Link>
-				<Link as={ReachLink} to='/perfil'>
-					<Button size='sm' variant='link'>
-						Mi perfil
-					</Button>
-				</Link>
 				<Link as={ReachLink} to='/ayuda'>
-					<Button size='sm' variant='link'>
-						Preguntas frecuentes
-					</Button>
-				</Link>
-				<Link as={ReachLink} to='/nuevo'>
-					<Button size='sm' variant='link'>
-						Sobre Ropita
+					<Button size='sm' variant='link' leftIcon={<IoMdHelpCircle />}>
+						Centro de ayuda
 					</Button>
 				</Link>
 			</Stack>

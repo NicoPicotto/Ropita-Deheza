@@ -153,14 +153,16 @@ const NuevoProducto = () => {
 									setImageUpload(e.target.files[0]);
 								}}
 							/>
-							<Button
+							{imageUpload && <Button
 								w='100%'
 								onClick={uploadImage}
-								bgColor='cuarto'
+								bgColor='segundo'
 								color='white'
+								_hover={{ bgColor: 'cuarto' }}
 							>
 								Cargar imagen
-							</Button>
+							</Button>}
+							
 						</Stack>
 					)}
 				</Stack>
@@ -232,7 +234,9 @@ const NuevoProducto = () => {
 								type='submit'
 								color='white'
 								_hover={{ bgColor: 'cuarto' }}
+								loadingText="Publicando..."
 							>
+								
 								Publicar producto
 							</Button>
 						</Tooltip>

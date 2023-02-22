@@ -12,12 +12,14 @@ import AgregarProductoView from './Views/AgregarProductoView';
 import ProductoView from './Views/ProductoView';
 import HelpView from './Views/HelpView';
 import Footer from './Components/Footer/Footer';
+import ScrolToTop from './Components/ScrollToTop/ScrollToTop';
 
 const App = () => {
 	return (
 		<ChakraProvider theme={theme}>
 			<ContextProvider>
 				<Router>
+					<ScrolToTop />
 					<Navbar />
 					<Routes>
 						<Route path='/' element={<HomeView />} />
@@ -26,7 +28,7 @@ const App = () => {
 						<Route path='/:id' element={<ProfileView />} />
 						<Route path='/nuevo' element={<AgregarProductoView />} />
 						<Route path='/producto/:id' element={<ProductoView />} />
-						<Route path="/ayuda" element={<HelpView />}/>
+						<Route path='/ayuda' element={<HelpView />} />
 					</Routes>
 					<Footer />
 				</Router>

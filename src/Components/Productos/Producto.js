@@ -50,6 +50,7 @@ const Producto = ({
 						textOverflow='ellipsis'
 						overflow='hidden'
 						noOfLines={1}
+						textTransform="capitalize"
 					>
 						{titulo}
 					</Heading>
@@ -62,7 +63,7 @@ const Producto = ({
 						<Text color='segundo' as='b' fontSize='2xl'>
 							$ {precio}
 						</Text>
-						<Text color='cuarto' as='b'>
+						<Text color='cuarto' as='b' textTransform="uppercase">
 							Talle: {talle}
 						</Text>
 					</Stack>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { collection, query, onSnapshot } from 'firebase/firestore';
-import { Stack, Spinner } from '@chakra-ui/react';
+import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
+import { Stack, Spinner, Grid } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
 import HomeLanding from '../Components/HomeLanding/HomeLanding';
@@ -11,7 +11,7 @@ const HomeView = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		const q = query(collection(firestore, 'productos'));
+		const q = query(collection(firestore, 'productos'), orderBy('fecha', 'desc'));
 		const unsub = onSnapshot(q, (querySnapshot) => {
 			let mjesArray = [];
 			querySnapshot.forEach((doc) => {
@@ -28,7 +28,10 @@ const HomeView = () => {
 		<Stack bgColor='fondo' align='center' p={5} w='100vw'>
 			<HomeLanding />
 
-			<Stack w="5xl" direction="row" flexWrap="wrap" spacing={5} id="vistaProductos">
+			<Grid
+				templateColumns='repeat(3, 1fr)' gap={5}
+				id='vistaProductos'
+			>
 				{productos.map((prod) => (
 					<Producto
 						key={prod.id}
@@ -45,7 +48,7 @@ const HomeView = () => {
 						nombre={prod.nombre}
 					/>
 				))}
-			</Stack>
+			</Grid>
 			{loading && <Spinner size='lg' margin={5} color='cuarto' />}
 		</Stack>
 	);
