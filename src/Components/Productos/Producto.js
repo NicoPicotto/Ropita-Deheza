@@ -32,7 +32,7 @@ const Producto = ({
 			justify='space-between'
 			shadow='md'
 			transition="0.2s"
-			_hover={{ shadow: 'lg' }}
+			_hover={{ marginTop: -1, shadow: "lg" }}
 		>
 			<Stack>
 				<Image
@@ -46,7 +46,9 @@ const Producto = ({
 				<Stack>
 					<Heading
 						size='md'
-						color='segundo'
+						fontFamily="fonts.heading"
+						fontWeight="regular"
+						color='tercero'
 						textOverflow='ellipsis'
 						overflow='hidden'
 						noOfLines={1}
@@ -60,10 +62,11 @@ const Producto = ({
 						spacing={2}
 						divider={<StackDivider />}
 					>
-						<Text color='segundo' as='b' fontSize='2xl'>
+						<Text color='segundo'
+						as="b" fontSize='2xl'>
 							$ {precio}
 						</Text>
-						<Text color='cuarto' as='b' textTransform="uppercase">
+						<Text color='tercero' as='b' textTransform="uppercase">
 							Talle: {talle}
 						</Text>
 					</Stack>

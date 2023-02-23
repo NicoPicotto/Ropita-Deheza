@@ -119,7 +119,12 @@ const NuevoProducto = () => {
 			as='form'
 		>
 			<Stack w='100%' align='center'>
-				<Heading size='lg' color='segundo'>
+				<Heading
+					size='lg'
+					color='segundo'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
 					Agregar producto
 				</Heading>
 				<Divider borderColor='cuarto' />
@@ -153,16 +158,17 @@ const NuevoProducto = () => {
 									setImageUpload(e.target.files[0]);
 								}}
 							/>
-							{imageUpload && <Button
-								w='100%'
-								onClick={uploadImage}
-								bgColor='segundo'
-								color='white'
-								_hover={{ bgColor: 'cuarto' }}
-							>
-								Cargar imagen
-							</Button>}
-							
+							{imageUpload && (
+								<Button
+									w='100%'
+									onClick={uploadImage}
+									bgColor='segundo'
+									color='white'
+									_hover={{ bgColor: 'cuarto' }}
+								>
+									Cargar imagen
+								</Button>
+							)}
 						</Stack>
 					)}
 				</Stack>
@@ -191,7 +197,7 @@ const NuevoProducto = () => {
 					<Stack direction='row'>
 						<Tooltip
 							label='Si lo que estás publicando no tiene talle, colocale "Talle único". Ej: Una gorra.'
-							bgColor='cuarto'
+							bgColor='tercero'
 							color='white'
 							placement='left'
 						>
@@ -207,7 +213,7 @@ const NuevoProducto = () => {
 						</Tooltip>
 						<Tooltip
 							label='Recordá que si tu intención es regalarlo, podés ponerle $0'
-							bgColor='cuarto'
+							bgColor='tercero'
 							color='white'
 							placement='right'
 						>
@@ -226,7 +232,7 @@ const NuevoProducto = () => {
 					<Stack>
 						<Tooltip
 							label='¡Atención! Estás a punto de publicar un producto. Esto implica que, al entrar al producto, las personas podrán ver tu nombre y número telefónico para contactarte.'
-							bgColor='segundo'
+							bgColor='tercero'
 							placement='right'
 						>
 							<Button
@@ -234,9 +240,8 @@ const NuevoProducto = () => {
 								type='submit'
 								color='white'
 								_hover={{ bgColor: 'cuarto' }}
-								loadingText="Publicando..."
+								loadingText='Publicando...'
 							>
-								
 								Publicar producto
 							</Button>
 						</Tooltip>

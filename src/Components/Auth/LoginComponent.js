@@ -57,7 +57,12 @@ const LoginComponent = () => {
 			onSubmit={submitHandler}
 		>
 			<Stack w='100%' align='center'>
-				<Heading size='lg' color='segundo'>
+				<Heading
+					size='lg'
+					color='segundo'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
 					Iniciá sesión
 				</Heading>
 				<Divider borderColor='cuarto' />
@@ -86,16 +91,16 @@ const LoginComponent = () => {
 				)}
 			</Stack>
 			<Stack direction='row'>
-				<Button type='submit' color='segundo'>
+				<Button type='submit' color='tercero'>
 					Iniciá sesión
 				</Button>
 				<Link as={ReachLink} to='/register' _hover={{}}>
-					<Button color='segundo' variant='outline'>
+					<Button color='tercero' variant='outline'>
 						¿No tenés cuenta? Registrate
 					</Button>
 				</Link>
 			</Stack>
-			<Button color='segundo' variant='link' onClick={handleResetPassword}>
+			<Button color='tercero' variant='link' onClick={handleResetPassword}>
 				¿Olvidaste tu contraseña?
 			</Button>
 		</Stack>

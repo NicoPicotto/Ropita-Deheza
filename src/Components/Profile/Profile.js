@@ -45,24 +45,27 @@ const Profile = () => {
 	};
 
 	return (
-		<Stack borderRadius={5} as='form' w='50%' h="100%">
+		<Stack borderRadius={5} as='form' w='50%' h='100%'>
 			<Stack>
-				<Heading color='segundo' textAlign='center'>
+				<Heading
+					color='segundo'
+					textAlign='center'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
 					Tus datos
 				</Heading>
 				<Divider borderColor='cuarto' />
 			</Stack>
 
 			{!isLoading ? (
-			
-					<InputsContainer
-						nombre={datosPersonales.nombre}
-						apellido={datosPersonales.apellido}
-						email={datosPersonales.email}
-						telefono={datosPersonales.telefono}
-						handleUpdate={handleUpdate}
-					/>
-				
+				<InputsContainer
+					nombre={datosPersonales.nombre}
+					apellido={datosPersonales.apellido}
+					email={datosPersonales.email}
+					telefono={datosPersonales.telefono}
+					handleUpdate={handleUpdate}
+				/>
 			) : (
 				<Stack align='center' color='cuarto'>
 					<Spinner />

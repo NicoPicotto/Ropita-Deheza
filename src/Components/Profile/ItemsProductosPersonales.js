@@ -23,7 +23,7 @@ const ItemsProductosPersonales = ({ titulo, handleDelete, precio, id }) => {
 			</Stack>
 			<Stack w="25%">
 				<Button
-					size='sm'
+					size='xs'
 					colorScheme='red'
 					variant='solid'
 					onClick={() => handleDelete(id)}

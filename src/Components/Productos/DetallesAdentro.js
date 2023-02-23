@@ -28,7 +28,12 @@ const DetallesAdentro = ({
 	return (
 		<Stack w='100%'>
 			<Stack align='center' marginBottom={3}>
-				<Heading size='lg' color='segundo'>
+				<Heading
+					size='lg'
+					color='segundo'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
 					Detalles del producto
 				</Heading>
 				<Divider borderColor='cuarto' />
@@ -52,12 +57,14 @@ const DetallesAdentro = ({
 				<Stack h='100%' w='50%' justify='space-between'>
 					<Stack>
 						<Heading
-							color='segundo'
+							color='tercero'
+							fontFamily='fonts.heading'
+							fontWeight='regular'
 							size='md'
 							textOverflow='ellipsis'
 							overflow='hidden'
 							noOfLines={2}
-							textTransform="capitalize"
+							textTransform='capitalize'
 						>
 							{titulo}
 						</Heading>
@@ -66,12 +73,12 @@ const DetallesAdentro = ({
 						<Text>{descripcion}</Text>
 					</Stack>
 					<Stack divider={<StackDivider />} direction='row' align='center'>
-						<Heading color='segundo' size='lg'>
+						<Text color='segundo' fontSize='xl' as="b">
 							$ {precio}
-						</Heading>
-						<Heading color='cuarto' size='md' textTransform="uppercase">
+						</Text>
+						<Text color='tercero' fontSize='md' textTransform='uppercase'>
 							Talle {talle}
-						</Heading>
+						</Text>
 					</Stack>
 					<Stack>
 						<Stack>

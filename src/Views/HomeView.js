@@ -31,6 +31,8 @@ const HomeView = () => {
 			<Grid
 				templateColumns='repeat(3, 1fr)' gap={5}
 				id='vistaProductos'
+				overflow="hidden"
+				p={2}
 			>
 				{productos.map((prod) => (
 					<Producto

@@ -11,7 +11,7 @@ import {
 	Text,
 	Link,
 	Divider,
-	useToast
+	useToast,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
@@ -29,7 +29,7 @@ const RegisterComponent = () => {
 	const [telefono, setTelefono] = useState('');
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
-	const toast = useToast()
+	const toast = useToast();
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -76,7 +76,12 @@ const RegisterComponent = () => {
 			onSubmit={submitHandler}
 		>
 			<Stack align='center' w='100%'>
-				<Heading size='lg' color='segundo'>
+				<Heading
+					size='lg'
+					color='segundo'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
 					Registrate
 				</Heading>
 				<Divider borderColor='cuarto' />
@@ -144,11 +149,11 @@ const RegisterComponent = () => {
 				)}
 			</Stack>
 			<Stack direction='row'>
-				<Button type='submit' color='segundo'>
+				<Button type='submit' color='tercero'>
 					Registrate
 				</Button>
 				<Link as={ReachLink} to='/login' _hover={{}}>
-					<Button color='segundo' variant='outline'>
+					<Button color='tercero' variant='outline'>
 						¿Ya tenés cuenta? Iniciá sesión
 					</Button>
 				</Link>

@@ -13,6 +13,8 @@ import ProductoView from './Views/ProductoView';
 import HelpView from './Views/HelpView';
 import Footer from './Components/Footer/Footer';
 import ScrolToTop from './Components/ScrollToTop/ScrollToTop';
+import "@fontsource/titan-one"
+import "@fontsource/montserrat"
 
 const App = () => {
 	return (

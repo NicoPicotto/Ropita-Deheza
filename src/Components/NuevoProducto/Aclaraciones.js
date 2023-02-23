@@ -30,7 +30,7 @@ const Aclaraciones = () => {
 				align='center'
 			>
 				<Icon as={MdLabelOff} fontSize='6xl' color='segundo' />
-				<Text fontSize='xs' color='primero'>
+				<Text fontSize='xs' color='tercero'>
 					Los productos deben ser si o si de segunda mano. La plataforma no debe
 					utilizarse para comercializar productos nuevos.
 				</Text>
@@ -43,7 +43,7 @@ const Aclaraciones = () => {
 				p={2}
 			>
 				<Icon as={IoSyncCircleSharp} fontSize='6xl' color='segundo' />
-				<Text fontSize='xs' color='primero'>
+				<Text fontSize='xs' color='tercero'>
 					El objetivo es promover la moda circular. Podés vender tu prenda o
 					también regarlarla poniéndole precio $0.
 				</Text>
@@ -56,7 +56,7 @@ const Aclaraciones = () => {
 				p={2}
 			>
 				<Icon as={IoLogoWhatsapp} fontSize='6xl' color='segundo' />
-				<Text fontSize='xs' color='primero'>
+				<Text fontSize='xs' color='tercero'>
 					En caso de haber un interesado, él o ella se contactará con vos vía
 					Whatsapp para arreglar la entrega y el pago.
 				</Text>

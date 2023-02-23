@@ -3,19 +3,19 @@
 }
 
 ::-webkit-scrollbar-thumb {
-	background-color: #025E73;
+	background-color: #888BBF;
 	border-radius: 100vw;
 }
 
 ::-webkit-scrollbar-track {
-	background: #F5F5F5;
+	background: #F2F2F2;
 }
 
 * {
-	font-family: 'Montserrat', sans-serif !important;
+	font-family: 'Montserrat', sans-serif;
 	overflow-x: hidden;
 }
 
 html {
-	background-color: #F0F0F0;
+	background-color: #F2F2F2;
 }

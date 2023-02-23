@@ -7,7 +7,7 @@ const Footer = () => {
 	return (
 		<Stack
 			w='100%'
-			bgColor='primero'
+			bgColor='tercero'
 			justify='space-between'
 			align='center'
 			p={5}
@@ -15,7 +15,7 @@ const Footer = () => {
 			bottom={0}
 		>
 			<Stack>
-				<Text fontSize='sm' color='white'>
+				<Text fontSize='sm' color='fondo'>
 					Creado por {""}
 					<Link as="a" color='white' href="https://nicopicotto.com/" target="_blank">Nicolás Picotto</Link>
                     . Todos los derechos reservados.
@@ -23,7 +23,7 @@ const Footer = () => {
 			</Stack>
 			<Stack direction='row' spacing={5}>
 				<Link as={ReachLink} to='/ayuda'>
-					<Button size='sm' variant='link' leftIcon={<IoMdHelpCircle />}>
+					<Button color="fondo" size='sm' variant='link' leftIcon={<IoMdHelpCircle />}>
 						Centro de ayuda
 					</Button>
 				</Link>

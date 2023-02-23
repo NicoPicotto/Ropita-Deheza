@@ -22,7 +22,12 @@ const HelpAccordion = () => {
 			shadow='md'
 		>
 			<Stack w='100%' align='center'>
-				<Heading size='lg' color='segundo'>
+				<Heading
+					size='lg'
+					color='segundo'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
 					Preguntas frecuentes
 				</Heading>
 				<Divider borderColor='cuarto' />
@@ -77,7 +82,9 @@ const HelpAccordion = () => {
 						<AccordionIcon />
 					</AccordionButton>
 					<AccordionPanel pb={4}>
-						Lamentablemente, por el momento, únicamente es posible subir 1 (una) imagen por producto. Estamos trabajando para mejorar esta funcionalidad.
+						Lamentablemente, por el momento, únicamente es posible subir 1 (una)
+						imagen por producto. Estamos trabajando para mejorar esta
+						funcionalidad.
 					</AccordionPanel>
 				</AccordionItem>
 				<AccordionItem>

@@ -20,8 +20,8 @@ const HomeLanding = () => {
 	return (
 		<Stack w='1000px' h='600px' direction='row'>
 			<Stack w='50%' h='100%' justify='center' spacing={3}>
-				<Heading color='segundo' size='xl' lineHeight='normal'>
-					<Highlight query={['vender', "regalar"]} styles={{ color: 'cuarto' }}>
+				<Heading color='segundo' size='xl' lineHeight='normal' fontFamily="fonts.heading" fontWeight="regular">
+					<Highlight query={['vender', "regalar"]} styles={{ color: 'cuarto', fontFamily: "fonts.heading", fontWeight: "regular" }}>
 						No dejes juntando tierra en tu placard lo que podés vender o regalar hoy mismo.
 					</Highlight>
 				</Heading>
@@ -29,9 +29,10 @@ const HomeLanding = () => {
 					<Button
 						w='fit-content'
 						leftIcon={<FaSyncAlt />}
-						bgColor='segundo'
+						bgColor='cuarto'
 						color='white'
-						_hover={{ bgColor: 'cuarto' }}
+						fontFamily="fonts.body"
+						_hover={{ bgColor: 'primero' }}
 					>
 						Sumate a la moda circular
 					</Button>
