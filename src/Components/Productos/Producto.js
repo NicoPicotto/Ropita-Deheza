@@ -11,7 +11,7 @@ import {
 	Link,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
-import { BsCheckCircleFill } from 'react-icons/bs';
+import { FaHandPointRight } from 'react-icons/fa';
 
 const Producto = ({
 	titulo,
@@ -84,10 +84,10 @@ const Producto = ({
 						w='100%'
 						bgColor='segundo'
 						color='white'
-						leftIcon={<BsCheckCircleFill />}
+						leftIcon={<FaHandPointRight />}
 						_hover={{ bgColor: 'cuarto' }}
 					>
-						Lo quiero
+						Me interesa
 					</Button>
 				</Link>
 			</Stack>

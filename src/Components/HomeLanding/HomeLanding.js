@@ -18,7 +18,7 @@ const HomeLanding = () => {
 	const { View } = useLottie(options);
 
 	return (
-		<Stack w='5xl' h='xl' direction='row' justify='center'>
+		<Stack w='5xl' h='lg' direction='row' justify='center'>
 			<Stack w='40%' h='100%' justify='center' spacing={5}>
 				<Heading
 					color='segundo'
@@ -34,8 +34,7 @@ const HomeLanding = () => {
 							fontWeight: 'regular',
 						}}
 					>
-						No dejes juntando tierra en tu placard lo que podés vender o regalar
-						hoy.
+						No dejes colgado en tu placard lo que podés vender o regalar hoy.
 					</Highlight>
 				</Heading>
 				<Link to='vistaProductos' smooth={true}>
@@ -45,7 +44,7 @@ const HomeLanding = () => {
 						bgColor='cuarto'
 						color='white'
 						fontFamily='fonts.body'
-						_hover={{ bgColor: 'primero' }}
+						_hover={{ bgColor: 'segundo' }}
 					>
 						Sumate a la moda circular
 					</Button>

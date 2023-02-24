@@ -8,7 +8,7 @@ import {
 	BsFillBackspaceReverseFill,
 } from 'react-icons/bs';
 import { Link as ReachLink } from 'react-router-dom';
-
+import logo2 from "../../logo2.png"
 const Navbar = () => {
 	const { logout, user, userUid } = useAuth();
 	const navigate = useNavigate();
@@ -50,9 +50,9 @@ const Navbar = () => {
 			<Stack direction='row' justify='space-between' align='center'>
 				<Link as={ReachLink} to='/'>
 					<Image
-						src='https://www.svgrepo.com/show/217771/shopping-logo.svg'
-						boxSize={colorChange ? '30px' : '50px'}
-						objectFit='cover'
+						src={logo2}
+						w={colorChange ? "150px" : "200px"}
+						objectFit='contain'
 					/>
 				</Link>
 				<Stack direction='row'>

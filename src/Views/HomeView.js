@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
-import { Stack, Spinner, Grid, Heading } from '@chakra-ui/react';
+import { Stack, Spinner, Grid, Heading, Divider } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
 import HomeLanding from '../Components/HomeLanding/HomeLanding';
@@ -30,6 +30,8 @@ const HomeView = () => {
 	return (
 		<Stack bgColor='fondo' align='center' p={5} w='100vw'>
 			<HomeLanding />
+			<Heading fontFamily="fonts.heading" color="tercero" fontWeight="regular" p={3}>Productos destacados</Heading>
+			<Divider borderColor="cuarto" w="5xl"/>
 			<Grid
 				templateColumns='repeat(3, 1fr)'
 				gap={5}
