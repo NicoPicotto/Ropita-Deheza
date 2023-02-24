@@ -32,7 +32,7 @@ const Producto = ({
 			justify='space-between'
 			shadow='md'
 			transition="0.2s"
-			_hover={{ marginTop: -1, shadow: "lg" }}
+			_hover={{ shadow: "lg" }}
 		>
 			<Stack>
 				<Image

@@ -30,41 +30,31 @@ const HomeView = () => {
 	return (
 		<Stack bgColor='fondo' align='center' p={5} w='100vw'>
 			<HomeLanding />
-			{productos.length !== 0 ? (
-				<>
-					<Grid
-						templateColumns='repeat(3, 1fr)'
-						gap={5}
-						id='vistaProductos'
-						overflow='hidden'
-						p={2}
-					>
-						{productos.map((prod) => (
-							<Producto
-								key={prod.id}
-								email={prod.email}
-								id={prod.id}
-								titulo={prod.titulo}
-								descripcion={prod.descripcion}
-								fecha={prod.fecha}
-								imagen={prod.imagen}
-								telefono={prod.telefono}
-								apellido={prod.apellido}
-								talle={prod.talle}
-								precio={prod.precio}
-								nombre={prod.nombre}
-							/>
-						))}
-					</Grid>
-					{loading && <Spinner size='lg' margin={5} color='cuarto' />}
-				</>
-			) : (
-				<Stack>
-					<Heading size='lg' color='segundo' p={5}>
-						Por ahora no hay productos para mostrar
-					</Heading>
-				</Stack>
-			)}
+			<Grid
+				templateColumns='repeat(3, 1fr)'
+				gap={5}
+				id='vistaProductos'
+				overflow='hidden'
+				p={2}
+			>
+				{productos.map((prod) => (
+					<Producto
+						key={prod.id}
+						email={prod.email}
+						id={prod.id}
+						titulo={prod.titulo}
+						descripcion={prod.descripcion}
+						fecha={prod.fecha}
+						imagen={prod.imagen}
+						telefono={prod.telefono}
+						apellido={prod.apellido}
+						talle={prod.talle}
+						precio={prod.precio}
+						nombre={prod.nombre}
+					/>
+				))}
+			</Grid>
+			{loading && <Spinner size='lg' margin={5} color='cuarto' />}
 		</Stack>
 	);
 };

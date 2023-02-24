@@ -8,7 +8,7 @@ import { FaSyncAlt } from 'react-icons/fa';
 const options = {
 	animationData: manShopping,
 	autoplay: true,
-	loop: false,
+	loop: true,
 	style: {
 		width: '100%',
 	},
@@ -18,11 +18,24 @@ const HomeLanding = () => {
 	const { View } = useLottie(options);
 
 	return (
-		<Stack w='1000px' h='600px' direction='row'>
-			<Stack w='50%' h='100%' justify='center' spacing={3}>
-				<Heading color='segundo' size='xl' lineHeight='normal' fontFamily="fonts.heading" fontWeight="regular">
-					<Highlight query={['vender', "regalar"]} styles={{ color: 'cuarto', fontFamily: "fonts.heading", fontWeight: "regular" }}>
-						No dejes juntando tierra en tu placard lo que podés vender o regalar hoy mismo.
+		<Stack w='5xl' h='xl' direction='row' justify='center'>
+			<Stack w='40%' h='100%' justify='center' spacing={5}>
+				<Heading
+					color='segundo'
+					size='xl'
+					fontFamily='fonts.heading'
+					fontWeight='regular'
+				>
+					<Highlight
+						query={['vender', 'regalar']}
+						styles={{
+							color: 'cuarto',
+							fontFamily: 'fonts.heading',
+							fontWeight: 'regular',
+						}}
+					>
+						No dejes juntando tierra en tu placard lo que podés vender o regalar
+						hoy.
 					</Highlight>
 				</Heading>
 				<Link to='vistaProductos' smooth={true}>
@@ -31,14 +44,14 @@ const HomeLanding = () => {
 						leftIcon={<FaSyncAlt />}
 						bgColor='cuarto'
 						color='white'
-						fontFamily="fonts.body"
+						fontFamily='fonts.body'
 						_hover={{ bgColor: 'primero' }}
 					>
 						Sumate a la moda circular
 					</Button>
 				</Link>
 			</Stack>
-			<Stack w='50%' h='100%' justify='center'>
+			<Stack w='60%' h='100%' justify='center'>
 				{View}
 			</Stack>
 		</Stack>
