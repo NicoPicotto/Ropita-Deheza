@@ -10,7 +10,7 @@ import {
 import { Link as ReachLink } from 'react-router-dom';
 
 const Navbar = () => {
-	const { logout, user } = useAuth();
+	const { logout, user, userUid } = useAuth();
 	const navigate = useNavigate();
 
 	//Fución para cerrar la sesión.
@@ -69,7 +69,7 @@ const Navbar = () => {
 									Agregar
 								</Button>
 							</Link>
-							<Link as={ReachLink} to={`/${user.email}`} _hover={{}}>
+							<Link as={ReachLink} to={`/${userUid}`} _hover={{}}>
 								<Button
 									leftIcon={<BsPersonFill />}
 									size='sm'

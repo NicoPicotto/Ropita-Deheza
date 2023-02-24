@@ -19,12 +19,13 @@ const ProductosPropios = () => {
 	const toast = useToast();
 	const navigate = useNavigate();
 
+
 	useEffect(() => {
 		const getProductos = async () => {
 			const docs = [];
 			const q = query(
 				collection(firestore, 'productos'),
-				where('email', '==', paramsID.id)
+				where('uid', '==', paramsID.id)
 			);
 			const querySnapshot = await getDocs(q);
 			querySnapshot.forEach((doc) => {

@@ -13,7 +13,7 @@ import {
 import { Link as ReachLink } from 'react-router-dom';
 
 const LoginComponent = () => {
-	const { login, resetPassword } = useAuth();
+	const { login, resetPassword, isLoading } = useAuth();
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -68,22 +68,35 @@ const LoginComponent = () => {
 				<Divider borderColor='cuarto' />
 			</Stack>
 			<Stack align='center' w='100%' spacing={5}>
-				<Input
-					onChange={(e) => setUser({ ...user, email: e.target.value })}
-					variant='outline'
-					placeholder='Correo electrónico'
-					type='email'
-					focusBorderColor='cuarto'
-					isRequired
-				/>
-				<Input
-					onChange={(e) => setUser({ ...user, password: e.target.value })}
-					variant='outline'
-					placeholder='Contraseña'
-					type='password'
-					focusBorderColor='cuarto'
-					isRequired
-				/>
+				<Stack w='100%' spacing={5}>
+					<Stack>
+						<Text margin={0} fontSize='sm' color='tercero' as='b'>
+							Correo electrónico
+						</Text>
+						<Input
+							onChange={(e) => setUser({ ...user, email: e.target.value })}
+							variant='outline'
+							placeholder='juanperez@gmail.com'
+							type='email'
+							focusBorderColor='cuarto'
+							isRequired
+						/>
+					</Stack>
+					<Stack>
+						<Text margin={0} fontSize='sm' color='tercero' as='b'>
+							Contraseña
+						</Text>
+						<Input
+							onChange={(e) => setUser({ ...user, password: e.target.value })}
+							variant='outline'
+							placeholder='*********'
+							type='password'
+							focusBorderColor='cuarto'
+							isRequired
+						/>
+					</Stack>
+				</Stack>
+
 				{error && (
 					<Text color='red' fontSize='sm'>
 						{error}

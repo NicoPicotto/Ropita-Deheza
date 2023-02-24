@@ -26,7 +26,7 @@ import { v4 } from 'uuid';
 import { useNavigate } from 'react-router-dom';
 
 const NuevoProducto = () => {
-	const { email } = useAuth();
+	const { userUid } = useAuth();
 	const navigate = useNavigate();
 	const [datosPersonales, setDatosPersonales] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +42,7 @@ const NuevoProducto = () => {
 	//Traer los datos del usuario logeado para pasarlos
 	useEffect(() => {
 		const getEntrada = async () => {
-			const docRef = doc(firestore, 'usuarios', email);
+			const docRef = doc(firestore, 'usuarios', userUid);
 			const docSnap = await getDoc(docRef);
 
 			if (docSnap.exists()) {
@@ -52,7 +52,7 @@ const NuevoProducto = () => {
 			}
 		};
 		getEntrada();
-	}, [email]);
+	}, [userUid]);
 
 	//Función para subir una imagen al storage
 	const uploadImage = () => {
@@ -78,7 +78,7 @@ const NuevoProducto = () => {
 				imagen: imageList,
 				talle,
 				precio,
-				email: datosPersonales.email,
+				uid: userUid,
 				nombre: datosPersonales.nombre,
 				apellido: datosPersonales.apellido,
 				telefono: datosPersonales.telefono,

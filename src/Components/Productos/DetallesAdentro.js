@@ -51,7 +51,7 @@ const DetallesAdentro = ({
 						w='100%'
 						src={imagen}
 						alt='Imagen del producto'
-						objectFit='cover'
+						objectFit='contain'
 					/>
 				</Stack>
 				<Stack h='100%' w='50%' justify='space-between'>
@@ -73,7 +73,7 @@ const DetallesAdentro = ({
 						<Text>{descripcion}</Text>
 					</Stack>
 					<Stack divider={<StackDivider />} direction='row' align='center'>
-						<Text color='segundo' fontSize='xl' as="b">
+						<Text color='segundo' fontSize='xl' as='b'>
 							$ {precio}
 						</Text>
 						<Text color='tercero' fontSize='md' textTransform='uppercase'>

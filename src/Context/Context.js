@@ -20,10 +20,13 @@ export const ContextProvider = ({ children }) => {
 	const [search, setSearch] = useState('');
 	const [email, setEmail] = useState("")
 	const [loading, setLoading] = useState(true);
+	const [userUid, setUserUid] = useState("")
 
 
 	const registrarse = (email, password) => {
+		setLoading(true)
 		createUserWithEmailAndPassword(auth, email, password);
+		setLoading(false)
 	};
 
 	const login = (email, password) => {
@@ -40,6 +43,7 @@ export const ContextProvider = ({ children }) => {
 		const unsubuscribe = onAuthStateChanged(auth, (currentUser) => {
 			setUser(currentUser);
 			setEmail(currentUser.email)
+			setUserUid(currentUser.uid)
 			setLoading(false);
 		});
 		return () => unsubuscribe();
@@ -54,7 +58,8 @@ export const ContextProvider = ({ children }) => {
 				resetPassword,
 				loading,
 				user,
-				email
+				email,
+				userUid
 			}}
 		>
 			{children}
