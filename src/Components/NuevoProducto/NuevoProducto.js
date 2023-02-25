@@ -10,6 +10,7 @@ import {
 	Divider,
 	useToast,
 	Spinner,
+	Text,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -18,7 +19,12 @@ import {
 	doc,
 	getDoc,
 } from 'firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import {
+	ref,
+	uploadBytes,
+	getDownloadURL,
+	uploadBytesResumable,
+} from 'firebase/storage';
 import { useAuth } from '../../Context/Context';
 import { firestore } from '../../firebase';
 import { storage } from '../../firebase';
@@ -34,9 +40,12 @@ const NuevoProducto = () => {
 	const [descripcion, setDescripcion] = useState('');
 	const [talle, setTalle] = useState('');
 	const [precio, setPrecio] = useState('');
-	const [imageUpload, setImageUpload] = useState(null);
-	const [imageList, setImageList] = useState([]);
+	const [imageUpload, setImageUpload] = useState([]);
 	const [imagenCargada, setImagenCargada] = useState(false);
+	const [imageError, setImageError] = useState('');
+	const [progress, setProgress] = useState(0);
+	const [URLs, setURLs] = useState([]);
+	const [imageShow, setImageShow] = useState('');
 	const toast = useToast();
 
 	//Traer los datos del usuario logeado para pasarlos
@@ -57,15 +66,37 @@ const NuevoProducto = () => {
 	//Función para subir una imagen al storage
 	const uploadImage = () => {
 		setIsLoading(true);
-		if (imageUpload == null) return;
-		const imageRef = ref(storage, `productos/${imageUpload.name + v4()}`);
-		uploadBytes(imageRef, imageUpload).then((snapshot) => {
-			getDownloadURL(snapshot.ref).then((url) => {
-				setImageList((prev) => [...prev, url]);
-				setImagenCargada(true);
-				setIsLoading(false);
-			});
+		const filesArray = Array.from(imageUpload);
+		const promises = [];
+		filesArray.map((file) => {
+			const sotrageRef = ref(storage, `productos/${file.name + v4()}`);
+
+			const uploadTask = uploadBytesResumable(sotrageRef, file);
+			promises.push(uploadTask);
+			uploadTask.on(
+				'state_changed',
+				(snapshot) => {
+					const prog = Math.round(
+						(snapshot.bytesTransferred / snapshot.totalBytes) * 100
+					);
+					setProgress(prog);
+				},
+				(error) => console.log(error),
+				async () => {
+					await getDownloadURL(uploadTask.snapshot.ref).then((downloadURLs) => {
+						setURLs((prevState) => [...prevState, downloadURLs]);
+						setImageShow(downloadURLs);
+					});
+				}
+			);
 		});
+		Promise.all(promises).then((err) => console.log(err));
+		setImagenCargada(true);
+		setIsLoading(false);
+	};
+
+	const throwError = () => {
+		setImageError('Se pueden cargar un máximo de 3 imágenes.');
 	};
 
 	//Función para publicar el producto
@@ -75,7 +106,7 @@ const NuevoProducto = () => {
 			await addDoc(collection(firestore, 'productos'), {
 				titulo,
 				descripcion,
-				imagen: imageList,
+				imagen: URLs,
 				talle,
 				precio,
 				uid: userUid,
@@ -132,7 +163,6 @@ const NuevoProducto = () => {
 			<Stack spacing={5} align='center' direction='row' h='xs' w='100%'>
 				<Stack
 					bgColor='fondo'
-					p={5}
 					h='100%'
 					borderRadius={10}
 					w='50%'
@@ -140,25 +170,46 @@ const NuevoProducto = () => {
 					justify='center'
 				>
 					{isLoading && <Spinner color='cuarto' />}
-					{imagenCargada ? (
-						<Image
-							h='100%'
-							w='100%'
-							src={imageList}
-							alt='Imagen del producto'
-							objectFit='cover'
-						/>
+					{imageShow ? (
+						<Stack direction='row' w='100%' h='100%'>
+							<Stack w='25%'>
+								{URLs.map((img) => (
+									<Image
+										h='33%'
+										key={img}
+										w='100%'
+										src={img}
+										alt='Imagen del producto'
+										objectFit='cover'
+										onClick={(e) => setImageShow(img)}
+									/>
+								))}
+							</Stack>
+							<Stack>
+								<Image
+									h='100%'
+									w='100%'
+									src={imageShow}
+									alt='Imagen del producto'
+									objectFit='cover'
+								/>
+							</Stack>
+						</Stack>
 					) : (
 						<Stack w='100%' h='100%' align='center' justify='center'>
 							<Input
 								type='file'
+								h='100%'
+								w='100%'
+								bgColor='red'
 								variant='unstyled'
+								accept='image/png, image/jpg, image/gif, image/jpeg'
 								multiple
 								onChange={(e) => {
-									setImageUpload(e.target.files[0]);
+									setImageUpload(e.target.files);
 								}}
 							/>
-							{imageUpload && (
+							{imageUpload.length > 0 && (
 								<Button
 									w='100%'
 									onClick={uploadImage}
