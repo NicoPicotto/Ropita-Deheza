@@ -6,17 +6,19 @@ import {
 	documentId,
 	getDocs,
 } from 'firebase/firestore';
-import { Stack } from '@chakra-ui/react';
+import { Stack, Spinner } from '@chakra-ui/react';
 import { useParams } from 'react-router';
 import { firestore } from '../../firebase';
 import DetallesAdentro from './DetallesAdentro';
 
 const Detalle = () => {
 	const [producto, setProducto] = useState([]);
+	const [isLoading, setIsLoading] = useState(false);
 	const paramsID = useParams();
 
 	useEffect(() => {
 		const getProductos = async () => {
+			setIsLoading(true);
 			const docs = [];
 			const q = query(
 				collection(firestore, 'productos'),
@@ -27,10 +29,10 @@ const Detalle = () => {
 				docs.push({ ...doc.data(), id: doc.id });
 			});
 			setProducto(docs);
+			setIsLoading(false);
 		};
 		getProductos();
 	}, [paramsID]);
-
 
 	const handleSubmit = () => {};
 
@@ -38,7 +40,7 @@ const Detalle = () => {
 		<Stack
 			onSubmit={handleSubmit}
 			align='center'
-			w="4xl"
+			w='4xl'
 			marginTop={10}
 			bgColor='white'
 			borderRadius={5}
@@ -62,6 +64,7 @@ const Detalle = () => {
 					handleSubmit={handleSubmit}
 				/>
 			))}
+			{isLoading && <Spinner size='lg' margin={5} color='cuarto' />}
 		</Stack>
 	);
 };

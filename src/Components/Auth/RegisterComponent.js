@@ -178,11 +178,11 @@ const RegisterComponent = () => {
 			</Stack>
 			{!userUid && (
 				<Stack direction='row'>
-					<Button type='submit' color='tercero'>
+					<Button type='submit' color='white' bgColor="segundo" _hover={{bgColor: "cuarto"}}>
 						Registrate
 					</Button>
 					<Link as={ReachLink} to='/login' _hover={{}}>
-						<Button color='tercero' variant='outline'>
+						<Button color='segundo' variant='outline' borderColor="segundo" _hover={{bgColor: "cuarto", borderColor: "transparent", color: "white"}}>
 							¿Ya tenés cuenta? Iniciá sesión
 						</Button>
 					</Link>

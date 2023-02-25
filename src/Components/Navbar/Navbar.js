@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Stack, Image, Button, Link } from '@chakra-ui/react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
-import {
-	BsPersonFill,
-	BsFillPlusSquareFill,
-	BsFillBackspaceReverseFill,
-} from 'react-icons/bs';
+import { BsPersonFill } from 'react-icons/bs';
+import { FaTshirt } from 'react-icons/fa';
+import { MdAssignment } from 'react-icons/md';
+import { GoSignOut, GoSignIn } from 'react-icons/go';
 import { Link as ReachLink } from 'react-router-dom';
-import logo2 from "../../logo2.png"
+import logo2 from '../../logo2.png';
 const Navbar = () => {
 	const { logout, user, userUid } = useAuth();
 	const navigate = useNavigate();
@@ -42,16 +41,16 @@ const Navbar = () => {
 			bgColor={colorChange ? 'segundo' : 'transparent'}
 			justify='center'
 			paddingX={10}
-			align='space-between'
+			align='center'
 			zIndex={100}
 			pos='fixed'
 			top={0}
 		>
-			<Stack direction='row' justify='space-between' align='center'>
+			<Stack direction='row' justify='space-between' align='center' w="100%">
 				<Link as={ReachLink} to='/'>
 					<Image
 						src={logo2}
-						w={colorChange ? "150px" : "200px"}
+						w={colorChange ? '150px' : '200px'}
 						objectFit='contain'
 					/>
 				</Link>
@@ -60,7 +59,7 @@ const Navbar = () => {
 						<Stack direction='row'>
 							<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
 								<Button
-									leftIcon={<BsFillPlusSquareFill />}
+									leftIcon={<FaTshirt />}
 									size='sm'
 									bgColor='segundo'
 									color='white'
@@ -81,7 +80,7 @@ const Navbar = () => {
 								</Button>
 							</Link>
 							<Button
-								leftIcon={<BsFillBackspaceReverseFill />}
+								leftIcon={<GoSignOut />}
 								variant={colorChange ? 'filled' : 'outline'}
 								size='sm'
 								color={colorChange ? 'white' : 'segundo'}
@@ -97,17 +96,32 @@ const Navbar = () => {
 							</Button>
 						</Stack>
 					) : (
-						<Link as={ReachLink} to={'/login'} _hover={{}}>
-							<Button
-								bgColor='segundo'
-								variant={colorChange ? 'outline' : 'filled'}
-								size='sm'
-								color='white'
-								_hover={{ bgColor: 'cuarto' }}
-							>
-								Iniciá sesión
-							</Button>
-						</Link>
+						<>
+							<Link as={ReachLink} to={'/login'} _hover={{}}>
+								<Button
+									bgColor='segundo'
+									variant={colorChange ? 'outline' : 'filled'}
+									size='sm'
+									color='white'
+									_hover={{ bgColor: 'cuarto' }}
+									leftIcon={<GoSignIn />}
+								>
+									Iniciá sesión
+								</Button>
+							</Link>
+							<Link as={ReachLink} to={'/register'} _hover={{}}>
+								<Button
+									bgColor='segundo'
+									variant={colorChange ? 'outline' : 'filled'}
+									size='sm'
+									color='white'
+									_hover={{ bgColor: 'cuarto' }}
+									leftIcon={<MdAssignment />}
+								>
+									Registrate
+								</Button>
+							</Link>
+						</>
 					)}
 				</Stack>
 			</Stack>

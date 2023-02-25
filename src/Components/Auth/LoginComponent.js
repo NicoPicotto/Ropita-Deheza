@@ -35,12 +35,12 @@ const LoginComponent = () => {
 	const handleResetPassword = async (e) => {
 		e.preventDefault();
 		if (!user.email)
-			return setError('Escribí un mail para recuperar tu contraseña');
+			return setError('Escribí un mail para recuperar tu contraseña.');
 		try {
 			await resetPassword(user.email);
-			setError('Te enviamos un correo para resetear tu password');
+			setError('Te enviamos un correo para resetear tu password.');
 		} catch (error) {
-			setError(error.message);
+			setError("Email inválido.");
 		}
 	};
 
@@ -104,16 +104,16 @@ const LoginComponent = () => {
 				)}
 			</Stack>
 			<Stack direction='row'>
-				<Button type='submit' color='tercero'>
+				<Button type='submit' color='white' bgColor="segundo" _hover={{bgColor: "cuarto"}}>
 					Iniciá sesión
 				</Button>
 				<Link as={ReachLink} to='/register' _hover={{}}>
-					<Button color='tercero' variant='outline'>
+					<Button color='segundo' variant='outline' borderColor="segundo" _hover={{bgColor: "cuarto", borderColor: "transparent", color: "white"}}>
 						¿No tenés cuenta? Registrate
 					</Button>
 				</Link>
 			</Stack>
-			<Button color='tercero' variant='link' onClick={handleResetPassword}>
+			<Button variant='link' onClick={handleResetPassword}>
 				¿Olvidaste tu contraseña?
 			</Button>
 		</Stack>
