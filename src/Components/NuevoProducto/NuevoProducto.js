@@ -11,6 +11,8 @@ import {
 	useToast,
 	Spinner,
 	Text,
+	FormLabel,
+	TagLabel,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -26,6 +28,7 @@ import {
 	uploadBytesResumable,
 } from 'firebase/storage';
 import { useAuth } from '../../Context/Context';
+import { BsImageFill } from 'react-icons/bs';
 import { firestore } from '../../firebase';
 import { storage } from '../../firebase';
 import { v4 } from 'uuid';
@@ -95,6 +98,7 @@ const NuevoProducto = () => {
 		setIsLoading(false);
 	};
 
+	//Error de máximo de imagenes
 	const throwError = () => {
 		setImageError('Se pueden cargar un máximo de 3 imágenes.');
 	};
@@ -176,6 +180,7 @@ const NuevoProducto = () => {
 								{URLs.map((img) => (
 									<Image
 										h='33%'
+										cursor='pointer'
 										key={img}
 										w='100%'
 										src={img}
@@ -197,28 +202,50 @@ const NuevoProducto = () => {
 						</Stack>
 					) : (
 						<Stack w='100%' h='100%' align='center' justify='center'>
-							<Input
-								type='file'
-								h='100%'
-								w='100%'
-								bgColor='red'
-								variant='unstyled'
-								accept='image/png, image/jpg, image/gif, image/jpeg'
-								multiple
-								onChange={(e) => {
-									setImageUpload(e.target.files);
-								}}
-							/>
-							{imageUpload.length > 0 && (
+							<FormLabel
+								display='flex'
+								flexDir='column'
+								cursor='pointer'
+								p={10}
+								alignItems='center'
+								justifyContent='center'
+								color='gray'
+							>
+								<BsImageFill size='30%' />
+								<Input
+									type='file'
+									display='none'
+									id='fileInput'
+									variant='unstyled'
+									accept='image/png, image/jpg, image/gif, image/jpeg'
+									multiple
+									onChange={(e) => {
+										setImageUpload(e.target.files);
+									}}
+								/>
+								<Text fontSize='md' as='b' textAlign='center'>
+									Cargar Imágenes
+								</Text>
+								<Text fontSize='xs' textAlign='center'>
+									Máximo 3 imágenes por producto.
+								</Text>
+							</FormLabel>
+
+							{imageUpload.length < 3 && imageUpload.length > 0 && (
 								<Button
-									w='100%'
+									w='80%'
 									onClick={uploadImage}
 									bgColor='segundo'
 									color='white'
 									_hover={{ bgColor: 'cuarto' }}
 								>
-									Cargar imagen
+									Subir imágenes
 								</Button>
+							)}
+							{imageUpload.length > 3 && (
+								<Text fontSize='xs' textAlign='center' color='red'>
+									Máximo 3 imágenes por producto.
+								</Text>
 							)}
 						</Stack>
 					)}
