@@ -6,9 +6,8 @@ import ProductosPropios from '../Components/Profile/ProductosPropios';
 import { IoMdHelpCircle } from 'react-icons/io';
 
 const ProfileView = () => {
-
 	return (
-		<Stack bgColor='fondo' h='100vh' align='center' justify='center'>
+		<Stack bgColor='fondo' h='100vh' align='center' w='100vw' justify='center'>
 			<Stack
 				bgColor='white'
 				w='4xl'

@@ -30,11 +30,6 @@ const HelpAccordion = () => {
 				'	El producto estará visible para todo el mundo al igual que tu nombre y teléfono. En caso de existir un interesado/a, éste se contactará				vía Whatsapp para concretar la entrega y el pago (si lo hubiese). Si la compra se concreta, recordá eliminarlo desde la sección "Perfil -				Mis productos" para que ya no aparezca como disponible.',
 		},
 		{
-			titulo: '¿Cómo agrego varias fotos mi producto?',
-			texto:
-				'Lamentablemente, por el momento, únicamente es posible subir 1 (una) imagen por producto. Estamos trabajando para mejorar esta funcionalidad.',
-		},
-		{
 			titulo: 'Ya entregué mi producto ¿Ahora qué?',
 			texto:
 				'Si la entrega se concretó con éxito, recordá eliminarlo desde la sección "Perfil - Mis productos" para que ya no aparezca como	disponible.',

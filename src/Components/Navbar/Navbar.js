@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Stack, Image, Button, Link } from '@chakra-ui/react';
+import { Stack, Image, Button, Link, StackDivider } from '@chakra-ui/react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
 import { BsPersonFill } from 'react-icons/bs';
@@ -38,7 +38,7 @@ const Navbar = () => {
 			w='100vw'
 			h={colorChange ? '50px' : '75px'}
 			transition='0.3s'
-			bgColor={colorChange ? 'segundo' : 'transparent'}
+			bgColor='segundo'
 			justify='center'
 			paddingX={10}
 			align='center'
@@ -46,7 +46,7 @@ const Navbar = () => {
 			pos='fixed'
 			top={0}
 		>
-			<Stack direction='row' justify='space-between' align='center' w="100%">
+			<Stack direction='row' justify='space-between' align='center' w='4xl'>
 				<Link as={ReachLink} to='/'>
 					<Image
 						src={logo2}
@@ -56,14 +56,13 @@ const Navbar = () => {
 				</Link>
 				<Stack direction='row'>
 					{user ? (
-						<Stack direction='row'>
+						<Stack direction='row' divider={<StackDivider />} spacing={3}>
 							<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
 								<Button
 									leftIcon={<FaTshirt />}
 									size='sm'
-									bgColor='segundo'
+									variant='link'
 									color='white'
-									_hover={{ bgColor: 'cuarto' }}
 								>
 									Agregar
 								</Button>
@@ -72,38 +71,29 @@ const Navbar = () => {
 								<Button
 									leftIcon={<BsPersonFill />}
 									size='sm'
-									bgColor='segundo'
+									variant='link'
 									color='white'
-									_hover={{ bgColor: 'cuarto' }}
 								>
 									Perfil
 								</Button>
 							</Link>
 							<Button
 								leftIcon={<GoSignOut />}
-								variant={colorChange ? 'filled' : 'outline'}
 								size='sm'
-								color={colorChange ? 'white' : 'segundo'}
-								borderColor='segundo'
-								_hover={{
-									bgColor: 'cuarto',
-									color: 'white',
-									borderColor: 'cuarto',
-								}}
+								variant='link'
+								color='white'
 								onClick={handleLogout}
 							>
 								Cerrar sesión
 							</Button>
 						</Stack>
 					) : (
-						<>
+						<Stack direction='row' divider={<StackDivider />} spacing={3}>
 							<Link as={ReachLink} to={'/login'} _hover={{}}>
 								<Button
-									bgColor='segundo'
-									variant={colorChange ? 'outline' : 'filled'}
 									size='sm'
+									variant='link'
 									color='white'
-									_hover={{ bgColor: 'cuarto' }}
 									leftIcon={<GoSignIn />}
 								>
 									Iniciá sesión
@@ -111,17 +101,15 @@ const Navbar = () => {
 							</Link>
 							<Link as={ReachLink} to={'/register'} _hover={{}}>
 								<Button
-									bgColor='segundo'
-									variant={colorChange ? 'outline' : 'filled'}
 									size='sm'
+									variant='link'
 									color='white'
-									_hover={{ bgColor: 'cuarto' }}
 									leftIcon={<MdAssignment />}
 								>
 									Registrate
 								</Button>
 							</Link>
-						</>
+						</Stack>
 					)}
 				</Stack>
 			</Stack>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
-import { Stack, Spinner, Grid, Heading, Divider } from '@chakra-ui/react';
+import { Stack, Spinner, Grid, Heading } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
 import HomeLanding from '../Components/HomeLanding/HomeLanding';
@@ -10,7 +10,6 @@ const HomeView = () => {
 	const [productos, setProductos] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const abierto = localStorage.getItem('opened');
-
 
 	useEffect(() => {
 		setLoading(true);
@@ -32,24 +31,27 @@ const HomeView = () => {
 
 	return (
 		<>
-		{abierto === null && <ModalStart />}
-			<Stack bgColor='fondo' align='center' p={5} w='100vw'>
+			{abierto === null && <ModalStart />}
+			<Stack bgColor='fondo' align='center' w='100vw'>
 				<HomeLanding />
-				<Heading
-					fontFamily='fonts.heading'
-					color='tercero'
-					fontWeight='regular'
-					p={3}
-				>
-					Productos destacados
-				</Heading>
-				<Divider borderColor='cuarto' w='5xl' />
+				<Stack w='100%' bgColor='tercero' marginTop='0 !important'>
+					<Heading
+						fontFamily='fonts.heading'
+						color='fondo'
+						fontWeight='regular'
+						p={3}
+						size='lg'
+						textAlign='center'
+					>
+						Productos destacados
+					</Heading>
+				</Stack>
 				<Grid
 					templateColumns='repeat(3, 1fr)'
 					gap={5}
 					id='vistaProductos'
 					overflow='hidden'
-					p={2}
+					p={5}
 				>
 					{productos.map((prod) => (
 						<Producto
