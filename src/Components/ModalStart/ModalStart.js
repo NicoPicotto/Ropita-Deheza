@@ -73,17 +73,17 @@ const ModalStart = () => {
 							styles={{ fontWeight: 'bolder', color: 'segundo' }}
 						>
 							Si querés vender o regalar tus prendas, es necesario que te
-							inicies sesión (O si no tenés cuenta te registres) y brindes
-							algunos datos básicos de contacto. ¡Gracias por sumarte!
+							registres y brindes algunos datos básicos de contacto. ¡Estamos contentos de que te sumes a		la moda circular!
 						</Highlight>
 					</Stack>
 				</ModalBody>
 				<ModalFooter justifyContent='center'>
-					<Stack direction='row' w='50%' justify='center'>
+					<Stack direction='row' w='50%' justify='center' p={1}>
 						<Button
 							borderRadius={100}
 							size='xs'
 							colorScheme='whatsapp'
+							_focus={{boxShadow: 0}}
 							variant={page == 1 ? 'solid' : 'outline'}
 							onClick={() => setPage(1)}
 						/>

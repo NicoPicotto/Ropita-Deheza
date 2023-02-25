@@ -45,7 +45,6 @@ const NuevoProducto = () => {
 	const [precio, setPrecio] = useState('');
 	const [imageUpload, setImageUpload] = useState([]);
 	const [imagenCargada, setImagenCargada] = useState(false);
-	const [imageError, setImageError] = useState('');
 	const [progress, setProgress] = useState(0);
 	const [URLs, setURLs] = useState([]);
 	const [imageShow, setImageShow] = useState('');
@@ -98,10 +97,6 @@ const NuevoProducto = () => {
 		setIsLoading(false);
 	};
 
-	//Error de máximo de imagenes
-	const throwError = () => {
-		setImageError('Se pueden cargar un máximo de 3 imágenes.');
-	};
 
 	//Función para publicar el producto
 	const handleSubmit = async (e) => {
@@ -190,7 +185,7 @@ const NuevoProducto = () => {
 									/>
 								))}
 							</Stack>
-							<Stack>
+							<Stack w="75%">
 								<Image
 									h='100%'
 									w='100%'
@@ -231,7 +226,7 @@ const NuevoProducto = () => {
 								</Text>
 							</FormLabel>
 
-							{imageUpload.length < 3 && imageUpload.length > 0 && (
+							{imageUpload.length < 3 || imageUpload.length > 0 && (
 								<Button
 									w='80%'
 									onClick={uploadImage}
