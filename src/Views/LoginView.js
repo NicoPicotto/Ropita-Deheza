@@ -1,13 +1,23 @@
-import React from 'react'
-import { Stack } from '@chakra-ui/react';
+import React from 'react';
+import { Stack, useMediaQuery } from '@chakra-ui/react';
 import LoginComponent from '../Components/Auth/LoginComponent';
 
 const LoginView = () => {
-  return (
-    <Stack bgColor='fondo' h='100vh' align='center' justify="center">
-        <LoginComponent />
-    </Stack>
-  )
-}
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
-export default LoginView
+	return (
+		<Stack
+			bgColor='fondo'
+			justify='center'
+			p={5}
+			w='100vw'
+			spacing={5}
+			align='center'
+			h='100vh'
+		>
+			<LoginComponent />
+		</Stack>
+	);
+};
+
+export default LoginView;

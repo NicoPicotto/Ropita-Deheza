@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {
 	Modal,
-	ModalHeader,
 	ModalOverlay,
 	ModalFooter,
 	ModalContent,
-	Button,
 	Image,
 	ModalBody,
 	useDisclosure,
 	Highlight,
-	Text,
 	Stack,
 	Radio,
 	RadioGroup,
-	Flex,
+	useMediaQuery,
 } from '@chakra-ui/react';
 import modal1 from '../../modal1.png';
 import modal2 from '../../modal2.png';
@@ -22,6 +19,7 @@ import modal3 from '../../modal3.png';
 
 const ModalStart = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 	const [value, setValue] = useState('1');
 
 	useEffect(() => {
@@ -43,7 +41,7 @@ const ModalStart = () => {
 			motionPreset='slideInBottom'
 		>
 			<ModalOverlay />
-			<ModalContent align='center'>
+			<ModalContent align='center' w={isMobile && '80%'}>
 				<ModalBody align='center'>
 					<Stack display={value == 1 ? 'block' : 'none'}>
 						<Image w='80%' src={modal1} />
@@ -60,7 +58,7 @@ const ModalStart = () => {
 					<Stack display={value == 2 ? 'block' : 'none'}>
 						<Image w='80%' src={modal2} />
 						<Highlight
-							query={['no es necesario que te registres', ' propietario']}
+							query={['no es necesario', ' propietario']}
 							styles={{ fontWeight: 'bolder', color: 'segundo' }}
 						>
 							Si te interesa algún producto publicado, no es necesario que te

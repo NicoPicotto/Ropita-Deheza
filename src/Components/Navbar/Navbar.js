@@ -123,7 +123,11 @@ const Navbar = () => {
 													Agregar
 												</Button>
 											</Link>
-											<Link as={ReachLink} to={`/${userUid}`} _hover={{}}>
+											<Link
+												as={ReachLink}
+												to={`/usuario/${userUid}`}
+												_hover={{}}
+											>
 												<Button
 													leftIcon={<BsPersonFill />}
 													size='sm'
@@ -146,15 +150,26 @@ const Navbar = () => {
 										</Stack>
 									) : (
 										<Stack
-											direction='row'
+											direction='column'
 											divider={<StackDivider />}
 											spacing={3}
+											paddingBlock={5}
+											align='center'
 										>
+											<Link as={ReachLink} to='/'>
+												<Image
+													src={logo2}
+													w={colorChange ? '150px' : '200px'}
+													objectFit='contain'
+													transition='0.3s'
+													onClick={onClose}
+												/>
+											</Link>
 											<Link as={ReachLink} to={'/login'} _hover={{}}>
 												<Button
 													size='sm'
 													variant='link'
-													color='white'
+													color='segundo'
 													leftIcon={<GoSignIn />}
 												>
 													Iniciá sesión
@@ -164,7 +179,7 @@ const Navbar = () => {
 												<Button
 													size='sm'
 													variant='link'
-													color='white'
+													color='segundo'
 													leftIcon={<MdAssignment />}
 												>
 													Registrate

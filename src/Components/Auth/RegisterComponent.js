@@ -13,6 +13,7 @@ import {
 	useToast,
 	Spinner,
 	Text,
+	useMediaQuery
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
@@ -29,8 +30,10 @@ const RegisterComponent = () => {
 	const [apellido, setApellido] = useState('');
 	const [telefono, setTelefono] = useState('');
 	const [isLoading, setIsLoading] = useState(false);
+
 	const toast = useToast();
 	const navigate = useNavigate();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -68,14 +71,15 @@ const RegisterComponent = () => {
 
 	return (
 		<Stack
-			spacing={5}
 			align='center'
+			w={isMobile ? '90%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
-			w='xl'
 			p={5}
 			shadow='md'
+			justify='space-between'
 			as='form'
+			spacing={5}
 			onSubmit={submitHandler}
 		>
 			<Stack align='center' w='100%'>
@@ -177,12 +181,12 @@ const RegisterComponent = () => {
 				)}
 			</Stack>
 			{!userUid && (
-				<Stack direction='row'>
+				<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && "100%"}>
 					<Button type='submit' color='white' bgColor="segundo" _hover={{bgColor: "cuarto"}}>
 						Registrate
 					</Button>
 					<Link as={ReachLink} to='/login' _hover={{}}>
-						<Button color='segundo' variant='outline' borderColor="segundo" _hover={{bgColor: "cuarto", borderColor: "transparent", color: "white"}}>
+						<Button color='segundo' variant='outline' borderColor="segundo" w={isMobile && "100%"} _hover={{bgColor: "cuarto", borderColor: "transparent", color: "white"}}>
 							¿Ya tenés cuenta? Iniciá sesión
 						</Button>
 					</Link>

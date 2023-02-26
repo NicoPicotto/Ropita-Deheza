@@ -9,11 +9,12 @@ import {
 	Divider,
 	Text,
 	Link,
+	useMediaQuery,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 const LoginComponent = () => {
-	const { login, resetPassword, isLoading } = useAuth();
+	const { login, resetPassword } = useAuth();
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -21,6 +22,7 @@ const LoginComponent = () => {
 
 	const [error, setError] = useState('');
 	const navigate = useNavigate();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
@@ -40,20 +42,21 @@ const LoginComponent = () => {
 			await resetPassword(user.email);
 			setError('Te enviamos un correo para resetear tu password.');
 		} catch (error) {
-			setError("Email inválido.");
+			setError('Email inválido.');
 		}
 	};
 
 	return (
 		<Stack
-			spacing={5}
 			align='center'
+			w={isMobile ? '90%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
-			w='xl'
 			p={5}
 			shadow='md'
+			justify='space-between'
 			as='form'
+			spacing={5}
 			onSubmit={submitHandler}
 		>
 			<Stack w='100%' align='center'>
@@ -103,12 +106,28 @@ const LoginComponent = () => {
 					</Text>
 				)}
 			</Stack>
-			<Stack direction='row'>
-				<Button type='submit' color='white' bgColor="segundo" _hover={{bgColor: "cuarto"}}>
+			<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && "100%"}>
+				<Button
+					type='submit'
+					color='white'
+					bgColor='segundo'
+					_hover={{ bgColor: 'cuarto' }}
+				>
 					Iniciá sesión
 				</Button>
-				<Link as={ReachLink} to='/register' _hover={{}}>
-					<Button color='segundo' variant='outline' borderColor="segundo" _hover={{bgColor: "cuarto", borderColor: "transparent", color: "white"}}>
+				<Link as={ReachLink} to='/register' _hover={{}} >
+					<Button
+						color='segundo'
+						w={isMobile && "100%"}
+						variant='outline'
+						borderColor='segundo'
+						
+						_hover={{
+							bgColor: 'cuarto',
+							borderColor: 'transparent',
+							color: 'white',
+						}}
+					>
 						¿No tenés cuenta? Registrate
 					</Button>
 				</Link>
