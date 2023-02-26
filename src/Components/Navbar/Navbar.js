@@ -40,18 +40,18 @@ const Navbar = () => {
 			transition='0.3s'
 			bgColor='segundo'
 			justify='center'
-			paddingX={10}
 			align='center'
 			zIndex={100}
 			pos='fixed'
 			top={0}
 		>
-			<Stack direction='row' justify='space-between' align='center' w='4xl'>
+			<Stack direction='row' justify='space-between' align='center' w='4xl' >
 				<Link as={ReachLink} to='/'>
 					<Image
 						src={logo2}
 						w={colorChange ? '150px' : '200px'}
 						objectFit='contain'
+						transition='0.3s'
 					/>
 				</Link>
 				<Stack direction='row'>

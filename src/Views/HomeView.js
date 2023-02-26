@@ -40,37 +40,42 @@ const HomeView = () => {
 						color='fondo'
 						fontWeight='regular'
 						p={3}
-						size='lg'
+						size='md'
 						textAlign='center'
 					>
 						Productos destacados
 					</Heading>
 				</Stack>
-				<Grid
-					templateColumns='repeat(3, 1fr)'
-					gap={5}
-					id='vistaProductos'
-					overflow='hidden'
-					p={5}
-				>
-					{productos.map((prod) => (
-						<Producto
-							key={prod.id}
-							email={prod.email}
-							id={prod.id}
-							titulo={prod.titulo}
-							descripcion={prod.descripcion}
-							fecha={prod.fecha}
-							imagen={prod.imagen}
-							telefono={prod.telefono}
-							apellido={prod.apellido}
-							talle={prod.talle}
-							precio={prod.precio}
-							nombre={prod.nombre}
-						/>
-					))}
-				</Grid>
+				<Stack w='4xl' align="center">
 				{loading && <Spinner size='lg' margin={5} color='cuarto' />}
+					<Grid
+						templateColumns='repeat(3, 1fr)'
+						gap={5}
+						id='vistaProductos'
+						overflow='hidden'
+						p={5}
+					>
+						{productos.map((prod) => (
+							<Producto
+								key={prod.id}
+								email={prod.email}
+								id={prod.id}
+								titulo={prod.titulo}
+								descripcion={prod.descripcion}
+								fecha={prod.fecha}
+								imagen={prod.imagen}
+								telefono={prod.telefono}
+								apellido={prod.apellido}
+								talle={prod.talle}
+								precio={prod.precio}
+								nombre={prod.nombre}
+							/>
+						))}
+					</Grid>
+					
+				</Stack>
+
+				
 			</Stack>
 		</>
 	);
