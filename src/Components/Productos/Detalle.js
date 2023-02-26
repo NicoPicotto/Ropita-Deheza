@@ -6,7 +6,7 @@ import {
 	documentId,
 	getDocs,
 } from 'firebase/firestore';
-import { Stack, Spinner } from '@chakra-ui/react';
+import { Stack, Spinner, useMediaQuery } from '@chakra-ui/react';
 import { useParams } from 'react-router';
 import { firestore } from '../../firebase';
 import DetallesAdentro from './DetallesAdentro';
@@ -15,6 +15,7 @@ const Detalle = () => {
 	const [producto, setProducto] = useState([]);
 	const [isLoading, setIsLoading] = useState(false);
 	const paramsID = useParams();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	useEffect(() => {
 		const getProductos = async () => {
@@ -40,11 +41,12 @@ const Detalle = () => {
 		<Stack
 			onSubmit={handleSubmit}
 			align='center'
-			w='4xl'
-			marginTop={10}
+			w={isMobile ? '90%' : '4xl'}
+			marginTop='75px'
 			bgColor='white'
 			borderRadius={5}
 			p={5}
+			h={isMobile && '90%'}
 			shadow='md'
 			justify='space-between'
 		>

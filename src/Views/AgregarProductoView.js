@@ -1,15 +1,26 @@
-import React from 'react'
-import { Stack } from '@chakra-ui/react';
+import React from 'react';
+import { Stack, useMediaQuery } from '@chakra-ui/react';
 import NuevoProducto from '../Components/NuevoProducto/NuevoProducto';
 import Aclaraciones from '../Components/NuevoProducto/Aclaraciones';
 
 const AgregarProductoView = () => {
-  return (
-    <Stack bgColor='fondo' justify="center" p={5} w='100vw' h="100vh" spacing={5} align="center">
-        <NuevoProducto />
-        <Aclaraciones />
-    </Stack>
-  )
-}
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
-export default AgregarProductoView
+	return (
+		<Stack
+			bgColor='fondo'
+			justify='center'
+			p={5}
+			w='100vw'
+			marginTop={isMobile && "75px"}
+			spacing={5}
+			align='center'
+			h='100vh'
+		>
+			<NuevoProducto />
+			<Aclaraciones />
+		</Stack>
+	);
+};
+
+export default AgregarProductoView;

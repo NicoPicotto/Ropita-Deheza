@@ -7,11 +7,11 @@ import {
 	Heading,
 	Image,
 	StackDivider,
+	useMediaQuery,
 } from '@chakra-ui/react';
 import { BsWhatsapp } from 'react-icons/bs';
 
 const DetallesAdentro = ({
-	key,
 	descripcion,
 	fecha,
 	nombre,
@@ -21,42 +21,56 @@ const DetallesAdentro = ({
 	telefono,
 	titulo,
 	imagen,
-	id,
 }) => {
 	const fechaFormateada = fecha.toDate().toLocaleDateString('es-ES');
 	const [imageShow, setImageShow] = useState(imagen[0]);
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	return (
 		<Stack w='100%'>
 			<Stack align='center' marginBottom={3}>
 				<Heading
-					size='lg'
+					size={isMobile ? 'md' : 'lg'}
 					color='segundo'
 					fontFamily='fonts.heading'
 					fontWeight='regular'
+					overflow='hidden'
 				>
 					Detalles del producto
 				</Heading>
 				<Divider borderColor='cuarto' />
 			</Stack>
-			<Stack spacing={5} align='center' direction='row' h='xs' w='100%'>
+			<Stack
+				spacing={5}
+				align='center'
+				direction={isMobile ? 'column' : 'row'}
+				w='100%'
+				h={isMobile ? '100%' : 'xs'}
+			>
 				<Stack
 					bgColor='fondo'
-					h='100%'
+					h={isMobile ? 'xl' : '100%'}
 					borderRadius={10}
-					w='50%'
-					direction='row'
+					w={isMobile ? '100%' : '50%'}
 					align='center'
 					justify='center'
 				>
-					<Stack direction='row' w='100%' h='100%'>
-						<Stack w='25%'>
+					<Stack
+						direction={isMobile ? 'column-reverse' : 'row'}
+						w='100%'
+						h='100%'
+					>
+						<Stack
+							w={isMobile ? '100%' : '25%'}
+							direction={isMobile ? 'row' : 'column'}
+							h={isMobile && '25%'}
+						>
 							{imagen.map((img) => (
 								<Image
-									h='33%'
+									h={isMobile ? '100%' : '33%'}
 									cursor='pointer'
 									key={img}
-									w='100%'
+									w={isMobile ? '33%' : '100%'}
 									src={img}
 									alt='Imagen del producto'
 									objectFit='cover'
@@ -64,7 +78,7 @@ const DetallesAdentro = ({
 								/>
 							))}
 						</Stack>
-						<Stack w='75%'>
+						<Stack w={isMobile ? '100%' : '75%'} h={isMobile && '75%'}>
 							<Image
 								h='100%'
 								w='100%'
@@ -75,7 +89,7 @@ const DetallesAdentro = ({
 						</Stack>
 					</Stack>
 				</Stack>
-				<Stack h='100%' w='50%' justify='space-between'>
+				<Stack h='100%' w={isMobile ? '100%' : '50%'} justify='space-between'>
 					<Stack>
 						<Heading
 							color='tercero'

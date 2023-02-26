@@ -12,7 +12,7 @@ import {
 	Spinner,
 	Text,
 	FormLabel,
-	TagLabel,
+	useMediaQuery,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -21,12 +21,7 @@ import {
 	doc,
 	getDoc,
 } from 'firebase/firestore';
-import {
-	ref,
-	uploadBytes,
-	getDownloadURL,
-	uploadBytesResumable,
-} from 'firebase/storage';
+import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { useAuth } from '../../Context/Context';
 import { BsImageFill } from 'react-icons/bs';
 import { firestore } from '../../firebase';
@@ -49,6 +44,7 @@ const NuevoProducto = () => {
 	const [URLs, setURLs] = useState([]);
 	const [imageShow, setImageShow] = useState('');
 	const toast = useToast();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	//Traer los datos del usuario logeado para pasarlos
 	useEffect(() => {
@@ -97,7 +93,6 @@ const NuevoProducto = () => {
 		setIsLoading(false);
 	};
 
-
 	//Función para publicar el producto
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -140,7 +135,7 @@ const NuevoProducto = () => {
 		<Stack
 			onSubmit={handleSubmit}
 			align='center'
-			w='4xl'
+			w={isMobile ? '90%' : '4xl'}
 			bgColor='white'
 			borderRadius={5}
 			p={5}
@@ -150,34 +145,49 @@ const NuevoProducto = () => {
 		>
 			<Stack w='100%' align='center'>
 				<Heading
-					size='lg'
+					size={isMobile ? 'md' : 'lg'}
 					color='segundo'
 					fontFamily='fonts.heading'
 					fontWeight='regular'
+					overflow='hidden'
 				>
 					Agregar producto
 				</Heading>
 				<Divider borderColor='cuarto' />
 			</Stack>
-			<Stack spacing={5} align='center' direction='row' h='xs' w='100%'>
+			<Stack
+				spacing={5}
+				align='center'
+				direction={isMobile ? 'column' : 'row'}
+				h={isMobile ? '100%' : 'xs'}
+				w='100%'
+			>
 				<Stack
 					bgColor='fondo'
-					h='100%'
+					h={isMobile ? 'xl' : '100%'}
 					borderRadius={10}
-					w='50%'
+					w={isMobile ? '100%' : '50%'}
 					align='center'
 					justify='center'
 				>
 					{isLoading && <Spinner color='cuarto' />}
 					{imageShow ? (
-						<Stack direction='row' w='100%' h='100%'>
-							<Stack w='25%'>
+						<Stack
+							direction={isMobile ? 'column-reverse' : 'row'}
+							w='100%'
+							h='100%'
+						>
+							<Stack
+								w={isMobile ? '100%' : '25%'}
+								direction={isMobile ? 'row' : 'column'}
+								h={isMobile && '25%'}
+							>
 								{URLs.map((img) => (
 									<Image
-										h='33%'
+										h={isMobile ? '100%' : '33%'}
 										cursor='pointer'
 										key={img}
-										w='100%'
+										w={isMobile ? '33%' : '100%'}
 										src={img}
 										alt='Imagen del producto'
 										objectFit='cover'
@@ -185,7 +195,7 @@ const NuevoProducto = () => {
 									/>
 								))}
 							</Stack>
-							<Stack w="75%">
+							<Stack w={isMobile ? '100%' : '75%'} h={isMobile && '75%'}>
 								<Image
 									h='100%'
 									w='100%'
@@ -226,13 +236,14 @@ const NuevoProducto = () => {
 								</Text>
 							</FormLabel>
 
-							{imageUpload.length < 3 || imageUpload.length > 0 && (
+							{imageUpload.length <= 3 && imageUpload.length > 0 && (
 								<Button
 									w='80%'
 									onClick={uploadImage}
 									bgColor='segundo'
 									color='white'
 									_hover={{ bgColor: 'cuarto' }}
+									size={isMobile ? 'sm' : 'md'}
 								>
 									Subir imágenes
 								</Button>
@@ -245,10 +256,11 @@ const NuevoProducto = () => {
 						</Stack>
 					)}
 				</Stack>
-				<Stack h='100%' w='50%' justify='space-between'>
+				<Stack h='100%' w={isMobile ? '100%' : '50%'} justify='space-between'>
 					<Stack>
 						<Input
 							variant='outline'
+							size={isMobile ? 'sm' : 'md'}
 							value={titulo}
 							onChange={(e) => setTitulo(e.target.value)}
 							placeholder='Título del producto. Ej: Remera lisa.'
@@ -259,6 +271,7 @@ const NuevoProducto = () => {
 					<Stack flex={1}>
 						<Textarea
 							h='100%'
+							size={isMobile ? 'sm' : 'md'}
 							value={descripcion}
 							onChange={(e) => setDescripcion(e.target.value)}
 							variant='outline'
@@ -277,6 +290,7 @@ const NuevoProducto = () => {
 							<Input
 								variant='outline'
 								value={talle}
+								size={isMobile ? 'sm' : 'md'}
 								onChange={(e) => setTalle(e.target.value)}
 								w='50%'
 								focusBorderColor='cuarto'
@@ -293,6 +307,7 @@ const NuevoProducto = () => {
 							<Input
 								variant='outline'
 								placeholder='$0'
+								size={isMobile ? 'sm' : 'md'}
 								value={precio}
 								onChange={(e) => setPrecio(e.target.value)}
 								w='50%'

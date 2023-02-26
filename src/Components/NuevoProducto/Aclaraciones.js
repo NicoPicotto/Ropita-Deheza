@@ -1,11 +1,8 @@
 import React from 'react';
 import {
-	Highlight,
 	Stack,
-	Input,
-	Button,
 	Text,
-	Tooltip,
+	useMediaQuery,
 	StackDivider,
 	Icon,
 } from '@chakra-ui/react';
@@ -14,12 +11,14 @@ import { IoSyncCircleSharp } from 'react-icons/io5';
 import { MdLabelOff } from 'react-icons/md';
 
 const Aclaraciones = () => {
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
+
 	return (
 		<Stack
-			w='900px'
+			w={isMobile ? '100%' : '4xl'}
 			divider={<StackDivider borderColor='cuarto' />}
 			justify='center'
-			direction='row'
+			direction={isMobile ? 'column' : 'row'}
 			align='center'
 		>
 			<Stack
@@ -28,6 +27,7 @@ const Aclaraciones = () => {
 				borderRadius={5}
 				p={2}
 				align='center'
+				overflow='hidden'
 			>
 				<Icon as={MdLabelOff} fontSize='6xl' color='segundo' />
 				<Text fontSize='xs' color='tercero'>
@@ -41,6 +41,7 @@ const Aclaraciones = () => {
 				direction='row'
 				borderRadius={5}
 				p={2}
+				overflow='hidden'
 			>
 				<Icon as={IoSyncCircleSharp} fontSize='6xl' color='segundo' />
 				<Text fontSize='xs' color='tercero'>
@@ -54,6 +55,7 @@ const Aclaraciones = () => {
 				direction='row'
 				borderRadius={5}
 				p={2}
+				overflow='hidden'
 			>
 				<Icon as={IoLogoWhatsapp} fontSize='6xl' color='segundo' />
 				<Text fontSize='xs' color='tercero'>
