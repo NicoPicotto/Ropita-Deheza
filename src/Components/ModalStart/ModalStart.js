@@ -12,7 +12,9 @@ import {
 	Highlight,
 	Text,
 	Stack,
-	Slide,
+	Radio,
+	RadioGroup,
+	Flex,
 } from '@chakra-ui/react';
 import modal1 from '../../modal1.png';
 import modal2 from '../../modal2.png';
@@ -20,7 +22,7 @@ import modal3 from '../../modal3.png';
 
 const ModalStart = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [page, setPage] = useState(1);
+	const [value, setValue] = useState('1');
 
 	useEffect(() => {
 		onOpen();
@@ -43,7 +45,7 @@ const ModalStart = () => {
 			<ModalOverlay />
 			<ModalContent align='center'>
 				<ModalBody align='center'>
-					<Stack display={page == 1 ? 'block' : 'none'}>
+					<Stack display={value == 1 ? 'block' : 'none'}>
 						<Image w='80%' src={modal1} />
 						<Highlight
 							query={['indumentaria', 'accesorios', 'segunda mano']}
@@ -55,7 +57,7 @@ const ModalStart = () => {
 						</Highlight>
 					</Stack>
 
-					<Stack display={page == 2 ? 'block' : 'none'}>
+					<Stack display={value == 2 ? 'block' : 'none'}>
 						<Image w='80%' src={modal2} />
 						<Highlight
 							query={['no es necesario que te registres', ' propietario']}
@@ -66,42 +68,50 @@ const ModalStart = () => {
 							propietario de la prenda o accesorio.
 						</Highlight>
 					</Stack>
-					<Stack display={page == 3 ? 'block' : 'none'}>
+					<Stack display={value == 3 ? 'block' : 'none'}>
 						<Image w='80%' src={modal3} />
 						<Highlight
 							query={['no es necesario que te registres', ' propietario']}
 							styles={{ fontWeight: 'bolder', color: 'segundo' }}
 						>
 							Si querés vender o regalar tus prendas, es necesario que te
-							registres y brindes algunos datos básicos de contacto. ¡Estamos contentos de que te sumes a		la moda circular!
+							registres y brindes algunos datos básicos de contacto. ¡Estamos
+							contentos de que te sumes a la moda circular!
 						</Highlight>
 					</Stack>
 				</ModalBody>
 				<ModalFooter justifyContent='center'>
-					<Stack direction='row' w='50%' justify='center' p={1}>
-						<Button
-							borderRadius={100}
-							size='xs'
-							colorScheme='whatsapp'
-							_focus={{boxShadow: 0}}
-							variant={page == 1 ? 'solid' : 'outline'}
-							onClick={() => setPage(1)}
-						/>
-						<Button
-							borderRadius={100}
-							size='xs'
-							colorScheme='whatsapp'
-							variant={page == 2 ? 'solid' : 'outline'}
-							onClick={() => setPage(2)}
-						/>
-						<Button
-							borderRadius={100}
-							size='xs'
-							colorScheme='whatsapp'
-							variant={page == 3 ? 'solid' : 'outline'}
-							onClick={() => setPage(3)}
-						/>
-					</Stack>
+					<RadioGroup p={1} onChange={setValue} value={value}>
+						<Stack spacing={5} justifyContent='space-between' direction='row'>
+							<Radio
+								borderColor='cuarto'
+								_checked={{
+									bg: 'cuarto',
+								}}
+								value='1'
+								size='md'
+								_focus={{ shadow: 'none' }}
+							/>
+							<Radio
+								borderColor='cuarto'
+								_checked={{
+									bg: 'cuarto',
+								}}
+								value='2'
+								size='md'
+								_focus={{ shadow: 'none' }}
+							/>
+							<Radio
+								borderColor='cuarto'
+								_checked={{
+									bg: 'cuarto',
+								}}
+								value='3'
+								size='md'
+								_focus={{ shadow: 'none' }}
+							/>
+						</Stack>
+					</RadioGroup>
 				</ModalFooter>
 			</ModalContent>
 		</Modal>

@@ -30,7 +30,7 @@ const Producto = ({ titulo, imagen, talle, precio, fecha, id }) => {
 				<Image
 					src={imagen}
 					alt='Green double couch with wooden legs'
-					borderRadius='lg'
+					borderRadius='md'
 					objectFit='cover'
 					h='2xs'
 					w='100%'
@@ -57,8 +57,12 @@ const Producto = ({ titulo, imagen, talle, precio, fecha, id }) => {
 						<Text color='segundo' as='b' fontSize='2xl'>
 							$ {precio}
 						</Text>
-						<Text color='tercero' as='b'
-						fontSize="sm" textTransform='uppercase'>
+						<Text
+							color='tercero'
+							as='b'
+							fontSize='sm'
+							textTransform='uppercase'
+						>
 							Talle: {talle}
 						</Text>
 					</Stack>

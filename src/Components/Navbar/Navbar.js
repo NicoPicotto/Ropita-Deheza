@@ -1,9 +1,22 @@
 import React, { useState } from 'react';
-import { Stack, Image, Button, Link, StackDivider } from '@chakra-ui/react';
+import {
+	Stack,
+	Image,
+	Button,
+	Link,
+	StackDivider,
+	useMediaQuery,
+	useDisclosure,
+	Drawer,
+	DrawerBody,
+	DrawerOverlay,
+	DrawerContent,
+} from '@chakra-ui/react';
 import { useAuth } from '../../Context/Context';
 import { useNavigate } from 'react-router-dom';
 import { BsPersonFill } from 'react-icons/bs';
-import { FaTshirt } from 'react-icons/fa';
+import { FaTshirt, FaHome } from 'react-icons/fa';
+import { FiMenu } from 'react-icons/fi';
 import { MdAssignment } from 'react-icons/md';
 import { GoSignOut, GoSignIn } from 'react-icons/go';
 import { Link as ReachLink } from 'react-router-dom';
@@ -11,6 +24,8 @@ import logo2 from '../../logo2.png';
 const Navbar = () => {
 	const { logout, user, userUid } = useAuth();
 	const navigate = useNavigate();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	//Fución para cerrar la sesión.
 	const handleLogout = async () => {
@@ -45,7 +60,12 @@ const Navbar = () => {
 			pos='fixed'
 			top={0}
 		>
-			<Stack direction='row' justify='space-between' align='center' w='4xl' >
+			<Stack
+				direction='row'
+				justify='space-between'
+				align='center'
+				w={isMobile ? '90%' : '4xl'}
+			>
 				<Link as={ReachLink} to='/'>
 					<Image
 						src={logo2}
@@ -54,64 +74,168 @@ const Navbar = () => {
 						transition='0.3s'
 					/>
 				</Link>
-				<Stack direction='row'>
-					{user ? (
-						<Stack direction='row' divider={<StackDivider />} spacing={3}>
-							<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
+
+				{isMobile ? (
+					<>
+						<Button onClick={onOpen} bgColor='transparent' size='lg'>
+							<FiMenu color='white' />
+						</Button>
+						<Drawer isOpen={isOpen} placement='top' onClose={onClose}>
+							<DrawerOverlay />
+							<DrawerContent>
+								<DrawerBody>
+									{user ? (
+										<Stack
+											direction='column'
+											divider={<StackDivider />}
+											spacing={3}
+											paddingBlock={5}
+											align='center'
+										>
+											<Link as={ReachLink} to='/'>
+												<Image
+													src={logo2}
+													w={colorChange ? '150px' : '200px'}
+													objectFit='contain'
+													transition='0.3s'
+													onClick={onClose}
+												/>
+											</Link>
+											<Link as={ReachLink} to={'/'} _hover={{}}>
+												<Button
+													leftIcon={<FaHome />}
+													size='sm'
+													variant='link'
+													color='segundo'
+													onClick={onClose}
+												>
+													Inicio
+												</Button>
+											</Link>
+											<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
+												<Button
+													leftIcon={<FaTshirt />}
+													size='sm'
+													variant='link'
+													color='segundo'
+													onClick={onClose}
+												>
+													Agregar
+												</Button>
+											</Link>
+											<Link as={ReachLink} to={`/${userUid}`} _hover={{}}>
+												<Button
+													leftIcon={<BsPersonFill />}
+													size='sm'
+													variant='link'
+													color='segundo'
+													onClick={onClose}
+												>
+													Perfil
+												</Button>
+											</Link>
+											<Button
+												leftIcon={<GoSignOut />}
+												size='sm'
+												variant='link'
+												color='segundo'
+												onClick={handleLogout}
+											>
+												Cerrar sesión
+											</Button>
+										</Stack>
+									) : (
+										<Stack
+											direction='row'
+											divider={<StackDivider />}
+											spacing={3}
+										>
+											<Link as={ReachLink} to={'/login'} _hover={{}}>
+												<Button
+													size='sm'
+													variant='link'
+													color='white'
+													leftIcon={<GoSignIn />}
+												>
+													Iniciá sesión
+												</Button>
+											</Link>
+											<Link as={ReachLink} to={'/register'} _hover={{}}>
+												<Button
+													size='sm'
+													variant='link'
+													color='white'
+													leftIcon={<MdAssignment />}
+												>
+													Registrate
+												</Button>
+											</Link>
+										</Stack>
+									)}
+								</DrawerBody>
+							</DrawerContent>
+						</Drawer>
+					</>
+				) : (
+					<Stack direction='row'>
+						{user ? (
+							<Stack direction='row' divider={<StackDivider />} spacing={3}>
+								<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
+									<Button
+										leftIcon={<FaTshirt />}
+										size='sm'
+										variant='link'
+										color='white'
+									>
+										Agregar
+									</Button>
+								</Link>
+								<Link as={ReachLink} to={`/${userUid}`} _hover={{}}>
+									<Button
+										leftIcon={<BsPersonFill />}
+										size='sm'
+										variant='link'
+										color='white'
+									>
+										Perfil
+									</Button>
+								</Link>
 								<Button
-									leftIcon={<FaTshirt />}
+									leftIcon={<GoSignOut />}
 									size='sm'
 									variant='link'
 									color='white'
+									onClick={handleLogout}
 								>
-									Agregar
+									Cerrar sesión
 								</Button>
-							</Link>
-							<Link as={ReachLink} to={`/${userUid}`} _hover={{}}>
-								<Button
-									leftIcon={<BsPersonFill />}
-									size='sm'
-									variant='link'
-									color='white'
-								>
-									Perfil
-								</Button>
-							</Link>
-							<Button
-								leftIcon={<GoSignOut />}
-								size='sm'
-								variant='link'
-								color='white'
-								onClick={handleLogout}
-							>
-								Cerrar sesión
-							</Button>
-						</Stack>
-					) : (
-						<Stack direction='row' divider={<StackDivider />} spacing={3}>
-							<Link as={ReachLink} to={'/login'} _hover={{}}>
-								<Button
-									size='sm'
-									variant='link'
-									color='white'
-									leftIcon={<GoSignIn />}
-								>
-									Iniciá sesión
-								</Button>
-							</Link>
-							<Link as={ReachLink} to={'/register'} _hover={{}}>
-								<Button
-									size='sm'
-									variant='link'
-									color='white'
-									leftIcon={<MdAssignment />}
-								>
-									Registrate
-								</Button>
-							</Link>
-						</Stack>
-					)}
-				</Stack>
+							</Stack>
+						) : (
+							<Stack direction='row' divider={<StackDivider />} spacing={3}>
+								<Link as={ReachLink} to={'/login'} _hover={{}}>
+									<Button
+										size='sm'
+										variant='link'
+										color='white'
+										leftIcon={<GoSignIn />}
+									>
+										Iniciá sesión
+									</Button>
+								</Link>
+								<Link as={ReachLink} to={'/register'} _hover={{}}>
+									<Button
+										size='sm'
+										variant='link'
+										color='white'
+										leftIcon={<MdAssignment />}
+									>
+										Registrate
+									</Button>
+								</Link>
+							</Stack>
+						)}
+					</Stack>
+				)}
 			</Stack>
 		</Stack>
 	);
