@@ -49,7 +49,7 @@ const DetallesAdentro = ({
 			>
 				<Stack
 					bgColor='fondo'
-					h={isMobile ? 'xl' : '100%'}
+					h={isMobile ? 'xs' : '100%'}
 					borderRadius={10}
 					w={isMobile ? '100%' : '50%'}
 					align='center'
@@ -117,13 +117,13 @@ const DetallesAdentro = ({
 					</Stack>
 					<Stack>
 						<Stack>
-							<Text fontSize='sm'>
-								Producto publicado por{' '}
-								<Text as='b' fontSize='sm' color='segundo'>
+							<Text fontSize={isMobile ? 'xs' : 'sm'}>
+								Publicado por{' '}
+								<Text as='b' fontSize={isMobile ? 'xs' : 'sm'} color='segundo'>
 									{nombre} {apellido}{' '}
 								</Text>{' '}
 								el{' '}
-								<Text as='b' fontSize='sm' color='segundo'>
+								<Text as='b' fontSize={isMobile ? 'xs' : 'sm'} color='segundo'>
 									{fechaFormateada}
 								</Text>
 								.

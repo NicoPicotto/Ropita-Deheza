@@ -1,22 +1,19 @@
 import React from 'react';
 import { Stack, useMediaQuery } from '@chakra-ui/react';
-import Detalle from '../Components/Productos/Detalle';
+import TutorialComponent from '../Components/Tutorial/TutorialComponent';
 
-const ProductoView = () => {
+const TutorialView = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 	return (
 		<Stack
 			bgColor='fondo'
-			justify='center'
-			p={5}
-			w='100vw'
-			h={!isMobile && "100vh"}
-			spacing={5}
+			h={!isMobile && '100vh'}
 			align='center'
+			justify='center'
 		>
-			<Detalle />
+			<TutorialComponent />
 		</Stack>
 	);
 };
 
-export default ProductoView;
+export default TutorialView;

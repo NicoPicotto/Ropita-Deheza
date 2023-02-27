@@ -13,10 +13,11 @@ import ProductoView from './Views/ProductoView';
 import HelpView from './Views/HelpView';
 import Footer from './Components/Footer/Footer';
 import ScrolToTop from './Components/ScrollToTop/ScrollToTop';
-import "@fontsource/titan-one"
-import "@fontsource/montserrat"
+import '@fontsource/titan-one';
+import '@fontsource/montserrat';
 import ReglasView from './Views/ReglasView';
 import ErrorPage from './Views/ErrorPage';
+import TutorialView from './Views/TutorialView';
 
 const App = () => {
 	return (
@@ -34,6 +35,7 @@ const App = () => {
 						<Route path='/producto/:id' element={<ProductoView />} />
 						<Route path='/ayuda' element={<HelpView />} />
 						<Route path='/reglas' element={<ReglasView />} />
+						<Route path='/tutorial' element={<TutorialView />} />
 						<Route path='*' element={<ErrorPage />} />
 					</Routes>
 					<Footer />

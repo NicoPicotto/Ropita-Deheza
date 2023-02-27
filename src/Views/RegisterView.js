@@ -1,9 +1,9 @@
 import React from 'react';
-import { Stack, useMediaQuery } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import RegisterComponent from '../Components/Auth/RegisterComponent';
 
 const RegisterView = () => {
-	const [isMobile] = useMediaQuery('(max-width: 1100px)');
+
 	return (
 		<Stack bgColor='fondo'
 		justify='center'

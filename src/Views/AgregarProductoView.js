@@ -15,7 +15,7 @@ const AgregarProductoView = () => {
 			marginTop={isMobile && "75px"}
 			spacing={5}
 			align='center'
-			h='100vh'
+			h={!isMobile && "100vh"}
 		>
 			<NuevoProducto />
 			<Aclaraciones />

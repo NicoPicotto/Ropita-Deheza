@@ -17,7 +17,7 @@ import { useNavigate } from 'react-router-dom';
 import { BsPersonFill } from 'react-icons/bs';
 import { FaTshirt, FaHome } from 'react-icons/fa';
 import { FiMenu } from 'react-icons/fi';
-import { MdAssignment } from 'react-icons/md';
+import { MdAssignment, MdQuestionAnswer } from 'react-icons/md';
 import { GoSignOut, GoSignIn } from 'react-icons/go';
 import { Link as ReachLink } from 'react-router-dom';
 import logo2 from '../../logo2.png';
@@ -29,6 +29,7 @@ const Navbar = () => {
 
 	//Fución para cerrar la sesión.
 	const handleLogout = async () => {
+		onClose()
 		try {
 			await logout();
 			navigate('/');
@@ -138,6 +139,17 @@ const Navbar = () => {
 													Perfil
 												</Button>
 											</Link>
+											<Link as={ReachLink} to='tutorial' _hover={{}}>
+												<Button
+													leftIcon={<MdQuestionAnswer />}
+													size='sm'
+													variant='link'
+													color='segundo'
+													onClick={onClose}
+												>
+													Tutorial
+												</Button>
+											</Link>
 											<Button
 												leftIcon={<GoSignOut />}
 												size='sm'
@@ -165,12 +177,24 @@ const Navbar = () => {
 													onClick={onClose}
 												/>
 											</Link>
+											<Link as={ReachLink} to='tutorial' _hover={{}}>
+												<Button
+													leftIcon={<MdQuestionAnswer />}
+													size='sm'
+													variant='link'
+													color='segundo'
+													onClick={onClose}
+												>
+													Tutorial
+												</Button>
+											</Link>
 											<Link as={ReachLink} to={'/login'} _hover={{}}>
 												<Button
 													size='sm'
 													variant='link'
 													color='segundo'
 													leftIcon={<GoSignIn />}
+													onClick={onClose}
 												>
 													Iniciá sesión
 												</Button>
@@ -180,6 +204,7 @@ const Navbar = () => {
 													size='sm'
 													variant='link'
 													color='segundo'
+													onClick={onClose}
 													leftIcon={<MdAssignment />}
 												>
 													Registrate
@@ -205,7 +230,7 @@ const Navbar = () => {
 										Agregar
 									</Button>
 								</Link>
-								<Link as={ReachLink} to={`/${userUid}`} _hover={{}}>
+								<Link as={ReachLink} to={`/usuario/${userUid}`} _hover={{}}>
 									<Button
 										leftIcon={<BsPersonFill />}
 										size='sm'
@@ -213,6 +238,17 @@ const Navbar = () => {
 										color='white'
 									>
 										Perfil
+									</Button>
+								</Link>
+								<Link as={ReachLink} to='tutorial' _hover={{}}>
+									<Button
+										leftIcon={<MdQuestionAnswer />}
+										size='sm'
+										variant='link'
+										color='white'
+										onClick={onClose}
+									>
+										Tutorial
 									</Button>
 								</Link>
 								<Button
@@ -227,6 +263,17 @@ const Navbar = () => {
 							</Stack>
 						) : (
 							<Stack direction='row' divider={<StackDivider />} spacing={3}>
+								<Link as={ReachLink} to='tutorial' _hover={{}}>
+									<Button
+										leftIcon={<MdQuestionAnswer />}
+										size='sm'
+										variant='link'
+										color='white'
+										onClick={onClose}
+									>
+										Tutorial
+									</Button>
+								</Link>
 								<Link as={ReachLink} to={'/login'} _hover={{}}>
 									<Button
 										size='sm'

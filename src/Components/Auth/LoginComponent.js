@@ -106,7 +106,7 @@ const LoginComponent = () => {
 					</Text>
 				)}
 			</Stack>
-			<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && "100%"}>
+			<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && '100%'}>
 				<Button
 					type='submit'
 					color='white'
@@ -115,13 +115,12 @@ const LoginComponent = () => {
 				>
 					Iniciá sesión
 				</Button>
-				<Link as={ReachLink} to='/register' _hover={{}} >
+				<Link as={ReachLink} to='/register' _hover={{}}>
 					<Button
 						color='segundo'
-						w={isMobile && "100%"}
+						w={isMobile && '100%'}
 						variant='outline'
 						borderColor='segundo'
-						
 						_hover={{
 							bgColor: 'cuarto',
 							borderColor: 'transparent',

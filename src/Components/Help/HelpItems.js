@@ -11,7 +11,7 @@ const HelpItems = ({ titulo, texto }) => {
 	return (
 		<AccordionItem>
 			<AccordionButton _expanded={{ bg: 'cuarto', color: 'white' }}>
-				<Box as='span' flex='1' textAlign='left'>
+				<Box as='span' fontWeight="bold" flex='1' textAlign='left'>
 					{titulo}
 				</Box>
 				<AccordionIcon />

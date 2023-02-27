@@ -2,25 +2,23 @@ import React from 'react';
 import {
 	Stack,
 	Accordion,
-	AccordionItem,
-	Box,
-	AccordionIcon,
-	AccordionButton,
-	AccordionPanel,
 	Heading,
 	Divider,
+	useMediaQuery,
 } from '@chakra-ui/react';
 import HelpItems from './HelpItems';
 
 const HelpAccordion = () => {
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
+
 	const helpText = [
 		{
-			titulo: '¿Debo tener una cuenta para publicar un producto?',
+			titulo: '¿Debo registrarme para publicar un producto?',
 			texto:
 				'Sí. Es necesario tener una cuenta y brindar datos básicos de contacto para generar seguridad y respondabilidad a la hora de publicar un producto.',
 		},
 		{
-			titulo: '¿Debo tener una cuenta para comprar/pedir un producto?',
+			titulo: '¿Debo registrarme para comprar/pedir un producto?',
 			texto:
 				'No. El proceso de compra/adquisición no necesita un inicio de sesión ni datos de contacto ya que se concreta vía Whatsapp directamente con el propietario.',
 		},
@@ -40,6 +38,11 @@ const HelpAccordion = () => {
 				'Publicás el producto con normalidad desde la sección "Agregar", pero a la hora de indicar el precio colocás "0" (cero).',
 		},
 		{
+			titulo: 'Cambié mi número de teléfono ¿Qué hago?',
+			texto:
+				'En la sección "Perfil" vas a poder actualizar tus datos personales. Recordá que el número siempre debe tener el código del país (Ej: +549358200300)',
+		},
+		{
 			titulo: 'Tuve un problema con otro usuario ¿Qué hago?',
 			texto:
 				'En ese caso envianos un correo a info@nocuelgues.com detallando el inconveniente y nos pondremos en contacto.',
@@ -49,9 +52,11 @@ const HelpAccordion = () => {
 	return (
 		<Stack
 			align='center'
-			w='4xl'
+			w={isMobile ? '90%' : '4xl'}
 			bgColor='white'
 			borderRadius={5}
+			marginTop={isMobile && '100px'}
+			marginBottom={isMobile && "25px"}
 			p={5}
 			shadow='md'
 		>

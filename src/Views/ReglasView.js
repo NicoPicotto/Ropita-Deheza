@@ -1,19 +1,25 @@
 import React from 'react';
-import { Stack, Heading, Divider, Text } from '@chakra-ui/react';
+import { Stack, Heading, Divider, Text, useMediaQuery } from '@chakra-ui/react';
 
 const ReglasView = () => {
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 	return (
 		<Stack bgColor='fondo' align='center' justify='center'>
 			<Stack
 				p={5}
-				marginTop={40}
-				marginBottom={20}
-				w='4xl'
+				marginTop='100px'
+				marginBottom='25px'
+				w={isMobile ? '90%' : '4xl'}
 				bgColor='white'
 				borderRadius={5}
 				shadow='md'
 			>
-				<Heading fontFamily='fonts.heading' color='tercero'>
+				<Heading
+					fontFamily='fonts.heading'
+					size='lg'
+					color='segundo'
+					fontWeight='regular'
+				>
 					Reglas del sitio
 				</Heading>
 				<Divider borderColor='cuarto' />

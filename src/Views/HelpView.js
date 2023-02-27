@@ -1,13 +1,19 @@
-import React from 'react'
-import { Stack } from '@chakra-ui/react';
+import React from 'react';
+import { Stack, useMediaQuery } from '@chakra-ui/react';
 import HelpAccordion from '../Components/Help/HelpAccordion';
 
 const HelpView = () => {
-  return (
-    <Stack bgColor='fondo' h='100vh' align='center' justify="center">
-        <HelpAccordion />
-    </Stack>
-  )
-}
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
+	return (
+		<Stack
+			bgColor='fondo'
+			h={!isMobile && '100vh'}
+			align='center'
+			justify='center'
+		>
+			<HelpAccordion />
+		</Stack>
+	);
+};
 
-export default HelpView
+export default HelpView;

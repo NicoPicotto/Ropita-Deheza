@@ -164,7 +164,7 @@ const NuevoProducto = () => {
 			>
 				<Stack
 					bgColor='fondo'
-					h={isMobile ? 'xl' : '100%'}
+					h={isMobile ? 'xs' : '100%'}
 					borderRadius={10}
 					w={isMobile ? '100%' : '50%'}
 					align='center'
