@@ -1,0 +1,17 @@
+.modalImg {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+#root
+	> div.chakra-stack.css-10gmaum
+	> div
+	> div
+	> div.chakra-stack.css-15x9ctx
+	> div.chakra-stack.css-dnhvq6
+	> div
+	> div.chakra-stack.css-1l6nge1
+	> div {
+	height: 100%;
+}

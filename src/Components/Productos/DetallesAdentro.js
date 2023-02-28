@@ -9,6 +9,8 @@ import {
 	StackDivider,
 	useMediaQuery,
 } from '@chakra-ui/react';
+import ModalImage from 'react-modal-image';
+import './modalImage.css';
 import { BsWhatsapp } from 'react-icons/bs';
 
 const DetallesAdentro = ({
@@ -72,19 +74,19 @@ const DetallesAdentro = ({
 									key={img}
 									w={isMobile ? '33%' : '100%'}
 									src={img}
-									alt='Imagen del producto'
+									alt={titulo}
 									objectFit='cover'
-									onClick={(e) => setImageShow(img)}
+									onClick={() => setImageShow(img)}
 								/>
 							))}
 						</Stack>
 						<Stack w={isMobile ? '100%' : '75%'} h={isMobile && '75%'}>
-							<Image
-								h='100%'
-								w='100%'
-								src={imageShow}
-								alt='Imagen del producto'
-								objectFit='cover'
+							<ModalImage
+								className='modalImg'
+								small={imageShow}
+								large={imageShow}
+								alt={titulo}
+								hideDownload={true}
 							/>
 						</Stack>
 					</Stack>
