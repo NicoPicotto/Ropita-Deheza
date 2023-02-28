@@ -22,7 +22,7 @@ const TutorialComponent = () => {
 			align='center'
 			w={isMobile ? '90%' : '4xl'}
 			marginTop={isMobile && '100px'}
-			marginBottom={isMobile && "25px"}
+			marginBottom={isMobile && '25px'}
 			bgColor='white'
 			borderRadius={5}
 			p={5}
@@ -36,7 +36,7 @@ const TutorialComponent = () => {
 					fontFamily='fonts.heading'
 					fontWeight='regular'
 					overflow='hidden'
-					textAlign="center"
+					textAlign='center'
 				>
 					¿Cómo funciona No Cuelgues?
 				</Heading>
@@ -48,7 +48,7 @@ const TutorialComponent = () => {
 				justify='space-between'
 			>
 				<Stack w={isMobile ? '100%' : '30%'} align='center'>
-					<Image src={tut3} h='50%' />
+					<Image src={tut3} h='auto' />
 					<Heading color='segundo' size='2xs' textAlign='center'>
 						¿Querés vender o regalar algo?
 					</Heading>

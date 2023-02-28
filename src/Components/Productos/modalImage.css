@@ -13,5 +13,17 @@
 	> div
 	> div.chakra-stack.css-1l6nge1
 	> div {
-	height: 100%;
+	height: 100% !important;
+}
+
+#root
+	> div.chakra-stack.css-1ribele
+	> div
+	> div
+	> div.chakra-stack.css-1ui8mg3
+	> div.chakra-stack.css-1ol5vhs
+	> div
+	> div.chakra-stack.css-247abj
+	> div {
+	height: 100% !important;
 }
