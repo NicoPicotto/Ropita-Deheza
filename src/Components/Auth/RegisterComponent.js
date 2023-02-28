@@ -75,6 +75,7 @@ const RegisterComponent = () => {
 			w={isMobile ? '90%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
+			marginTop={isMobile && '100px'}
 			p={5}
 			shadow='md'
 			justify='space-between'
@@ -84,7 +85,7 @@ const RegisterComponent = () => {
 		>
 			<Stack align='center' w='100%'>
 				<Heading
-					size='lg'
+					size={isMobile ? 'md' : 'lg'}
 					color='segundo'
 					fontFamily='fonts.heading'
 					fontWeight='regular'

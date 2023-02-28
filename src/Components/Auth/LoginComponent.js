@@ -52,6 +52,7 @@ const LoginComponent = () => {
 			w={isMobile ? '90%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
+			marginTop={isMobile && '100px'}
 			p={5}
 			shadow='md'
 			justify='space-between'
@@ -61,7 +62,7 @@ const LoginComponent = () => {
 		>
 			<Stack w='100%' align='center'>
 				<Heading
-					size='lg'
+					size={isMobile ? 'md' : 'lg'}
 					color='segundo'
 					fontFamily='fonts.heading'
 					fontWeight='regular'

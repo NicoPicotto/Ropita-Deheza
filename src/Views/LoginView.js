@@ -8,7 +8,7 @@ const LoginView = () => {
 	return (
 		<Stack
 			bgColor='fondo'
-			justify='center'
+			justify={!isMobile && 'center'}
 			p={5}
 			w='100vw'
 			spacing={5}

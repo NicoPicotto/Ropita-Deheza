@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Stack, Heading, Divider, Spinner, useToast } from '@chakra-ui/react';
+import {
+	Stack,
+	Heading,
+	Divider,
+	Spinner,
+	useToast,
+	useMediaQuery,
+} from '@chakra-ui/react';
 import { getDoc, doc, updateDoc } from 'firebase/firestore';
 import { useParams } from 'react-router-dom';
 import { firestore } from '../../firebase';
@@ -10,6 +17,7 @@ const Profile = () => {
 	const [datosPersonales, setDatosPersonales] = useState(null);
 	const toast = useToast();
 	const paramsID = useParams();
+	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	useEffect(() => {
 		const getEntrada = async () => {
@@ -45,9 +53,15 @@ const Profile = () => {
 	};
 
 	return (
-		<Stack borderRadius={5} as='form' w='50%' h='100%'>
+		<Stack
+			borderRadius={5}
+			as='form'
+			w={isMobile ? '100%' : '50%'}
+			h={!isMobile && '100%'}
+		>
 			<Stack>
 				<Heading
+					size={isMobile ? 'md' : 'lg'}
 					color='segundo'
 					textAlign='center'
 					fontFamily='fonts.heading'

@@ -46,7 +46,7 @@ const NuevoProducto = () => {
 	const toast = useToast();
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
-	//Traer los datos del usuario logeado para pasarlos
+	//Traer los datos del usuario logeado para pasarlos al producto
 	useEffect(() => {
 		const getEntrada = async () => {
 			const docRef = doc(firestore, 'usuarios', userUid);
@@ -61,12 +61,12 @@ const NuevoProducto = () => {
 		getEntrada();
 	}, [userUid]);
 
-	//Función para subir una imagen al storage
+	//Función para subir imagenes al storage
 	const uploadImage = () => {
 		setIsLoading(true);
 		const filesArray = Array.from(imageUpload);
 		const promises = [];
-		filesArray.map((file) => {
+		filesArray.forEach((file) => {
 			const sotrageRef = ref(storage, `productos/${file.name + v4()}`);
 
 			const uploadTask = uploadBytesResumable(sotrageRef, file);
@@ -95,6 +95,7 @@ const NuevoProducto = () => {
 
 	//Función para publicar el producto
 	const handleSubmit = async (e) => {
+		setIsLoading(true);
 		e.preventDefault();
 		if (titulo && imagenCargada && descripcion && talle && precio !== '') {
 			await addDoc(collection(firestore, 'productos'), {
@@ -118,6 +119,7 @@ const NuevoProducto = () => {
 				variant: 'top-accent',
 				position: 'top',
 			});
+			setIsLoading(false);
 			navigate('/');
 		} else {
 			toast({
@@ -170,7 +172,6 @@ const NuevoProducto = () => {
 					align='center'
 					justify='center'
 				>
-					{isLoading && <Spinner color='cuarto' />}
 					{imageShow ? (
 						<Stack
 							direction={isMobile ? 'column-reverse' : 'row'}
@@ -285,7 +286,7 @@ const NuevoProducto = () => {
 							label='Si lo que estás publicando no tiene talle, colocale "Talle único". Ej: Una gorra.'
 							bgColor='tercero'
 							color='white'
-							placement='left'
+							placement={isMobile ? 'top' : 'left'}
 						>
 							<Input
 								variant='outline'
@@ -302,7 +303,7 @@ const NuevoProducto = () => {
 							label='Recordá que si tu intención es regalarlo, podés ponerle $0'
 							bgColor='tercero'
 							color='white'
-							placement='right'
+							placement={isMobile ? 'top' : 'right'}
 						>
 							<Input
 								variant='outline'
@@ -321,16 +322,15 @@ const NuevoProducto = () => {
 						<Tooltip
 							label='¡Atención! Estás a punto de publicar un producto. Esto implica que, al entrar al producto, las personas podrán ver tu nombre y número telefónico para contactarte.'
 							bgColor='tercero'
-							placement='right'
+							placement={isMobile ? 'top' : 'right'}
 						>
 							<Button
 								bgColor='segundo'
 								type='submit'
 								color='white'
 								_hover={{ bgColor: 'cuarto' }}
-								loadingText='Publicando...'
 							>
-								Publicar producto
+								{isLoading ? <Spinner color='white' /> : 'Publicar producto'}
 							</Button>
 						</Tooltip>
 					</Stack>

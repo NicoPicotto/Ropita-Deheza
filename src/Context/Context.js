@@ -17,7 +17,6 @@ export const useAuth = () => {
 
 export const ContextProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
-	const [search, setSearch] = useState('');
 	const [email, setEmail] = useState("")
 	const [loading, setLoading] = useState(true);
 	const [userUid, setUserUid] = useState("")
