@@ -93,7 +93,7 @@ const TutorialComponent = () => {
 					</Stack>
 				</Stack>
 				<Stack w={isMobile ? '100%' : '30%'} align='center'>
-					<Image src={tut1} h='50%' />
+					<Image src={tut1} h='auto' />
 					<Heading color='segundo' size='2xs' textAlign='center'>
 						¿Buscás algo de segunda mano?
 					</Heading>
@@ -120,7 +120,7 @@ const TutorialComponent = () => {
 					</Stack>
 				</Stack>
 				<Stack w={isMobile ? '100%' : '30%'} align='center'>
-					<Image src={tut2} h='50%' />
+					<Image src={tut2} h='auto' />
 					<Heading color='segundo' size='2xs' textAlign='center'>
 						Más información importante
 					</Heading>

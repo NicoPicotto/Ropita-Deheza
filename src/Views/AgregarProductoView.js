@@ -12,10 +12,10 @@ const AgregarProductoView = () => {
 			justify='center'
 			p={5}
 			w='100vw'
-			marginTop={isMobile && "75px"}
+			marginTop={isMobile && '75px'}
 			spacing={5}
 			align='center'
-			h={!isMobile && "100vh"}
+			h={!isMobile && '100vh'}
 		>
 			<NuevoProducto />
 			<Aclaraciones />
