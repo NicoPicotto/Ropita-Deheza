@@ -1,6 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { collection, query, onSnapshot, orderBy } from 'firebase/firestore';
-import { Stack, Spinner, Grid, Heading, useMediaQuery } from '@chakra-ui/react';
+import {
+	Stack,
+	Spinner,
+	Grid,
+	Heading,
+	useMediaQuery,
+	Select,
+	Button,
+} from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
 import HomeLanding from '../Components/HomeLanding/HomeLanding';
@@ -9,6 +17,8 @@ import ModalStart from '../Components/ModalStart/ModalStart';
 const HomeView = () => {
 	const [productos, setProductos] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [filtroTalle, setFiltroTalle] = useState('');
+	const [filtroCategoria, setFiltroCategoria] = useState('');
 	const abierto = localStorage.getItem('opened');
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
@@ -30,22 +40,45 @@ const HomeView = () => {
 		return () => unsub();
 	}, []);
 
+	//Referenciando filtros
+	const talleRef = useRef();
+	const categoriaRef = useRef();
+
+
 	return (
 		<>
 			{abierto === null && <ModalStart />}
 			<Stack bgColor='fondo' align='center' w='100vw'>
 				<HomeLanding />
-				<Stack w='100%' bgColor='tercero' marginTop='0 !important'>
-					<Heading
-						fontFamily='fonts.heading'
-						color='fondo'
-						fontWeight='regular'
-						p={3}
-						size='md'
-						textAlign='center'
-					>
-						Productos destacados
-					</Heading>
+				<Stack
+					w='100%'
+					bgColor='tercero'
+					marginTop='0 !important'
+					direction='row'
+					justify='center'
+				>
+					<Stack direction='row' align='center' margin={5}>
+						<Select
+							bgColor='white'
+							placeholder='Categoría'
+							ref={categoriaRef}
+							w='fit-content'
+							onChange={(e) => setFiltroCategoria(e.target.value)}
+						>
+							<option value='Remeras'>Remeras</option>
+							<option value='Chombas'>Chombas</option>
+							<option value='Camisas'>Camisas</option>
+							<option value='Buzos'>Buzos</option>
+							<option value='Camperas'>Camperas</option>
+							<option value='Pantalones'>Pantalones</option>
+							<option value='Bermudas'>Bermudas</option>
+							<option value='Shorts<'>Shorts</option>
+							<option value='Vestidos'>Vestidos</option>
+							<option value='Accesorios'>Accesorios</option>
+							<option value='Calzado'>Calzado</option>
+						</Select>
+						
+					</Stack>
 				</Stack>
 				<Stack w={isMobile ? '90%' : '4xl'} align='center'>
 					{loading && <Spinner size='lg' margin={5} color='cuarto' />}
@@ -57,7 +90,48 @@ const HomeView = () => {
 						p={3}
 						marginBlock={3}
 					>
-						{productos.map((prod) => (
+						{productos &&
+							productos.map((prod) => {
+								if (filtroTalle & filtroCategoria === '') {
+									return (
+										<Producto
+											key={prod.id}
+											email={prod.email}
+											id={prod.id}
+											titulo={prod.titulo}
+											descripcion={prod.descripcion}
+											fecha={prod.fecha}
+											imagen={prod.imagen}
+											telefono={prod.telefono}
+											apellido={prod.apellido}
+											talle={prod.talle}
+											precio={prod.precio}
+											nombre={prod.nombre}
+										/>
+									);
+								}
+								if (prod.categoria.includes(filtroCategoria)) {
+									return (
+										<Producto
+											key={prod.id}
+											email={prod.email}
+											id={prod.id}
+											titulo={prod.titulo}
+											descripcion={prod.descripcion}
+											fecha={prod.fecha}
+											imagen={prod.imagen}
+											telefono={prod.telefono}
+											apellido={prod.apellido}
+											talle={prod.talle}
+											precio={prod.precio}
+											nombre={prod.nombre}
+										/>
+									);
+								} else {
+									return;
+								}
+							})}
+						{/* {productos.map((prod) => (
 							<Producto
 								key={prod.id}
 								email={prod.email}
@@ -72,7 +146,7 @@ const HomeView = () => {
 								precio={prod.precio}
 								nombre={prod.nombre}
 							/>
-						))}
+						))} */}
 					</Grid>
 				</Stack>
 			</Stack>

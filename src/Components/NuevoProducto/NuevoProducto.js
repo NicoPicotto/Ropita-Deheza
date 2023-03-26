@@ -321,8 +321,9 @@ const NuevoProducto = () => {
 								w='30%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
+								textTransform="uppercase"
 								isRequired
-							></Input>
+							/>
 						</Tooltip>
 						<Tooltip
 							label='Recordá que si tu intención es regalarlo, podés ponerle $0'
