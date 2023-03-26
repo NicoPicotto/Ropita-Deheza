@@ -13,6 +13,7 @@ import {
 	Text,
 	FormLabel,
 	useMediaQuery,
+	Select,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -38,6 +39,7 @@ const NuevoProducto = () => {
 	const [descripcion, setDescripcion] = useState('');
 	const [talle, setTalle] = useState('');
 	const [precio, setPrecio] = useState('');
+	const [categoria, setCategoria] = useState('');
 	const [imageUpload, setImageUpload] = useState([]);
 	const [imagenCargada, setImagenCargada] = useState(false);
 	const [progress, setProgress] = useState(0);
@@ -104,6 +106,7 @@ const NuevoProducto = () => {
 				imagen: URLs,
 				talle,
 				precio,
+				categoria,
 				uid: userUid,
 				nombre: datosPersonales.nombre,
 				apellido: datosPersonales.apellido,
@@ -282,6 +285,28 @@ const NuevoProducto = () => {
 						/>
 					</Stack>
 					<Stack direction='row'>
+						<Select
+							variant='outline'
+							value={categoria}
+							size={isMobile ? 'sm' : 'md'}
+							onChange={(e) => setCategoria(e.target.value)}
+							w='40%'
+							focusBorderColor='cuarto'
+							placeholder='Categoría'
+							isRequired
+						>
+							<option value='Remeras'>Remeras</option>
+							<option value='Chombas'>Chombas</option>
+							<option value='Camisas'>Camisas</option>
+							<option value='Buzos'>Buzos</option>
+							<option value='Camperas'>Camperas</option>
+							<option value='Pantalones'>Pantalones</option>
+							<option value='Bermudas'>Bermudas</option>
+							<option value='Shorts<'>Shorts</option>
+							<option value='Vestidos'>Vestidos</option>
+							<option value='Accesorios'>Accesorios</option>
+							<option value='Calzado'>Calzado</option>
+						</Select>
 						<Tooltip
 							label='Si lo que estás publicando no tiene talle, colocale "Talle único". Ej: Una gorra.'
 							bgColor='tercero'
@@ -293,7 +318,7 @@ const NuevoProducto = () => {
 								value={talle}
 								size={isMobile ? 'sm' : 'md'}
 								onChange={(e) => setTalle(e.target.value)}
-								w='50%'
+								w='30%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
 								isRequired
@@ -311,7 +336,7 @@ const NuevoProducto = () => {
 								size={isMobile ? 'sm' : 'md'}
 								value={precio}
 								onChange={(e) => setPrecio(e.target.value)}
-								w='50%'
+								w='30%'
 								focusBorderColor='cuarto'
 								type='number'
 								isRequired
