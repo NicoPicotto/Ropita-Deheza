@@ -47,7 +47,7 @@ const HomeView = () => {
 						Productos destacados
 					</Heading>
 				</Stack>
-				<Stack w={isMobile ? "90%" : "4xl"} align='center'>
+				<Stack w={isMobile ? '90%' : '4xl'} align='center'>
 					{loading && <Spinner size='lg' margin={5} color='cuarto' />}
 					<Grid
 						templateColumns={isMobile ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'}

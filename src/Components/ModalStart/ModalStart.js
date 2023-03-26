@@ -54,7 +54,6 @@ const ModalStart = () => {
 							también encontrar cositas lindas de segunda mano para vos.
 						</Highlight>
 					</Stack>
-
 					<Stack display={value == 2 ? 'block' : 'none'}>
 						<Image w='80%' src={modal2} />
 						<Highlight

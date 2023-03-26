@@ -1,7 +1,8 @@
 .modalImg {
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
+	height: 100% !important;
+	width: 100% !important;
+	cursor: zoom-in !important;
+	opacity: 0;
 }
 
 #root
@@ -14,6 +15,7 @@
 	> div.chakra-stack.css-1l6nge1
 	> div {
 	height: 100% !important;
+	width: 100% !important;
 }
 
 #root
@@ -26,4 +28,5 @@
 	> div.chakra-stack.css-247abj
 	> div {
 	height: 100% !important;
+	width: 100% !important;
 }

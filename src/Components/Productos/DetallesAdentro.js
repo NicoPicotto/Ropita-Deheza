@@ -6,11 +6,16 @@ import {
 	Button,
 	Heading,
 	Image,
+	Flex,
 	StackDivider,
 	useMediaQuery,
+	Modal,
+	ModalOverlay,
+	ModalContent,
+	useDisclosure,
+	ModalBody,
 } from '@chakra-ui/react';
-import ModalImage from 'react-modal-image';
-import './modalImage.css';
+import { ChevronRightIcon, ChevronLeftIcon } from '@chakra-ui/icons';
 import { BsWhatsapp } from 'react-icons/bs';
 
 const DetallesAdentro = ({
@@ -25,11 +30,26 @@ const DetallesAdentro = ({
 	imagen,
 }) => {
 	const fechaFormateada = fecha.toDate().toLocaleDateString('es-ES');
-	const [imageShow, setImageShow] = useState(imagen[0]);
+	const [imageShow, setImageShow] = useState(0);
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
+
+	const { isOpen, onOpen, onClose } = useDisclosure();
 
 	return (
 		<Stack w='100%'>
+			<Modal
+				isCentered
+				onClose={onClose}
+				isOpen={isOpen}
+				motionPreset='slideInBottom'
+			>
+				<ModalOverlay />
+				<ModalContent>
+					<ModalBody>
+						<Image src={imagen[imageShow]} />
+					</ModalBody>
+				</ModalContent>
+			</Modal>{' '}
 			<Stack align='center' marginBottom={3}>
 				<Heading
 					size={isMobile ? 'md' : 'lg'}
@@ -47,49 +67,53 @@ const DetallesAdentro = ({
 				align='center'
 				direction={isMobile ? 'column' : 'row'}
 				w='100%'
-				h={isMobile ? '100%' : 'xs'}
+				h={isMobile ? '100%' : 'md'}
 			>
 				<Stack
-					bgColor='fondo'
+					bgImage={imagen[imageShow]}
+					bgPos='center'
+					bgRepeat='no-repeat'
+					bgSize='cover'
 					h={isMobile ? 'xs' : '100%'}
 					borderRadius={10}
 					w={isMobile ? '100%' : '50%'}
+					direction='row'
 					align='center'
-					justify='center'
+					justify='space-between'
 				>
-					<Stack
-						direction={isMobile ? 'column-reverse' : 'row'}
-						w='100%'
+					<Button
+						variant='unstyled'
 						h='100%'
+						borderRadius={0}
+						bgColor='rgb(0,0,0, 0.4)'
+						p={0}
+						color='white'
+						_hover={{ paddingRight: 1 }}
+						transition='0.2s ease-in-out'
+						visibility={imageShow > 0 ? 'visible' : 'hidden'}
+						onClick={() => {
+							imageShow > 0 && setImageShow(imageShow - 1);
+						}}
 					>
-						<Stack
-							w={isMobile ? '100%' : '25%'}
-							direction={isMobile ? 'row' : 'column'}
-							h={isMobile && '25%'}
-						>
-							{imagen.map((img) => (
-								<Image
-									h={isMobile ? '100%' : '33%'}
-									cursor='pointer'
-									key={img}
-									w={isMobile ? '33%' : '100%'}
-									src={img}
-									alt={titulo}
-									objectFit='cover'
-									onClick={() => setImageShow(img)}
-								/>
-							))}
-						</Stack>
-						<Stack w={isMobile ? '100%' : '75%'} h={isMobile && '75%'}>
-							<ModalImage
-								className='modalImg'
-								small={imageShow}
-								large={imageShow}
-								alt={titulo}
-								hideDownload={true}
-							/>
-						</Stack>
-					</Stack>
+						<ChevronLeftIcon fontSize='4xl' textShadow='md' />
+					</Button>
+					<Flex w='100%' h='100%' onClick={onOpen} cursor='zoom-in'></Flex>
+					<Button
+						variant='unstyled'
+						h='100%'
+						borderRadius={0}
+						bgColor='rgb(0,0,0, 0.4)'
+						p={0}
+						color='white'
+						_hover={{ paddingLeft: 1 }}
+						transition='0.1s ease-in'
+						visibility={imageShow < imagen.length - 1 ? 'visible' : 'hidden'}
+						onClick={() => {
+							imageShow < imagen.length - 1 && setImageShow(imageShow + 1);
+						}}
+					>
+						<ChevronRightIcon fontSize='4xl' textShadow='md' />
+					</Button>
 				</Stack>
 				<Stack h='100%' w={isMobile ? '100%' : '50%'} justify='space-between'>
 					<Stack>
