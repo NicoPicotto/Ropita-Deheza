@@ -146,7 +146,7 @@ const DetallesAdentro = ({
 							<Text fontSize={isMobile ? 'xs' : 'sm'}>
 								Publicado por{' '}
 								<Text as='b' fontSize={isMobile ? 'xs' : 'sm'} color='segundo'>
-									{nombre} {apellido}{' '}
+									{nombre}{' '}
 								</Text>{' '}
 								el{' '}
 								<Text as='b' fontSize={isMobile ? 'xs' : 'sm'} color='segundo'>

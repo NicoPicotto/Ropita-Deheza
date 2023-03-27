@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
 	Heading,
 	Stack,
@@ -36,13 +36,8 @@ const NuevoProducto = () => {
 	const navigate = useNavigate();
 	const [datosPersonales, setDatosPersonales] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
-	const [titulo, setTitulo] = useState('');
-	const [descripcion, setDescripcion] = useState('');
-	const [talle, setTalle] = useState('');
-	const [precio, setPrecio] = useState('');
-	const [categoria, setCategoria] = useState('');
 	const [imageUpload, setImageUpload] = useState([]);
-	const [loadingImg, setLoadingImg] = useState(false)
+	const [loadingImg, setLoadingImg] = useState(false);
 	const [imagenCargada, setImagenCargada] = useState(false);
 	const [progress, setProgress] = useState(0);
 	const [URLs, setURLs] = useState([]);
@@ -65,6 +60,13 @@ const NuevoProducto = () => {
 		getEntrada();
 	}, [userUid]);
 
+	//Refs para los inputs
+	const tituloRef = useRef();
+	const descripcionRef = useRef();
+	const talleRef = useRef();
+	const precioRef = useRef();
+	const categoriaRef = useRef();
+
 	//Función para subir imagenes al storage
 	const uploadImage = () => {
 		const filesArray = Array.from(imageUpload);
@@ -80,7 +82,7 @@ const NuevoProducto = () => {
 					const percent = Math.round(
 						(snapshot.bytesTransferred / snapshot.totalBytes) * 100
 					); // update progress
-					setLoadingImg(true)
+					setLoadingImg(true);
 					setProgress(percent);
 				},
 				(error) => console.log(error),
@@ -94,21 +96,21 @@ const NuevoProducto = () => {
 		});
 		Promise.all(promises).then((err) => console.log(err));
 		setImagenCargada(true);
-		setLoadingImg(false)
+		setLoadingImg(false);
 	};
 
 	//Función para publicar el producto
 	const handleSubmit = async (e) => {
 		setIsLoading(true);
 		e.preventDefault();
-		if (titulo && imagenCargada && descripcion && talle && precio !== '') {
+		if (tituloRef && descripcionRef && descripcionRef && talleRef && precioRef !== '') {
 			await addDoc(collection(firestore, 'productos'), {
-				titulo,
-				descripcion,
+				titulo: tituloRef.current.value,
+				descripcion: descripcionRef.current.value,
 				imagen: URLs,
-				talle,
-				precio,
-				categoria,
+				talle: talleRef.current.value,
+				precio: precioRef.current.value,
+				categoria: categoriaRef.current.value,
 				uid: userUid,
 				nombre: datosPersonales.nombre,
 				apellido: datosPersonales.apellido,
@@ -127,6 +129,7 @@ const NuevoProducto = () => {
 			setIsLoading(false);
 			navigate('/');
 		} else {
+			setIsLoading(false);
 			toast({
 				title: 'Tenés campos sin completar.',
 				status: 'error',
@@ -276,8 +279,7 @@ const NuevoProducto = () => {
 						<Input
 							variant='outline'
 							size={isMobile ? 'sm' : 'md'}
-							value={titulo}
-							onChange={(e) => setTitulo(e.target.value)}
+							ref={tituloRef}
 							placeholder='Título del producto. Ej: Remera lisa.'
 							focusBorderColor='cuarto'
 							isRequired
@@ -287,8 +289,7 @@ const NuevoProducto = () => {
 						<Textarea
 							h='100%'
 							size={isMobile ? 'sm' : 'md'}
-							value={descripcion}
-							onChange={(e) => setDescripcion(e.target.value)}
+							ref={descripcionRef}
 							variant='outline'
 							placeholder='Descripción del producto. Ej: Color, tamaño, estado, detalles, etc.'
 							focusBorderColor='cuarto'
@@ -298,9 +299,8 @@ const NuevoProducto = () => {
 					<Stack direction='row'>
 						<Select
 							variant='outline'
-							value={categoria}
+							ref={categoriaRef}
 							size={isMobile ? 'sm' : 'md'}
-							onChange={(e) => setCategoria(e.target.value)}
 							w='40%'
 							focusBorderColor='cuarto'
 							placeholder='Categoría'
@@ -327,9 +327,8 @@ const NuevoProducto = () => {
 						>
 							<Input
 								variant='outline'
-								value={talle}
+								ref={talleRef}
 								size={isMobile ? 'sm' : 'md'}
-								onChange={(e) => setTalle(e.target.value)}
 								w='30%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
@@ -347,8 +346,7 @@ const NuevoProducto = () => {
 								variant='outline'
 								placeholder='$0'
 								size={isMobile ? 'sm' : 'md'}
-								value={precio}
-								onChange={(e) => setPrecio(e.target.value)}
+								ref={precioRef}
 								w='30%'
 								focusBorderColor='cuarto'
 								type='number'
