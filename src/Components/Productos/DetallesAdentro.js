@@ -97,7 +97,7 @@ const DetallesAdentro = ({
 					>
 						<ChevronLeftIcon fontSize='4xl' textShadow='md' />
 					</Button>
-					<Flex w='100%' h='100%' onClick={onOpen} cursor='zoom-in'></Flex>
+					<Flex w='100%' h='100%' onClick={onOpen} cursor='zoom-in' />
 					<Button
 						variant='unstyled'
 						h='100%'

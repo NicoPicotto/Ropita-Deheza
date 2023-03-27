@@ -17,7 +17,6 @@ import ModalStart from '../Components/ModalStart/ModalStart';
 const HomeView = () => {
 	const [productos, setProductos] = useState([]);
 	const [loading, setLoading] = useState(false);
-	const [filtroTalle, setFiltroTalle] = useState('');
 	const [filtroCategoria, setFiltroCategoria] = useState('');
 	const abierto = localStorage.getItem('opened');
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
@@ -41,9 +40,7 @@ const HomeView = () => {
 	}, []);
 
 	//Referenciando filtros
-	const talleRef = useRef();
 	const categoriaRef = useRef();
-
 
 	return (
 		<>
@@ -77,22 +74,20 @@ const HomeView = () => {
 							<option value='Accesorios'>Accesorios</option>
 							<option value='Calzado'>Calzado</option>
 						</Select>
-						
 					</Stack>
 				</Stack>
-				<Stack w={isMobile ? '90%' : '4xl'} align='center'>
+				<Stack w={isMobile ? '90%' : '4xl'} align='center' direction='row'>
 					{loading && <Spinner size='lg' margin={5} color='cuarto' />}
 					<Grid
 						templateColumns={isMobile ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'}
 						gap={5}
 						id='vistaProductos'
 						overflow='hidden'
-						p={3}
 						marginBlock={3}
 					>
 						{productos &&
 							productos.map((prod) => {
-								if (filtroTalle & filtroCategoria === '') {
+								if (filtroCategoria === '') {
 									return (
 										<Producto
 											key={prod.id}
@@ -131,22 +126,6 @@ const HomeView = () => {
 									return;
 								}
 							})}
-						{/* {productos.map((prod) => (
-							<Producto
-								key={prod.id}
-								email={prod.email}
-								id={prod.id}
-								titulo={prod.titulo}
-								descripcion={prod.descripcion}
-								fecha={prod.fecha}
-								imagen={prod.imagen}
-								telefono={prod.telefono}
-								apellido={prod.apellido}
-								talle={prod.talle}
-								precio={prod.precio}
-								nombre={prod.nombre}
-							/>
-						))} */}
 					</Grid>
 				</Stack>
 			</Stack>

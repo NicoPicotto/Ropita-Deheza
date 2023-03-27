@@ -14,6 +14,7 @@ import {
 	FormLabel,
 	useMediaQuery,
 	Select,
+	Progress,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -41,6 +42,7 @@ const NuevoProducto = () => {
 	const [precio, setPrecio] = useState('');
 	const [categoria, setCategoria] = useState('');
 	const [imageUpload, setImageUpload] = useState([]);
+	const [loadingImg, setLoadingImg] = useState(false)
 	const [imagenCargada, setImagenCargada] = useState(false);
 	const [progress, setProgress] = useState(0);
 	const [URLs, setURLs] = useState([]);
@@ -65,7 +67,6 @@ const NuevoProducto = () => {
 
 	//Función para subir imagenes al storage
 	const uploadImage = () => {
-		setIsLoading(true);
 		const filesArray = Array.from(imageUpload);
 		const promises = [];
 		filesArray.forEach((file) => {
@@ -76,10 +77,11 @@ const NuevoProducto = () => {
 			uploadTask.on(
 				'state_changed',
 				(snapshot) => {
-					const prog = Math.round(
+					const percent = Math.round(
 						(snapshot.bytesTransferred / snapshot.totalBytes) * 100
-					);
-					setProgress(prog);
+					); // update progress
+					setLoadingImg(true)
+					setProgress(percent);
 				},
 				(error) => console.log(error),
 				async () => {
@@ -92,7 +94,7 @@ const NuevoProducto = () => {
 		});
 		Promise.all(promises).then((err) => console.log(err));
 		setImagenCargada(true);
-		setIsLoading(false);
+		setLoadingImg(false)
 	};
 
 	//Función para publicar el producto
@@ -239,18 +241,27 @@ const NuevoProducto = () => {
 									Máximo 3 imágenes por producto.
 								</Text>
 							</FormLabel>
-
 							{imageUpload.length <= 3 && imageUpload.length > 0 && (
-								<Button
-									w='80%'
-									onClick={uploadImage}
-									bgColor='segundo'
-									color='white'
-									_hover={{ bgColor: 'cuarto' }}
-									size={isMobile ? 'sm' : 'md'}
-								>
-									Subir imágenes
-								</Button>
+								<>
+									{progress == 0 ? (
+										<Text fontSize='xs'>
+											{imageUpload.length} imágenes seleccionadas
+										</Text>
+									) : (
+										<Progress w='80%' colorScheme='whatsapp' value={progress} />
+									)}
+
+									<Button
+										w='80%'
+										onClick={uploadImage}
+										bgColor='segundo'
+										color='white'
+										_hover={{ bgColor: 'cuarto' }}
+										size={isMobile ? 'sm' : 'md'}
+									>
+										{loadingImg ? <Spinner /> : 'Subir imágenes'}
+									</Button>
+								</>
 							)}
 							{imageUpload.length > 3 && (
 								<Text fontSize='xs' textAlign='center' color='red'>
@@ -321,7 +332,7 @@ const NuevoProducto = () => {
 								w='30%'
 								focusBorderColor='cuarto'
 								placeholder='Talle'
-								textTransform="uppercase"
+								textTransform='uppercase'
 								isRequired
 							/>
 						</Tooltip>

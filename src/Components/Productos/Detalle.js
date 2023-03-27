@@ -6,7 +6,7 @@ import {
 	documentId,
 	getDocs,
 } from 'firebase/firestore';
-import { Stack, Spinner, useMediaQuery } from '@chakra-ui/react';
+import { Stack, Spinner, useMediaQuery, Text } from '@chakra-ui/react';
 import { useParams } from 'react-router';
 import { firestore } from '../../firebase';
 import DetallesAdentro from './DetallesAdentro';
