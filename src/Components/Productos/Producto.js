@@ -22,8 +22,6 @@ const Producto = ({ titulo, imagen, talle, precio, fecha, id }) => {
 			p={3}
 			justify='space-between'
 			shadow='md'
-			minW="30%"
-			spacing={5}
 			transition='0.2s'
 			_hover={{ shadow: 'lg', transform: 'translate3d(0px, -3px, 0px)' }}
 		>

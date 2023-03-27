@@ -8,6 +8,7 @@ import {
 	useMediaQuery,
 	Select,
 	Button,
+	Text
 } from '@chakra-ui/react';
 import { firestore } from '../firebase';
 import Producto from '../Components/Productos/Producto';
@@ -53,8 +54,10 @@ const HomeView = () => {
 					marginTop='0 !important'
 					direction='row'
 					justify='center'
+					
 				>
 					<Stack direction='row' align='center' margin={5}>
+						<Text color="white" fontSize="lg">Mirá los productos destacados o filtrá por </Text>
 						<Select
 							bgColor='white'
 							placeholder='Categoría'
@@ -71,16 +74,18 @@ const HomeView = () => {
 							<option value='Bermudas'>Bermudas</option>
 							<option value='Shorts<'>Shorts</option>
 							<option value='Vestidos'>Vestidos</option>
+							<option value='Ropa interior'>Ropa interior</option>
 							<option value='Accesorios'>Accesorios</option>
 							<option value='Calzado'>Calzado</option>
 						</Select>
 					</Stack>
 				</Stack>
-				<Stack w={isMobile ? '90%' : '4xl'} align='center' direction='row'>
+				<Stack w={isMobile ? '90%' : '4xl'} align='center' justify='center'>
 					{loading && <Spinner size='lg' margin={5} color='cuarto' />}
 					<Grid
 						templateColumns={isMobile ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'}
 						gap={5}
+						w='100%'
 						id='vistaProductos'
 						overflow='hidden'
 						marginBlock={3}

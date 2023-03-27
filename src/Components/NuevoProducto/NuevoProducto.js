@@ -315,11 +315,12 @@ const NuevoProducto = () => {
 							<option value='Bermudas'>Bermudas</option>
 							<option value='Shorts<'>Shorts</option>
 							<option value='Vestidos'>Vestidos</option>
+							<option value='Ropa interior'>Ropa interior</option>
 							<option value='Accesorios'>Accesorios</option>
 							<option value='Calzado'>Calzado</option>
 						</Select>
 						<Tooltip
-							label='Si lo que estás publicando no tiene talle, colocale "Talle único". Ej: Una gorra.'
+							label='Si lo que estás publicando no tiene talle, colocale "UNICO". Ej: Una gorra.'
 							bgColor='tercero'
 							color='white'
 							placement={isMobile ? 'top' : 'left'}

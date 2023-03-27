@@ -32,7 +32,7 @@ const Footer = () => {
 			>
 				<Stack spacing={1}>
 					<Text fontSize={isMobile ? "xs" : "sm"} color='fondo' textAlign={isMobile && 'center'}>
-						Creado por {''}
+						Creado con ❤ por {''}
 						<Link
 							as='a'
 							fontWeight='bold'
