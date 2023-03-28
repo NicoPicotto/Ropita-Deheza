@@ -18,7 +18,7 @@ const TutorialComponent = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	return (
-		<Stack
+<Stack
 			align='center'
 			w={isMobile ? '90%' : '4xl'}
 			marginTop={isMobile && '100px'}

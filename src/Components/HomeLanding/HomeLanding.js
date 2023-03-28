@@ -4,12 +4,14 @@ import {
 	Heading,
 	Highlight,
 	Button,
+	Image,
 	useMediaQuery,
 } from '@chakra-ui/react';
 import { useLottie } from 'lottie-react';
 import manShopping from '../../Lotties/manShopping.json';
 import { Link } from 'react-scroll';
 import { FaSyncAlt } from 'react-icons/fa';
+import landingHome from "../../assets/landingHome.svg"
 
 const options = {
 	animationData: manShopping,
@@ -36,8 +38,9 @@ const HomeLanding = () => {
 			<Stack
 				w={isMobile ? '90%' : '4xl'}
 				direction={isMobile ? 'column-reverse' : 'row'}
-				align={isMobile && 'center'}
+				align='center'
 				h={isMobile && '100%'}
+				justify="space-between"
 			>
 				<Stack
 					w={isMobile ? '90%' : '45%'}
@@ -79,11 +82,12 @@ const HomeLanding = () => {
 					</Link>
 				</Stack>
 				<Stack
-					w={isMobile ? '100%' : '55%'}
+					w={isMobile ? '100%' : '40%'}
 					h={isMobile ? '40%' : '100%'}
 					justify='center'
 				>
-					{View}
+					{/* {View} */}
+					<Image src={landingHome}/>
 				</Stack>
 			</Stack>
 		</Stack>

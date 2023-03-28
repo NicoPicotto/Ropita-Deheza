@@ -4,10 +4,8 @@ import {
 	Stack,
 	Spinner,
 	Grid,
-	Heading,
 	useMediaQuery,
 	Select,
-	Button,
 	Text
 } from '@chakra-ui/react';
 import { firestore } from '../firebase';
@@ -22,6 +20,7 @@ const HomeView = () => {
 	const abierto = localStorage.getItem('opened');
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
+	//Trae todos los productos de la DB
 	useEffect(() => {
 		setLoading(true);
 		const q = query(
