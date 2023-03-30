@@ -10,6 +10,7 @@ const HelpView = () => {
 			h={!isMobile && '100vh'}
 			align='center'
 			justify='center'
+			paddingBottom="75px"
 		>
 			<HelpAccordion />
 		</Stack>

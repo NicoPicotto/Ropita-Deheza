@@ -8,11 +8,10 @@ const ProductoView = () => {
 		<Stack
 			bgColor='fondo'
 			justify='center'
-			p={5}
-			w='100vw'
 			h={!isMobile && "100vh"}
 			spacing={5}
 			align='center'
+			paddingBottom="75px"
 		>
 			<Detalle />
 		</Stack>

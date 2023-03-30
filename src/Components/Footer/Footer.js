@@ -15,7 +15,6 @@ const Footer = () => {
 
 	return (
 		<Stack
-			w='100vw'
 			h={!isMobile && "75px"}
 			bgColor='tercero'
 			justify='center'

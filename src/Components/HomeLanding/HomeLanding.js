@@ -7,40 +7,21 @@ import {
 	Image,
 	useMediaQuery,
 } from '@chakra-ui/react';
-import { useLottie } from 'lottie-react';
-import manShopping from '../../Lotties/manShopping.json';
 import { Link } from 'react-scroll';
 import { FaSyncAlt } from 'react-icons/fa';
-import landingHome from "../../assets/landingHome.svg"
-
-const options = {
-	animationData: manShopping,
-	autoplay: true,
-	loop: true,
-	style: {
-		width: '100%',
-	},
-};
+import landingHome from '../../assets/landingHome.svg';
 
 const HomeLanding = () => {
-	const { View } = useLottie(options);
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	return (
-		<Stack
-			w='100%'
-			h={isMobile ? 'md' : 'lg'}
-			justify='center'
-			align='center'
-			bgColor='segundo'
-			paddingTop={isMobile && '75px'}
-		>
+		<Stack w='100%' h='md' justify='center' align='center' bgColor='segundo'>
 			<Stack
 				w={isMobile ? '90%' : '4xl'}
 				direction={isMobile ? 'column-reverse' : 'row'}
 				align='center'
 				h={isMobile && '100%'}
-				justify="space-between"
+				justify='space-between'
 			>
 				<Stack
 					w={isMobile ? '90%' : '45%'}
@@ -51,7 +32,7 @@ const HomeLanding = () => {
 				>
 					<Heading
 						color='fondo'
-						size='lg'
+						size='xl'
 						fontFamily='fonts.heading'
 						fontWeight='regular'
 						textAlign={isMobile && 'center'}
@@ -87,7 +68,7 @@ const HomeLanding = () => {
 					justify='center'
 				>
 					{/* {View} */}
-					<Image src={landingHome}/>
+					<Image src={landingHome} />
 				</Stack>
 			</Stack>
 		</Stack>

@@ -9,11 +9,10 @@ const RegisterView = () => {
 		<Stack
 			bgColor='fondo'
 			justify={!isMobile && 'center'}
-			p={5}
-			w='100vw'
 			spacing={5}
 			align='center'
 			h='100vh'
+			paddingBottom="75px"
 		>
 			<RegisterComponent />
 		</Stack>

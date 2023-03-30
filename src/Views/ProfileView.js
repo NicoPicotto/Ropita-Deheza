@@ -18,7 +18,7 @@ const ProfileView = () => {
 			bgColor='fondo'
 			h='100vh'
 			align='center'
-			w='100vw'
+			paddingBottom="75px"
 			justify={!isMobile && 'center'}
 		>
 			<Stack
@@ -29,7 +29,6 @@ const ProfileView = () => {
 				borderRadius={5}
 				p={5}
 				shadow='md'
-				marginTop={isMobile && '100px'}
 			>
 				<Profile />
 				<ProductosPropios />

@@ -176,9 +176,11 @@ const NuevoProducto = () => {
 					bgColor='fondo'
 					h={isMobile ? 'xs' : '100%'}
 					borderRadius={10}
+					overflow="hidden"
 					w={isMobile ? '100%' : '50%'}
 					align='center'
 					justify='center'
+					p={!imagenCargada && 5}
 				>
 					{imageShow ? (
 						<Stack
@@ -215,12 +217,12 @@ const NuevoProducto = () => {
 							</Stack>
 						</Stack>
 					) : (
-						<Stack w='100%' h='100%' align='center' justify='center'>
+						<Stack w='100%' align='center' justify='center' border="dashed 2px lightgray" borderRadius={5} h="100%">
 							<FormLabel
 								display='flex'
 								flexDir='column'
 								cursor='pointer'
-								p={10}
+								
 								alignItems='center'
 								justifyContent='center'
 								color='gray'
@@ -245,17 +247,17 @@ const NuevoProducto = () => {
 								</Text>
 							</FormLabel>
 							{imageUpload.length <= 3 && imageUpload.length > 0 && (
-								<>
+								<Stack w='80%' justify="center" align="center">
 									{progress == 0 ? (
 										<Text fontSize='xs'>
-											{imageUpload.length} imágenes seleccionadas
+											{imageUpload.length} selecionada(s)
 										</Text>
 									) : (
 										<Progress w='80%' colorScheme='whatsapp' value={progress} />
 									)}
 
 									<Button
-										w='80%'
+										
 										onClick={uploadImage}
 										bgColor='segundo'
 										color='white'
@@ -264,7 +266,7 @@ const NuevoProducto = () => {
 									>
 										{loadingImg ? <Spinner /> : 'Subir imágenes'}
 									</Button>
-								</>
+								</Stack>
 							)}
 							{imageUpload.length > 3 && (
 								<Text fontSize='xs' textAlign='center' color='red'>

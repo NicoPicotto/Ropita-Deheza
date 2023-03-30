@@ -13,7 +13,7 @@ import {
 	useToast,
 	Spinner,
 	Text,
-	useMediaQuery
+	useMediaQuery,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
@@ -37,13 +37,15 @@ const RegisterComponent = () => {
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
-		setIsLoading(true);
+
 		try {
+			setIsLoading(true);
 			await registrarse(user.email, user.password);
+			setIsLoading(false);
 		} catch (error) {
+			setIsLoading(false);
 			console.log(error.message);
 		}
-		setIsLoading(false);
 	};
 
 	const submitData = async (nombre, apellido, telefono, email) => {
@@ -63,8 +65,10 @@ const RegisterComponent = () => {
 				variant: 'top-accent',
 				position: 'top',
 			});
+			setIsLoading(false);
 			navigate('/');
 		} catch (error) {
+			setIsLoading(false);
 			console.log(error.message);
 		}
 	};
@@ -75,7 +79,6 @@ const RegisterComponent = () => {
 			w={isMobile ? '90%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
-			marginTop={isMobile && '100px'}
 			p={5}
 			shadow='md'
 			justify='space-between'
@@ -175,26 +178,39 @@ const RegisterComponent = () => {
 								onClick={() => submitData(nombre, apellido, telefono, email)}
 								color='tercero'
 							>
-								Completá tus datos
+								{isLoading ? <Spinner color='segundo' /> : 'Completá tus datos'}
 							</Button>
 						</Stack>
 					</>
 				)}
 			</Stack>
 			{!userUid && (
-				<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && "100%"}>
-					<Button type='submit' color='white' bgColor="segundo" _hover={{bgColor: "cuarto"}}>
-						Registrate
+				<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && '100%'}>
+					<Button
+						type='submit'
+						color='white'
+						bgColor='segundo'
+						_hover={{ bgColor: 'cuarto' }}
+					>
+						{isLoading ? <Spinner color='segundo' /> : 'Registrate'}
 					</Button>
 					<Link as={ReachLink} to='/login' _hover={{}}>
-						<Button color='segundo' variant='outline' borderColor="segundo" w={isMobile && "100%"} _hover={{bgColor: "cuarto", borderColor: "transparent", color: "white"}}>
+						<Button
+							color='segundo'
+							variant='outline'
+							borderColor='segundo'
+							w={isMobile && '100%'}
+							_hover={{
+								bgColor: 'cuarto',
+								borderColor: 'transparent',
+								color: 'white',
+							}}
+						>
 							¿Ya tenés cuenta? Iniciá sesión
 						</Button>
 					</Link>
 				</Stack>
 			)}
-
-			{isLoading && <Spinner color='cuarto' />}
 		</Stack>
 	);
 };

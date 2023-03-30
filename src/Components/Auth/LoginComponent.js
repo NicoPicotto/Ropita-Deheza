@@ -10,11 +10,13 @@ import {
 	Text,
 	Link,
 	useMediaQuery,
+	Spinner
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 const LoginComponent = () => {
 	const { login, resetPassword } = useAuth();
+	const [isLoading, setIsLoading] = useState(false)
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
@@ -26,10 +28,13 @@ const LoginComponent = () => {
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
+		setIsLoading(true)
 		try {
 			await login(user.email, user.password);
+			setIsLoading(false)
 			navigate('/');
 		} catch (error) {
+			setIsLoading(false)
 			setError('El mail o contraseña son incorrectas');
 		}
 	};
@@ -52,7 +57,6 @@ const LoginComponent = () => {
 			w={isMobile ? '90%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
-			marginTop={isMobile && '100px'}
 			p={5}
 			shadow='md'
 			justify='space-between'
@@ -114,7 +118,8 @@ const LoginComponent = () => {
 					bgColor='segundo'
 					_hover={{ bgColor: 'cuarto' }}
 				>
-					Iniciá sesión
+					{isLoading ? <Spinner color="white"/> : "Iniciá sesión"}
+					
 				</Button>
 				<Link as={ReachLink} to='/register' _hover={{}}>
 					<Button

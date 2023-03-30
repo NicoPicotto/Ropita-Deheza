@@ -45,7 +45,7 @@ const HomeView = () => {
 	return (
 		<>
 			{abierto === null && <ModalStart />}
-			<Stack bgColor='fondo' align='center' w='100vw'>
+			<Stack bgColor='fondo' align='center' >
 				<HomeLanding />
 				<Stack
 					w='100%'

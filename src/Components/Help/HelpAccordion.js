@@ -55,8 +55,6 @@ const HelpAccordion = () => {
 			w={isMobile ? '90%' : '4xl'}
 			bgColor='white'
 			borderRadius={5}
-			marginTop={isMobile && '100px'}
-			marginBottom={isMobile && "25px"}
 			p={5}
 			shadow='md'
 		>

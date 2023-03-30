@@ -4,11 +4,9 @@ import { Stack, Heading, Divider, Text, useMediaQuery } from '@chakra-ui/react';
 const ReglasView = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 	return (
-		<Stack bgColor='fondo' align='center' justify='center'>
+		<Stack bgColor='fondo' align='center' justify='center' p={5}>
 			<Stack
 				p={5}
-				marginTop='100px'
-				marginBottom='25px'
 				w={isMobile ? '90%' : '4xl'}
 				bgColor='white'
 				borderRadius={5}

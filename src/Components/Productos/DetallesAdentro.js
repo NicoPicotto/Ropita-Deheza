@@ -22,7 +22,6 @@ const DetallesAdentro = ({
 	descripcion,
 	fecha,
 	nombre,
-	apellido,
 	precio,
 	talle,
 	telefono,

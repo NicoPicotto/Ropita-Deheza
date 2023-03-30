@@ -51,14 +51,13 @@ const Navbar = () => {
 
 	return (
 		<Stack
-			w='100vw'
 			h={colorChange ? '50px' : '75px'}
 			transition='0.3s'
 			bgColor='segundo'
 			justify='center'
 			align='center'
 			zIndex={100}
-			pos='fixed'
+			pos='sticky'
 			top={0}
 		>
 			<Stack

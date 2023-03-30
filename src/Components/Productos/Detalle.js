@@ -42,7 +42,6 @@ const Detalle = () => {
 			onSubmit={handleSubmit}
 			align='center'
 			w={isMobile ? '90%' : '4xl'}
-			marginTop='75px'
 			bgColor='white'
 			borderRadius={5}
 			p={5}
