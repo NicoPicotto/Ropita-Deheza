@@ -19,6 +19,7 @@ import ReglasView from './Views/ReglasView';
 import ErrorPage from './Views/ErrorPage';
 import TutorialView from './Views/TutorialView';
 import ReportarView from './Views/ReportarView';
+import PrivateRoutes from './Components/Private/PrivateRoutes';
 
 const App = () => {
 	return (
@@ -31,8 +32,22 @@ const App = () => {
 						<Route path='/' element={<HomeView />} />
 						<Route path='/login' element={<LoginView />} />
 						<Route path='/register' element={<RegisterView />} />
-						<Route path='/usuario/:id' element={<ProfileView />} />
-						<Route path='/nuevo' element={<AgregarProductoView />} />
+						<Route
+							path='/usuario/:id'
+							element={
+								<PrivateRoutes>
+									<ProfileView />
+								</PrivateRoutes>
+							}
+						/>
+						<Route
+							path='/nuevo'
+							element={
+								<PrivateRoutes>
+									<AgregarProductoView />
+								</PrivateRoutes>
+							}
+						/>
 						<Route path='/producto/:id' element={<ProductoView />} />
 						<Route path='/ayuda' element={<HelpView />} />
 						<Route path='/reglas' element={<ReglasView />} />

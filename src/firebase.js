@@ -4,12 +4,12 @@ import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
-	apiKey: 'AIzaSyCWKcUf1KCNhG5RSnrAbT2qcwFpHDNb72w',
-	authDomain: 'ropa-deheza.firebaseapp.com',
-	projectId: 'ropa-deheza',
-	storageBucket: 'ropa-deheza.appspot.com',
-	messagingSenderId: '879081183263',
-	appId: '1:879081183263:web:71c48edec3d472eff2dd2a',
+    apiKey: `${process.env.REACT_APP_API_KEY}`,
+    authDomain: `${process.env.REACT_APP_authDomain}`,
+    projectId: `${process.env.REACT_APP_projectId}`,
+    storageBucket: `${process.env.REACT_APP_storageBucket}`,
+    messagingSenderId: `${process.env.REACT_APP_messagingSenderId}`,
+    appId: `${process.env.REACT_APP_appId}`,
 };
 
 // Initialize Firebase
