@@ -12,6 +12,7 @@ const ProductoView = () => {
 			spacing={5}
 			align='center'
 			paddingBottom="75px"
+			p={isMobile && 5}
 		>
 			<Detalle />
 		</Stack>

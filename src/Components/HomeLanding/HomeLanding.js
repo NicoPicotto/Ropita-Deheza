@@ -15,7 +15,7 @@ const HomeLanding = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	return (
-		<Stack w='100%' h={isMobile ? "xs" : 'md'} justify='center' align='center' bgColor='segundo'>
+		<Stack w='100%' h={isMobile ? "2xs" : 'md'} justify='center' align='center' bgColor='segundo'>
 			<Stack
 				w={isMobile ? '90%' : '4xl'}
 				direction={isMobile ? 'column-reverse' : 'row'}

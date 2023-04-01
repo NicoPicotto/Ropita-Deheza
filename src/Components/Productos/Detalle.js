@@ -41,7 +41,7 @@ const Detalle = () => {
 		<Stack
 			onSubmit={handleSubmit}
 			align='center'
-			w={isMobile ? '90%' : '4xl'}
+			w={isMobile ? '100%' : '4xl'}
 			bgColor='white'
 			borderRadius={5}
 			p={5}
