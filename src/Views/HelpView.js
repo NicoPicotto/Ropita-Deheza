@@ -7,10 +7,11 @@ const HelpView = () => {
 	return (
 		<Stack
 			bgColor='fondo'
-			h={!isMobile && '100vh'}
+			h='100vh'
 			align='center'
-			justify='center'
-			paddingBottom="75px"
+			justify={!isMobile && 'center'}
+			paddingBottom={!isMobile && '75px'}
+			p={isMobile && 5}
 		>
 			<HelpAccordion />
 		</Stack>

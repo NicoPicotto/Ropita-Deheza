@@ -15,7 +15,7 @@ const HomeLanding = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	return (
-		<Stack w='100%' h='md' justify='center' align='center' bgColor='segundo'>
+		<Stack w='100%' h={isMobile ? "xs" : 'md'} justify='center' align='center' bgColor='segundo'>
 			<Stack
 				w={isMobile ? '90%' : '4xl'}
 				direction={isMobile ? 'column-reverse' : 'row'}
@@ -25,14 +25,14 @@ const HomeLanding = () => {
 			>
 				<Stack
 					w={isMobile ? '90%' : '45%'}
-					h={isMobile ? '60%' : '100%'}
+					h='100%'
 					justify='center'
 					align={isMobile && 'center'}
 					spacing={5}
 				>
 					<Heading
 						color='fondo'
-						size='xl'
+						size={isMobile ? "lg" : 'xl'}
 						fontFamily='fonts.heading'
 						fontWeight='regular'
 						textAlign={isMobile && 'center'}
@@ -63,8 +63,9 @@ const HomeLanding = () => {
 					</Link>
 				</Stack>
 				<Stack
-					w={isMobile ? '100%' : '40%'}
-					h={isMobile ? '40%' : '100%'}
+					w='40%'
+					h='100%'
+					display={isMobile && "none"}
 					justify='center'
 				>
 					{/* {View} */}

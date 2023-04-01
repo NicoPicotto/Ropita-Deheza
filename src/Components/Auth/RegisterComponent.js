@@ -76,7 +76,7 @@ const RegisterComponent = () => {
 	return (
 		<Stack
 			align='center'
-			w={isMobile ? '90%' : 'xl'}
+			w={isMobile ? '100%' : 'xl'}
 			bgColor='white'
 			borderRadius={5}
 			p={5}

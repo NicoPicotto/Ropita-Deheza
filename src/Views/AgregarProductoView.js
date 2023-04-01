@@ -10,10 +10,11 @@ const AgregarProductoView = () => {
 		<Stack
 			bgColor='fondo'
 			justify='center'
-			spacing={5}
-			paddingBottom="75px"
+			paddingBottom={!isMobile && '75px'}
 			align='center'
 			h={!isMobile && '100vh'}
+			p={isMobile && 5}
+
 		>
 			<NuevoProducto />
 			<Aclaraciones />

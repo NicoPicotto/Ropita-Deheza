@@ -10,7 +10,8 @@ const TutorialView = () => {
 			h={!isMobile && '100vh'}
 			align='center'
 			justify='center'
-			paddingBottom="75px"
+			paddingBottom={!isMobile && '75px'}
+			p={isMobile && 5}
 		>
 			<TutorialComponent />
 		</Stack>

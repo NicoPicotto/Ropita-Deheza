@@ -57,7 +57,7 @@ const ProductosPropios = () => {
 	};
 
 	return (
-		<Stack borderRadius={5} as='form' w={isMobile ? '100%' : '50%'}>
+		<Stack borderRadius={5} as='form' w='100%'>
 			<Stack>
 				<Heading
 					size={isMobile ? 'md' : 'lg'}

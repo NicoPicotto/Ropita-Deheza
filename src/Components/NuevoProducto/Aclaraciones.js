@@ -15,7 +15,7 @@ const Aclaraciones = () => {
 
 	return (
 		<Stack
-			w={isMobile ? '90%' : '4xl'}
+			w={isMobile ? '100%' : '4xl'}
 			divider={<StackDivider borderColor='cuarto' />}
 			justify='center'
 			direction={isMobile ? 'column' : 'row'}

@@ -7,7 +7,7 @@ const ReglasView = () => {
 		<Stack bgColor='fondo' align='center' justify='center' p={5}>
 			<Stack
 				p={5}
-				w={isMobile ? '90%' : '4xl'}
+				w={isMobile ? '100%' : '4xl'}
 				bgColor='white'
 				borderRadius={5}
 				shadow='md'

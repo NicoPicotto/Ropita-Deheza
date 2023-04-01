@@ -14,10 +14,10 @@ const ItemsProductosPersonales = ({ titulo, handleDelete, precio, id }) => {
 			shadow='sm'
 		>
 			<Stack w="75%" direction='row' divider={<StackDivider borderColor='cuarto' />}>
-				<Text fontSize='sm' color='segundo' as='b' noOfLines={1} textOverflow="ellipsis" overflow="hidden">
+				<Text fontSize='sm' color='segundo' as='b' noOfLines={1} textOverflow="ellipsis" overflow="hidden" w="75%">
 					{titulo}
 				</Text>
-				<Text fontSize='sm' color='segundo'>
+				<Text fontSize='sm' color='segundo' w="25%">
 					$ {precio}
 				</Text>
 			</Stack>

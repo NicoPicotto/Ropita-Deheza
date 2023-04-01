@@ -56,7 +56,7 @@ const Profile = () => {
 		<Stack
 			borderRadius={5}
 			as='form'
-			w={isMobile ? '100%' : '50%'}
+			w='100%'
 			h={!isMobile && '100%'}
 		>
 			<Stack>

@@ -45,7 +45,7 @@ const HomeView = () => {
 	return (
 		<>
 			{abierto === null && <ModalStart />}
-			<Stack bgColor='fondo' align='center' >
+			<Stack bgColor='fondo' align='center'>
 				<HomeLanding />
 				<Stack
 					w='100%'
@@ -55,8 +55,8 @@ const HomeView = () => {
 					justify='center'
 					
 				>
-					<Stack direction='row' align='center' margin={5}>
-						<Text color="white" fontSize="lg">Mirá los productos destacados o filtrá por </Text>
+					<Stack direction={isMobile ? "column" : 'row'} align='center' margin={5}>
+						<Text color="white" fontSize={isMobile ? "md" : "lg"}>Mirá los productos destacados o filtrá por </Text>
 						<Select
 							bgColor='white'
 							placeholder='Categoría'

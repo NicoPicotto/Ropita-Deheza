@@ -9,10 +9,10 @@ const LoginView = () => {
 		<Stack
 			bgColor='fondo'
 			justify={!isMobile && 'center'}
-			spacing={5}
 			align='center'
 			h="100vh"
-			paddingBottom="75px"
+			paddingBottom={!isMobile && '75px'}
+			p={isMobile && 5}
 		>
 			<LoginComponent />
 		</Stack>

@@ -7,12 +7,12 @@ const RegisterView = () => {
 
 	return (
 		<Stack
-			bgColor='fondo'
-			justify={!isMobile && 'center'}
-			spacing={5}
-			align='center'
-			h='100vh'
-			paddingBottom="75px"
+		bgColor='fondo'
+		justify={!isMobile && 'center'}
+		align='center'
+		h="100vh"
+		paddingBottom={!isMobile && '75px'}
+		p={isMobile && 5}
 		>
 			<RegisterComponent />
 		</Stack>
