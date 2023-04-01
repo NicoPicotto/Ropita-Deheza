@@ -3,7 +3,6 @@ import {
 	Heading,
 	Stack,
 	Input,
-	Image,
 	Button,
 	Textarea,
 	Tooltip,
@@ -15,6 +14,7 @@ import {
 	useMediaQuery,
 	Select,
 	Progress,
+	Flex,
 } from '@chakra-ui/react';
 import {
 	collection,
@@ -23,6 +23,7 @@ import {
 	doc,
 	getDoc,
 } from 'firebase/firestore';
+import { ChevronRightIcon, ChevronLeftIcon } from '@chakra-ui/icons';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { useAuth } from '../../Context/Context';
 import { BsImageFill } from 'react-icons/bs';
@@ -42,6 +43,7 @@ const NuevoProducto = () => {
 	const [progress, setProgress] = useState(0);
 	const [URLs, setURLs] = useState([]);
 	const [imageShow, setImageShow] = useState('');
+	const [imageOrder, setImageOrder] = useState(0);
 	const toast = useToast();
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
@@ -103,7 +105,13 @@ const NuevoProducto = () => {
 	const handleSubmit = async (e) => {
 		setIsLoading(true);
 		e.preventDefault();
-		if (tituloRef && descripcionRef && descripcionRef && talleRef && precioRef !== '') {
+		if (
+			tituloRef &&
+			descripcionRef &&
+			descripcionRef &&
+			talleRef &&
+			precioRef !== ''
+		) {
 			await addDoc(collection(firestore, 'productos'), {
 				titulo: tituloRef.current.value,
 				descripcion: descripcionRef.current.value,
@@ -176,7 +184,7 @@ const NuevoProducto = () => {
 					bgColor='fondo'
 					h={isMobile ? 'xs' : '100%'}
 					borderRadius={10}
-					overflow="hidden"
+					overflow='hidden'
 					w={isMobile ? '100%' : '50%'}
 					align='center'
 					justify='center'
@@ -184,45 +192,64 @@ const NuevoProducto = () => {
 				>
 					{imageShow ? (
 						<Stack
-							direction={isMobile ? 'column-reverse' : 'row'}
-							w='100%'
-							h='100%'
+							bgImage={URLs[imageOrder]}
+							bgPos='center'
+							bgRepeat='no-repeat'
+							bgSize='cover'
+							h={isMobile ? 'xs' : '100%'}
+							borderRadius={10}
+							w={isMobile ? '100%' : '50%'}
+							direction='row'
+							align='center'
+							justify='space-between'
 						>
-							<Stack
-								w={isMobile ? '100%' : '25%'}
-								direction={isMobile ? 'row' : 'column'}
-								h={isMobile && '25%'}
+							<Button
+								variant='unstyled'
+								h='100%'
+								borderRadius={0}
+								bgColor='rgb(0,0,0, 0.4)'
+								p={0}
+								color='white'
+								_hover={{ paddingRight: 1 }}
+								transition='0.2s ease-in-out'
+								visibility={imageOrder > 0 ? 'visible' : 'hidden'}
+								onClick={() => {
+									imageOrder > 0 && setImageOrder(imageOrder - 1);
+								}}
 							>
-								{URLs.map((img) => (
-									<Image
-										h={isMobile ? '100%' : '33%'}
-										cursor='pointer'
-										key={img}
-										w={isMobile ? '33%' : '100%'}
-										src={img}
-										alt='Imagen del producto'
-										objectFit='cover'
-										onClick={(e) => setImageShow(img)}
-									/>
-								))}
-							</Stack>
-							<Stack w={isMobile ? '100%' : '75%'} h={isMobile && '75%'}>
-								<Image
-									h='100%'
-									w='100%'
-									src={imageShow}
-									alt='Imagen del producto'
-									objectFit='cover'
-								/>
-							</Stack>
+								<ChevronLeftIcon fontSize='4xl' textShadow='md' />
+							</Button>
+							<Flex w='100%' h='100%' />
+							<Button
+								variant='unstyled'
+								h='100%'
+								borderRadius={0}
+								bgColor='rgb(0,0,0, 0.4)'
+								p={0}
+								color='white'
+								_hover={{ paddingLeft: 1 }}
+								transition='0.1s ease-in'
+								visibility={imageOrder < URLs.length - 1 ? 'visible' : 'hidden'}
+								onClick={() => {
+									imageOrder < URLs.length - 1 && setImageOrder(imageOrder + 1);
+								}}
+							>
+								<ChevronRightIcon fontSize='4xl' textShadow='md' />
+							</Button>
 						</Stack>
 					) : (
-						<Stack w='100%' align='center' justify='center' border="dashed 2px lightgray" borderRadius={5} h="100%">
+						<Stack
+							w='100%'
+							align='center'
+							justify='center'
+							border='dashed 2px lightgray'
+							borderRadius={5}
+							h='100%'
+						>
 							<FormLabel
 								display='flex'
 								flexDir='column'
 								cursor='pointer'
-								
 								alignItems='center'
 								justifyContent='center'
 								color='gray'
@@ -247,8 +274,8 @@ const NuevoProducto = () => {
 								</Text>
 							</FormLabel>
 							{imageUpload.length <= 3 && imageUpload.length > 0 && (
-								<Stack w='80%' justify="center" align="center">
-									{progress == 0 ? (
+								<Stack w='80%' justify='center' align='center'>
+									{progress === 0 ? (
 										<Text fontSize='xs'>
 											{imageUpload.length} selecionada(s)
 										</Text>
@@ -257,7 +284,6 @@ const NuevoProducto = () => {
 									)}
 
 									<Button
-										
 										onClick={uploadImage}
 										bgColor='segundo'
 										color='white'

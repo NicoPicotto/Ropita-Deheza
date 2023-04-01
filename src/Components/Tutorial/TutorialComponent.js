@@ -10,9 +10,9 @@ import {
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 import { FaHandPointRight } from 'react-icons/fa';
-import tut1 from '../../modal1.png';
-import tut2 from '../../modal2.png';
-import tut3 from '../../modal3.png';
+import tut1 from '../../modal5.svg';
+import tut2 from '../../modal6.svg';
+import tut3 from '../../modal4.svg';
 
 const TutorialComponent = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
@@ -46,7 +46,7 @@ const TutorialComponent = () => {
 				justify='space-between'
 			>
 				<Stack w={isMobile ? '100%' : '30%'} align='center'>
-					<Image src={tut3} h='auto' />
+					<Image src={tut3} h='2xs' />
 					<Heading color='segundo' size='2xs' textAlign='center'>
 						¿Querés vender o regalar algo?
 					</Heading>
@@ -91,7 +91,7 @@ const TutorialComponent = () => {
 					</Stack>
 				</Stack>
 				<Stack w={isMobile ? '100%' : '30%'} align='center'>
-					<Image src={tut1} h='auto' />
+					<Image src={tut1} h='2xs' />
 					<Heading color='segundo' size='2xs' textAlign='center'>
 						¿Buscás algo de segunda mano?
 					</Heading>
@@ -118,7 +118,7 @@ const TutorialComponent = () => {
 					</Stack>
 				</Stack>
 				<Stack w={isMobile ? '100%' : '30%'} align='center'>
-					<Image src={tut2} h='auto' />
+					<Image src={tut2} h='2xs' />
 					<Heading color='segundo' size='2xs' textAlign='center'>
 						Más información importante
 					</Heading>

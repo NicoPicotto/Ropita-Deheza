@@ -5,7 +5,6 @@ import {
 	ModalFooter,
 	ModalContent,
 	Image,
-	ModalBody,
 	useDisclosure,
 	Highlight,
 	Stack,
@@ -13,9 +12,9 @@ import {
 	RadioGroup,
 	useMediaQuery,
 } from '@chakra-ui/react';
-import modal1 from '../../modal1.png';
-import modal2 from '../../modal2.png';
-import modal3 from '../../modal3.png';
+import modal1 from '../../modal1.svg';
+import modal2 from '../../modal2.svg';
+import modal3 from '../../modal3.svg';
 
 const ModalStart = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -41,10 +40,10 @@ const ModalStart = () => {
 			motionPreset='slideInBottom'
 		>
 			<ModalOverlay />
-			<ModalContent align='center' w={isMobile && '80%'}>
-				<ModalBody align='center'>
-					<Stack display={value == 1 ? 'block' : 'none'}>
-						<Image w='80%' src={modal1} />
+			<ModalContent alignItems='center' w={isMobile && '80%'} h='lg'>
+				<Stack align='center' justify='center' w='80%' h='100%'  >
+					<Stack display={value == 1 ? 'block' : 'none'} textAlign='center' align="center">
+						<Image  src={modal1} marginBottom={5}/>
 						<Highlight
 							query={['indumentaria', 'accesorios', 'segunda mano']}
 							styles={{ fontWeight: 'bolder', color: 'segundo' }}
@@ -54,8 +53,8 @@ const ModalStart = () => {
 							también encontrar cositas lindas de segunda mano para vos.
 						</Highlight>
 					</Stack>
-					<Stack display={value == 2 ? 'block' : 'none'}>
-						<Image w='80%' src={modal2} />
+					<Stack display={value == 2 ? 'block' : 'none'} textAlign='center' align="center">
+						<Image marginBottom={5} src={modal2} />
 						<Highlight
 							query={['no es necesario', ' propietario']}
 							styles={{ fontWeight: 'bolder', color: 'segundo' }}
@@ -65,8 +64,8 @@ const ModalStart = () => {
 							propietario de la prenda o accesorio.
 						</Highlight>
 					</Stack>
-					<Stack display={value == 3 ? 'block' : 'none'}>
-						<Image w='80%' src={modal3} />
+					<Stack display={value == 3 ? 'block' : 'none'} textAlign='center' align="center">
+						<Image marginBottom={5} src={modal3} />
 						<Highlight
 							query={['no es necesario que te registres', ' propietario']}
 							styles={{ fontWeight: 'bolder', color: 'segundo' }}
@@ -76,7 +75,7 @@ const ModalStart = () => {
 							contentos de que te sumes a la moda circular!
 						</Highlight>
 					</Stack>
-				</ModalBody>
+				</Stack>
 				<ModalFooter justifyContent='center'>
 					<RadioGroup p={1} onChange={setValue} value={value}>
 						<Stack spacing={5} justifyContent='space-between' direction='row'>
