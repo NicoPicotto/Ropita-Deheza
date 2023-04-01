@@ -12,9 +12,9 @@ import {
 	RadioGroup,
 	useMediaQuery,
 } from '@chakra-ui/react';
-import modal1 from '../../modal1.svg';
-import modal2 from '../../modal2.svg';
-import modal3 from '../../modal3.svg';
+import modal1 from '../../assets/modal1.svg';
+import modal2 from '../../assets/modal2.svg';
+import modal3 from '../../assets/modal3.svg';
 
 const ModalStart = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();

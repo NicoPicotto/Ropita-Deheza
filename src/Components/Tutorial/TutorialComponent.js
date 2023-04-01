@@ -10,9 +10,9 @@ import {
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 import { FaHandPointRight } from 'react-icons/fa';
-import tut1 from '../../modal5.svg';
-import tut2 from '../../modal6.svg';
-import tut3 from '../../modal4.svg';
+import tut1 from "../../assets/modal5.svg";
+import tut2 from '../../assets/modal6.svg';
+import tut3 from '../../assets/modal4.svg';
 
 const TutorialComponent = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');

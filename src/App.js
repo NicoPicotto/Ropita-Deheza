@@ -18,6 +18,7 @@ import '@fontsource/montserrat';
 import ReglasView from './Views/ReglasView';
 import ErrorPage from './Views/ErrorPage';
 import TutorialView from './Views/TutorialView';
+import ReportarView from './Views/ReportarView';
 
 const App = () => {
 	return (
@@ -36,6 +37,7 @@ const App = () => {
 						<Route path='/ayuda' element={<HelpView />} />
 						<Route path='/reglas' element={<ReglasView />} />
 						<Route path='/tutorial' element={<TutorialView />} />
+						<Route path='/reportar' element={<ReportarView />} />
 						<Route path='*' element={<ErrorPage />} />
 					</Routes>
 					<Footer />

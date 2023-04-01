@@ -8,14 +8,14 @@ import {
 	useMediaQuery,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
-import { IoMdHelpCircle, IoIosPaper } from 'react-icons/io';
+import { IoMdHelpCircle, IoIosPaper, IoIosAlert } from 'react-icons/io';
 
 const Footer = () => {
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	return (
 		<Stack
-			h={!isMobile && "75px"}
+			h={!isMobile && '75px'}
 			bgColor='tercero'
 			justify='center'
 			align='center'
@@ -30,7 +30,11 @@ const Footer = () => {
 				paddingBlock={isMobile && 5}
 			>
 				<Stack spacing={1}>
-					<Text fontSize={isMobile ? "xs" : "sm"} color='fondo' textAlign={isMobile && 'center'}>
+					<Text
+						fontSize={isMobile ? 'xs' : 'sm'}
+						color='fondo'
+						textAlign={isMobile && 'center'}
+					>
 						Creado con ❤ por {''}
 						<Link
 							as='a'
@@ -52,7 +56,7 @@ const Footer = () => {
 							variant='link'
 							leftIcon={<IoMdHelpCircle />}
 						>
-							Centro de ayuda
+							Ayuda
 						</Button>
 					</Link>
 					<Link as={ReachLink} to='/reglas'>
@@ -62,7 +66,17 @@ const Footer = () => {
 							variant='link'
 							leftIcon={<IoIosPaper />}
 						>
-							Reglas del sitio
+							Reglas
+						</Button>
+					</Link>
+					<Link as={ReachLink} to='/reportar'>
+						<Button
+							color='fondo'
+							size='sm'
+							variant='link'
+							leftIcon={<IoIosAlert />}
+						>
+							Reportar un problema
 						</Button>
 					</Link>
 				</Stack>
