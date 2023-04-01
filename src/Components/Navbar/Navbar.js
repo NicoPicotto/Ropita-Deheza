@@ -29,7 +29,7 @@ const Navbar = () => {
 
 	//Fución para cerrar la sesión.
 	const handleLogout = async () => {
-		onClose()
+		onClose();
 		try {
 			await logout();
 			navigate('/');
@@ -176,6 +176,17 @@ const Navbar = () => {
 													onClick={onClose}
 												/>
 											</Link>
+											<Link as={ReachLink} to='/' _hover={{}}>
+												<Button
+													leftIcon={<FaHome />}
+													size='sm'
+													variant='link'
+													color='segundo'
+													onClick={onClose}
+												>
+													Inicio
+												</Button>
+											</Link>
 											<Link as={ReachLink} to='tutorial' _hover={{}}>
 												<Button
 													leftIcon={<MdQuestionAnswer />}
@@ -219,6 +230,17 @@ const Navbar = () => {
 					<Stack direction='row'>
 						{user ? (
 							<Stack direction='row' divider={<StackDivider />} spacing={3}>
+								<Link as={ReachLink} to='/' _hover={{}}>
+									<Button
+										leftIcon={<FaHome />}
+										size='sm'
+										variant='link'
+										color='white'
+										onClick={onClose}
+									>
+										Inicio
+									</Button>
+								</Link>
 								<Link as={ReachLink} to={'/nuevo'} _hover={{}}>
 									<Button
 										leftIcon={<FaTshirt />}
@@ -262,6 +284,17 @@ const Navbar = () => {
 							</Stack>
 						) : (
 							<Stack direction='row' divider={<StackDivider />} spacing={3}>
+								<Link as={ReachLink} to='/' _hover={{}}>
+									<Button
+										leftIcon={<FaHome />}
+										size='sm'
+										variant='link'
+										color='white'
+										onClick={onClose}
+									>
+										Inicio
+									</Button>
+								</Link>
 								<Link as={ReachLink} to='tutorial' _hover={{}}>
 									<Button
 										leftIcon={<MdQuestionAnswer />}

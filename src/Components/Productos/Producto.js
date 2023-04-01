@@ -6,7 +6,6 @@ import {
 	Text,
 	Button,
 	Card,
-	Divider,
 	StackDivider,
 	Link,
 } from '@chakra-ui/react';

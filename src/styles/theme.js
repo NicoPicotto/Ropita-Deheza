@@ -1,7 +1,7 @@
 import { extendTheme } from '@chakra-ui/react';
 
 const colors = {
-	primero: '#66F250',
+	primero: '#55C251',
 	segundo: '#8A7DD8',
 	tercero: '#262626',
 	cuarto: '#5FD95B',

@@ -10,44 +10,65 @@ import {
 	Text,
 	Link,
 	useMediaQuery,
-	Spinner
+	Spinner,
+	useToast,
 } from '@chakra-ui/react';
 import { Link as ReachLink } from 'react-router-dom';
 
 const LoginComponent = () => {
 	const { login, resetPassword } = useAuth();
-	const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false);
 	const [user, setUser] = useState({
 		email: '',
 		password: '',
 	});
 
-	const [error, setError] = useState('');
+	const toast = useToast();
 	const navigate = useNavigate();
 	const [isMobile] = useMediaQuery('(max-width: 1100px)');
 
 	const submitHandler = async (e) => {
 		e.preventDefault();
-		setIsLoading(true)
+		setIsLoading(true);
 		try {
 			await login(user.email, user.password);
-			setIsLoading(false)
+			setIsLoading(false);
 			navigate('/');
 		} catch (error) {
-			setIsLoading(false)
-			setError('El mail o contraseña son incorrectas');
+			setIsLoading(false);
+			toast({
+				title: 'Email o contraseña incorrectos.',
+				status: 'error',
+				duration: 3000,
+				isClosable: false,
+			});
 		}
 	};
 
 	const handleResetPassword = async (e) => {
 		e.preventDefault();
 		if (!user.email)
-			return setError('Escribí un mail para recuperar tu contraseña.');
+			toast({
+				title: 'Escribí un email para recuperar tu contraseña',
+				status: 'error',
+				duration: 3000,
+				isClosable: false,
+			});
 		try {
 			await resetPassword(user.email);
-			setError('Te enviamos un correo para resetear tu password.');
+			toast({
+				title: 'Te enviamos un email para recuperar tu contraseña.',
+				status: 'success',
+				duration: 3000,
+				isClosable: false,
+			});
 		} catch (error) {
-			setError('Email inválido.');
+			toast({
+				title: 'Email o contraseña incorrectos.',
+				status: 'error',
+				duration: 3000,
+				isClosable: false,
+			});
 		}
 	};
 
@@ -104,12 +125,6 @@ const LoginComponent = () => {
 						/>
 					</Stack>
 				</Stack>
-
-				{error && (
-					<Text color='red' fontSize='sm'>
-						{error}
-					</Text>
-				)}
 			</Stack>
 			<Stack direction={isMobile ? 'column' : 'row'} w={isMobile && '100%'}>
 				<Button
@@ -118,8 +133,7 @@ const LoginComponent = () => {
 					bgColor='segundo'
 					_hover={{ bgColor: 'cuarto' }}
 				>
-					{isLoading ? <Spinner color="white"/> : "Iniciá sesión"}
-					
+					{isLoading ? <Spinner color='white' /> : 'Iniciá sesión'}
 				</Button>
 				<Link as={ReachLink} to='/register' _hover={{}}>
 					<Button
