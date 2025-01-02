@@ -1,0 +1,14 @@
+.mySwiper {
+   width: 100%;
+   border-radius: 0.6rem;
+}
+
+.swiper-button-prev:after {
+   font-size: 30px;
+   color: #55c251;
+}
+
+.swiper-button-next:after {
+   font-size: 30px;
+   color: #55c251;
+}

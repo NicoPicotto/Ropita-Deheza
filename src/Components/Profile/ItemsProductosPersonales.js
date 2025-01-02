@@ -1,38 +1,60 @@
-import React from 'react';
-import { Stack, Text, Button, StackDivider } from '@chakra-ui/react';
+import React from "react";
+import {
+   Stack,
+   Text,
+   Button,
+   StackDivider,
+   Image,
+   AspectRatio,
+} from "@chakra-ui/react";
 
-const ItemsProductosPersonales = ({ titulo, handleDelete, precio, id }) => {
-	return (
-		<Stack
-			direction='row'
-			w='100%'
-			bgColor='fondo'
-			paddingY={1}
-			paddingX={3}
-			borderRadius={5}
-			align='center'
-			shadow='sm'
-		>
-			<Stack w="75%" direction='row' divider={<StackDivider borderColor='cuarto' />}>
-				<Text fontSize='sm' color='segundo' as='b' noOfLines={1} textOverflow="ellipsis" overflow="hidden" w="75%">
-					{titulo}
-				</Text>
-				<Text fontSize='sm' color='segundo' w="25%">
-					$ {precio}
-				</Text>
-			</Stack>
-			<Stack w="25%">
-				<Button
-					size='xs'
-					colorScheme='red'
-					variant='solid'
-					onClick={() => handleDelete(id)}
-				>
-					Eliminar
-				</Button>
-			</Stack>
-		</Stack>
-	);
+const ItemsProductosPersonales = ({
+   titulo,
+   handleDelete,
+   precio,
+   id,
+   thumbnail,
+}) => {
+   return (
+      <Stack
+         direction='row'
+         w='100%'
+         bgColor='gray.50'
+         p={3}
+         borderRadius={5}
+         shadow='sm'
+         gap={3}
+      >
+         <AspectRatio
+            ratio={1}
+            w='10rem'
+            borderRadius={5}
+            overflow='hidden'
+            border='1px solid gray'
+         >
+            <Image src={thumbnail} alt='producto' />
+         </AspectRatio>
+
+         <Stack w='fit-content' justify='space-between'>
+            <Stack>
+               {" "}
+               <Text color='segundo' as='b'>
+                  {titulo}
+               </Text>
+               <Text color='segundo'>$ {precio}</Text>{" "}
+            </Stack>
+
+            <Button
+               size='sm'
+               colorScheme='red'
+               variant='solid'
+               onClick={() => handleDelete(id)}
+            >
+               Eliminar
+            </Button>
+         </Stack>
+      </Stack>
+   );
 };
 
 export default ItemsProductosPersonales;

@@ -178,7 +178,7 @@ const RegisterComponent = () => {
 								onClick={() => submitData(nombre, apellido, telefono, email)}
 								color='tercero'
 							>
-								{isLoading ? <Spinner color='segundo' /> : 'Completá tus datos'}
+								{isLoading ? <Spinner color='segundo' /> : 'Finalizá tu registro'}
 							</Button>
 						</Stack>
 					</>
