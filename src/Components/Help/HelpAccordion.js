@@ -46,6 +46,7 @@ const HelpAccordion = () => {
       <Stack
          align='center'
          maxW='75rem'
+         w='100%'
          bgColor='white'
          borderRadius={5}
          p={5}
